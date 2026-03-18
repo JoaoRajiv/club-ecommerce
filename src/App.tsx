@@ -1,9 +1,10 @@
+import Header from './components/header/header.component'
 import './index.css'
 
-function App() {
+const App = () => {
   return (
     <div className='App'>
-      <h1>Hello, React!</h1>
+      <Header />
     </div>
   )
 }
