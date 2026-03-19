@@ -1,17 +1,15 @@
-import './index.css'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { FunctionComponent } from 'react'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 // Pages
 import HomePage from './pages/home/home.page'
 
-const App = () => {
+const App: FunctionComponent = () => {
   return (
     <BrowserRouter>
-      <div className='App'>
-        <Routes>
-          <Route path='/' element={<HomePage />} />
-        </Routes>
-      </div>
+      <Routes>
+        <Route path='/' element={<HomePage />} />
+      </Routes>
     </BrowserRouter>
   )
 }
