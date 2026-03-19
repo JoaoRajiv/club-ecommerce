@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react'
 import Category from '../../types/category.types'
-import './categories.styles.css'
+
 import CategoryItem from '../category-item/category-item.component'
+import { CategoriesContainer, CategoriesContent } from './categories.styles'
 // import axios from 'axios'
 
 // Inserindo o mock aqui para facilitar, mas o ideal é mover para outro arquivo.
@@ -57,19 +58,19 @@ const Categories = () => {
   //   }
   // }
 
-  useEffect(() => {
-    // fetchCategories()
-  }, [])
+  // useEffect(() => {
+  //   fetchCategories()
+  // }, [])
   return (
-    <div className='categories-container'>
-      <div className='categories-content'>
+    <CategoriesContainer>
+      <CategoriesContent>
         {categories.map((category) => (
           <div key={category.id} className='category-item'>
             <CategoryItem category={category} />
           </div>
         ))}
-      </div>
-    </div>
+      </CategoriesContent>
+    </CategoriesContainer>
   )
 }
 
