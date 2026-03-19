@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import Category from '../../types/category.types'
 import './categories.styles.css'
-import axios from 'axios'
+// import axios from 'axios'
 
 const Categories = () => {
   const [categories, setCategories] = useState<Category[]>([])
