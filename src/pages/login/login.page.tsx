@@ -9,6 +9,7 @@ import {
   LoginInputContainer,
   LoginSubtitle
 } from './login.styles'
+import CustomInput from '../../components/custom-input/custom-input.component'
 
 const LoginPage = () => {
   return (
@@ -25,12 +26,10 @@ const LoginPage = () => {
           </CustomButton>
           <LoginSubtitle>Ou entre com o seu e-mail</LoginSubtitle>
           <LoginInputContainer>
-            <p>E-mail</p>
-            <input type='email' placeholder='Digite seu e-mail' />
+            <CustomInput type='email' placeholder='Digite seu e-mail' />
           </LoginInputContainer>
           <LoginInputContainer>
-            <p>Senha</p>
-            <input type='password' placeholder='Digite sua senha' />
+            <CustomInput type='password' placeholder='Digite sua senha' />
           </LoginInputContainer>
           {/* @ts-expect-error: Conflito temporário de tipagem do React 17 */}
           <CustomButton startIcon={<FiLogIn size={18} />}>Entrar</CustomButton>
