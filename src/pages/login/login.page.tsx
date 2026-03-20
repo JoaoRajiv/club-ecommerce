@@ -26,9 +26,11 @@ const LoginPage = () => {
           </CustomButton>
           <LoginSubtitle>Ou entre com o seu e-mail</LoginSubtitle>
           <LoginInputContainer>
+            <p>E-mail</p>
             <CustomInput type='email' placeholder='Digite seu e-mail' />
           </LoginInputContainer>
           <LoginInputContainer>
+            <p>Senha</p>
             <CustomInput type='password' placeholder='Digite sua senha' />
           </LoginInputContainer>
           {/* @ts-expect-error: Conflito temporário de tipagem do React 17 */}
