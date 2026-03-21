@@ -17,6 +17,11 @@ import validator from 'validator'
 import { useForm } from 'react-hook-form'
 import InputErrorMessage from '../../components/input-error-message/input-error-message.component'
 
+interface LoginForm {
+  email: string
+  password: string
+}
+
 const LoginPage = () => {
   const FiLogInIcon = FiLogIn as unknown as ComponentType<{ size?: number }>
 
@@ -24,9 +29,9 @@ const LoginPage = () => {
     register,
     formState: { errors },
     handleSubmit
-  } = useForm()
+  } = useForm<LoginForm>()
 
-  const handleSubmitPress = (data: any) => {}
+  const handleSubmitPress = (data: LoginForm) => {}
 
   return (
     <>
