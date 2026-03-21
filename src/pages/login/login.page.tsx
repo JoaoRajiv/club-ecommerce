@@ -71,16 +71,11 @@ const LoginPage = () => {
               hasError={!!errors?.password}
               type='password'
               placeholder='Digite sua senha'
-              {...register('password', { required: true, minLength: 6 })}
+              {...register('password', { required: true })}
             />
             {errors?.password?.type === 'required' && (
               <InputErrorMessage>
                 O campo de senha é obrigatório.
-              </InputErrorMessage>
-            )}
-            {errors?.password?.type === 'minLength' && (
-              <InputErrorMessage>
-                A senha deve conter pelo menos 6 caracteres.
               </InputErrorMessage>
             )}
           </LoginInputContainer>
