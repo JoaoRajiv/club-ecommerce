@@ -12,7 +12,10 @@ import {
 } from './login.styles'
 import CustomInput from '../../components/custom-input/custom-input.component'
 
+import validator from 'validator'
+
 import { useForm } from 'react-hook-form'
+import InputErrorMessage from '../../components/input-error-message/input-error-message.component'
 
 const LoginPage = () => {
   const FiLogInIcon = FiLogIn as unknown as ComponentType<{ size?: number }>
@@ -23,9 +26,7 @@ const LoginPage = () => {
     handleSubmit
   } = useForm()
 
-  const handleSubmitPress = (data: any) => {
-    console.log('Form Data:', data)
-  }
+  const handleSubmitPress = (data: any) => {}
 
   return (
     <>
@@ -46,8 +47,23 @@ const LoginPage = () => {
               type='email'
               hasError={!!errors?.email}
               placeholder='Digite seu e-mail'
-              {...register('email', { required: true })}
+              {...register('email', {
+                required: true,
+                validate: (value) => {
+                  return validator.isEmail(value)
+                }
+              })}
             />
+            {errors?.email?.type === 'required' && (
+              <InputErrorMessage>
+                O campo de e-mail é obrigatório.
+              </InputErrorMessage>
+            )}
+            {errors?.email?.type === 'validate' && (
+              <InputErrorMessage>
+                Por favor, insira um e-mail válido.
+              </InputErrorMessage>
+            )}
           </LoginInputContainer>
           <LoginInputContainer>
             <p>Senha</p>
@@ -55,8 +71,18 @@ const LoginPage = () => {
               hasError={!!errors?.password}
               type='password'
               placeholder='Digite sua senha'
-              {...register('password', { required: true })}
+              {...register('password', { required: true, minLength: 6 })}
             />
+            {errors?.password?.type === 'required' && (
+              <InputErrorMessage>
+                O campo de senha é obrigatório.
+              </InputErrorMessage>
+            )}
+            {errors?.password?.type === 'minLength' && (
+              <InputErrorMessage>
+                A senha deve conter pelo menos 6 caracteres.
+              </InputErrorMessage>
+            )}
           </LoginInputContainer>
           <CustomButton
             startIcon={<FiLogInIcon size={18} />}
