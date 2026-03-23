@@ -18,6 +18,13 @@ import {
   SignUpHeadline,
   SignUpInputContainer
 } from './sign-up.styles'
+import {
+  AuthError,
+  AuthErrorCodes,
+  createUserWithEmailAndPassword
+} from 'firebase/auth'
+import { auth, db } from '../../config/firebase.config'
+import { addDoc, collection } from 'firebase/firestore'
 
 interface SignUpForm {
   firstName: string
@@ -33,7 +40,7 @@ const SignUpPage = () => {
     register,
     handleSubmit,
     watch,
-    // setError,
+    setError,
     formState: { errors }
   } = useForm<SignUpForm>()
 
@@ -43,37 +50,33 @@ const SignUpPage = () => {
 
   const navigate = useNavigate()
 
-  const handleSubmitPress = (data: SignUpForm) => {
-    console.log({ data })
+  const handleSubmitPress = async (data: SignUpForm) => {
+    try {
+      setIsLoading(true)
+
+      const userCredentials = await createUserWithEmailAndPassword(
+        auth,
+        data.email,
+        data.password
+      )
+
+      await addDoc(collection(db, 'users'), {
+        id: userCredentials.user.uid,
+        email: userCredentials.user.email,
+        firstName: data.firstName,
+        lastName: data.lastName,
+        provider: 'firebase'
+      })
+    } catch (error) {
+      const _error = error as AuthError
+
+      if (_error.code === AuthErrorCodes.EMAIL_EXISTS) {
+        return setError('email', { type: 'alreadyInUse' })
+      }
+    } finally {
+      setIsLoading(false)
+    }
   }
-
-  // const handleSubmitPress = async (data: SignUpForm) => {
-  //   try {
-  //     setIsLoading(true)
-
-  //     const userCredentials = await createUserWithEmailAndPassword(
-  //       auth,
-  //       data.email,
-  //       data.password
-  //     )
-
-  //     await addDoc(collection(db, 'users'), {
-  //       id: userCredentials.user.uid,
-  //       email: userCredentials.user.email,
-  //       firstName: data.firstName,
-  //       lastName: data.lastName,
-  //       provider: 'firebase'
-  //     })
-  //   } catch (error) {
-  //     const _error = error as AuthError
-
-  //     if (_error.code === AuthErrorCodes.EMAIL_EXISTS) {
-  //       return setError('email', { type: 'alreadyInUse' })
-  //     }
-  //   } finally {
-  //     setIsLoading(false)
-  //   }
-  // }
 
   return (
     <>
