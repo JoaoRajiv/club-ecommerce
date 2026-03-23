@@ -69,7 +69,7 @@ const SignUpPage = () => {
       })
     } catch (error) {
       const _error = error as AuthError
-
+      console.log(_error.message)
       if (_error.code === AuthErrorCodes.EMAIL_EXISTS) {
         return setError('email', { type: 'alreadyInUse' })
       }
