@@ -3,64 +3,28 @@ import Category from '../../types/category.types'
 
 import CategoryItem from '../category-item/category-item.component'
 import { CategoriesContainer, CategoriesContent } from './categories.styles'
-// import axios from 'axios'
-
-// Inserindo o mock aqui para facilitar, mas o ideal é mover para outro arquivo.
-const mockCategories: Category[] = [
-  {
-    id: '1',
-    name: 'hats',
-    displayName: 'Chapéus',
-    imageUrl:
-      'https://images.unsplash.com/photo-1533055640609-24b498dfd74c?auto=format&fit=crop&w=500&q=80'
-  },
-  {
-    id: '2',
-    name: 'sneakers',
-    displayName: 'Tênis',
-    imageUrl:
-      'https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?auto=format&fit=crop&w=500&q=80'
-  },
-  {
-    id: '3',
-    name: 'jackets',
-    displayName: 'Jaquetas',
-    imageUrl:
-      'https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=500&q=80'
-  },
-  {
-    id: '4',
-    name: 'womens',
-    displayName: 'Feminino',
-    imageUrl:
-      'https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=500&q=80'
-  },
-  {
-    id: '5',
-    name: 'mens',
-    displayName: 'Masculino',
-    imageUrl:
-      'https://images.unsplash.com/photo-1490578474895-699bc4e3f44f?auto=format&fit=crop&w=500&q=80'
-  }
-]
+import { collection, getDocs, query } from 'firebase/firestore'
+import { db } from '../../config/firebase.config'
 
 const Categories = () => {
-  const [categories, setCategories] = useState<Category[]>(mockCategories)
+  const [categories, setCategories] = useState<Category[]>([])
 
-  // const fetchCategories = async () => {
-  //   try {
-  //     const { data } = await axios.get(
-  //       `${process.env.REACT_APP_API_URL}/api/categories`
-  //     )
-  //     setCategories(data)
-  //   } catch (error) {
-  //     console.error('Error fetching categories:', error)
-  //   }
-  // }
+  const fetchCategories = async () => {
+    try {
+      const categoriesFromFirestore: Category[] = []
+      const querySnapshot = await getDocs(collection(db, 'categories'))
+      querySnapshot.forEach((doc) => {
+        categoriesFromFirestore.push(doc.data() as Category)
+      })
+      setCategories(categoriesFromFirestore)
+    } catch (error) {
+      console.error('Error fetching categories:', error)
+    }
+  }
 
-  // useEffect(() => {
-  //   fetchCategories()
-  // }, [])
+  useEffect(() => {
+    fetchCategories()
+  }, [])
   return (
     <CategoriesContainer>
       <CategoriesContent>
