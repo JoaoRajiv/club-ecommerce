@@ -16,6 +16,12 @@ import validator from 'validator'
 
 import { useForm } from 'react-hook-form'
 import InputErrorMessage from '../../components/input-error-message/input-error-message.component'
+import {
+  AuthError,
+  AuthErrorCodes,
+  signInWithEmailAndPassword
+} from 'firebase/auth'
+import { auth } from '../../config/firebase.config'
 
 interface LoginForm {
   email: string
@@ -27,11 +33,31 @@ const LoginPage = () => {
 
   const {
     register,
+    setError,
     formState: { errors },
     handleSubmit
   } = useForm<LoginForm>()
 
-  const handleSubmitPress = (data: LoginForm) => {}
+  const handleSubmitPress = async (data: LoginForm) => {
+    try {
+      const userCredentials = await signInWithEmailAndPassword(
+        auth,
+        data.email,
+        data.password
+      )
+      console.log(userCredentials)
+    } catch (error) {
+      const _error = error as AuthError
+      console.log(_error)
+      if (_error.code === AuthErrorCodes.INVALID_PASSWORD) {
+        return setError('password', { type: 'invalid' })
+      }
+
+      if (_error.code === AuthErrorCodes.USER_DELETED) {
+        return setError('email', { type: 'notFound' })
+      }
+    }
+  }
 
   return (
     <>
@@ -60,10 +86,15 @@ const LoginPage = () => {
               })}
             />
             {errors?.email?.type === 'required' && (
+              <InputErrorMessage>O e-mail é obrigatório.</InputErrorMessage>
+            )}
+
+            {errors?.email?.type === 'invalid' && (
               <InputErrorMessage>
-                O campo de e-mail é obrigatório.
+                O e-mail não foi encontrado.
               </InputErrorMessage>
             )}
+
             {errors?.email?.type === 'validate' && (
               <InputErrorMessage>
                 Por favor, insira um e-mail válido.
@@ -79,9 +110,11 @@ const LoginPage = () => {
               {...register('password', { required: true })}
             />
             {errors?.password?.type === 'required' && (
-              <InputErrorMessage>
-                O campo de senha é obrigatório.
-              </InputErrorMessage>
+              <InputErrorMessage>A senha é obrigatória.</InputErrorMessage>
+            )}
+
+            {errors?.password?.type === 'invalid' && (
+              <InputErrorMessage>A senha é inválida.</InputErrorMessage>
             )}
           </LoginInputContainer>
           <CustomButton
