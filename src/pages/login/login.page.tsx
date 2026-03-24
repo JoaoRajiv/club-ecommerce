@@ -19,9 +19,11 @@ import InputErrorMessage from '../../components/input-error-message/input-error-
 import {
   AuthError,
   AuthErrorCodes,
-  signInWithEmailAndPassword
+  signInWithEmailAndPassword,
+  signInWithPopup
 } from 'firebase/auth'
-import { auth } from '../../config/firebase.config'
+import { auth, db, googleProvider } from '../../config/firebase.config'
+import { addDoc, collection, getDocs, query, where } from 'firebase/firestore'
 
 interface LoginForm {
   email: string
@@ -30,6 +32,7 @@ interface LoginForm {
 
 const LoginPage = () => {
   const FiLogInIcon = FiLogIn as unknown as ComponentType<{ size?: number }>
+  const BsGoogleIcon = BsGoogle as unknown as ComponentType<{ size?: number }>
 
   const {
     register,
@@ -59,6 +62,35 @@ const LoginPage = () => {
     }
   }
 
+  const handleGoogleSignIn = async () => {
+    try {
+      const userCredentials = await signInWithPopup(auth, googleProvider)
+      const querySnapshot = await getDocs(
+        query(
+          collection(db, 'users'),
+          where('id', '==', userCredentials.user.uid)
+        )
+      )
+      const user = querySnapshot.docs[0]?.data()
+
+      if (!user) {
+        const firstName = userCredentials.user.displayName?.split(' ')[0] || ''
+        const lastName =
+          userCredentials.user.displayName?.split(' ').slice(1).join('') || ''
+        await addDoc(collection(db, 'users'), {
+          id: userCredentials.user.uid,
+          email: userCredentials.user.email,
+          firstName,
+          lastName,
+          provider: 'google'
+        })
+        console.log('Novo usuário criado no Firestore')
+      }
+    } catch (error) {
+      console.error('Error signing in with Google:', error)
+    }
+  }
+
   return (
     <>
       <Header />
@@ -67,8 +99,10 @@ const LoginPage = () => {
           <LoginHeadline>
             Bem-vindo de volta! Faça login para continuar.
           </LoginHeadline>
-          {/* @ts-expect-error: Conflito temporário de tipagem do React 17 */}
-          <CustomButton startIcon={<BsGoogle size={18} />}>
+          <CustomButton
+            startIcon={<BsGoogleIcon size={18} />}
+            onClick={handleGoogleSignIn}
+          >
             Entrar com Google
           </CustomButton>
           <LoginSubtitle>Ou entre com o seu e-mail</LoginSubtitle>
