@@ -1,3 +1,4 @@
+import { signOut } from 'firebase/auth'
 import {
   HeaderContainer,
   HeaderItem,
@@ -6,6 +7,7 @@ import {
 } from './header.styles'
 import { BsCart } from 'react-icons/bs'
 import { useNavigate } from 'react-router-dom'
+import { auth } from '../../config/firebase.config'
 
 const Header = () => {
   const navigate = useNavigate()
@@ -25,6 +27,7 @@ const Header = () => {
         <HeaderItem>Explorar</HeaderItem>
         <HeaderItem onClick={handleLoginClick}>Login</HeaderItem>
         <HeaderItem onClick={handleSignUpClick}>Criar Conta</HeaderItem>
+        <HeaderItem onClick={() => signOut(auth)}>Sair</HeaderItem>
         <HeaderItem>
           {/* @ts-expect-error: Conflito temporário de tipagem do React 17 */}
           <BsCart size={25} />
