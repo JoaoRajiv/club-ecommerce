@@ -1,6 +1,6 @@
 import { BsGoogle } from 'react-icons/bs'
 import { FiLogIn } from 'react-icons/fi'
-import { useContext, useEffect, type ComponentType } from 'react'
+import { useContext, useEffect, useState, type ComponentType } from 'react'
 import CustomButton from '../../components/custom-button/custom-button.component'
 import Header from '../../components/header/header.component'
 import {
@@ -14,7 +14,7 @@ import CustomInput from '../../components/custom-input/custom-input.component'
 
 import validator from 'validator'
 
-import { useForm } from 'react-hook-form'
+import { set, useForm } from 'react-hook-form'
 import InputErrorMessage from '../../components/input-error-message/input-error-message.component'
 import {
   AuthError,
@@ -26,6 +26,7 @@ import { auth, db, googleProvider } from '../../config/firebase.config'
 import { addDoc, collection, getDocs, query, where } from 'firebase/firestore'
 import { UserContext } from '../../contexts/user.context'
 import { useNavigate } from 'react-router-dom'
+import Loading from '../../components/loading/loading.component'
 
 interface LoginForm {
   email: string
@@ -45,6 +46,8 @@ const LoginPage = () => {
     handleSubmit
   } = useForm<LoginForm>()
 
+  const [isLoading, setIsLoading] = useState(false)
+
   const { isAuthenticated } = useContext(UserContext)
 
   useEffect(() => {
@@ -55,6 +58,7 @@ const LoginPage = () => {
 
   const handleSubmitPress = async (data: LoginForm) => {
     try {
+      setIsLoading(true)
       const userCredentials = await signInWithEmailAndPassword(
         auth,
         data.email,
@@ -71,11 +75,14 @@ const LoginPage = () => {
       if (_error.code === AuthErrorCodes.USER_DELETED) {
         return setError('email', { type: 'notFound' })
       }
+    } finally {
+      setIsLoading(false)
     }
   }
 
   const handleGoogleSignIn = async () => {
     try {
+      setIsLoading(true)
       const userCredentials = await signInWithPopup(auth, googleProvider)
       const querySnapshot = await getDocs(
         query(
@@ -100,12 +107,15 @@ const LoginPage = () => {
       }
     } catch (error) {
       console.error('Error signing in with Google:', error)
+    } finally {
+      setIsLoading(false)
     }
   }
 
   return (
     <>
       <Header />
+      {isLoading && <Loading message='Entrando, por favor aguarde...' />}
       <LoginContainer>
         <LoginContent>
           <LoginHeadline>
