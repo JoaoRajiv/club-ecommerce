@@ -8,8 +8,11 @@ import {
 import { BsCart } from 'react-icons/bs'
 import { useNavigate } from 'react-router-dom'
 import { auth } from '../../config/firebase.config'
+import { UserContext } from '../../contexts/user.context'
+import { useContext } from 'react'
 
 const Header = () => {
+  const { isAuthenticated } = useContext(UserContext)
   const navigate = useNavigate()
   const handleLoginClick = () => {
     navigate('/login')
@@ -25,9 +28,14 @@ const Header = () => {
       <HeaderTitle onClick={handleHomeClick}>CLUB CLOTHING</HeaderTitle>
       <HeaderItems>
         <HeaderItem>Explorar</HeaderItem>
-        <HeaderItem onClick={handleLoginClick}>Login</HeaderItem>
-        <HeaderItem onClick={handleSignUpClick}>Criar Conta</HeaderItem>
-        <HeaderItem onClick={() => signOut(auth)}>Sair</HeaderItem>
+        {!isAuthenticated ? (
+          <>
+            <HeaderItem onClick={handleLoginClick}>Login</HeaderItem>
+            <HeaderItem onClick={handleSignUpClick}>Criar Conta</HeaderItem>
+          </>
+        ) : (
+          <HeaderItem onClick={() => signOut(auth)}>Sair</HeaderItem>
+        )}
         <HeaderItem>
           {/* @ts-expect-error: Conflito temporário de tipagem do React 17 */}
           <BsCart size={25} />
