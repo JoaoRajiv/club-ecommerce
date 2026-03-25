@@ -8,6 +8,7 @@ import { Container } from './categories-overview.styles'
 // import CategoryOverview from '../category-overview/category-overview.component'
 import Loading from '../loading/loading.component'
 import { CategoryContext } from '../../contexts/category.context'
+import CategoryOverview from '../category-overview/category-overview.component'
 
 const CategoriesOverview: FunctionComponent = () => {
   const { categories, isLoading, fetchCategories } = useContext(CategoryContext)
@@ -15,20 +16,17 @@ const CategoriesOverview: FunctionComponent = () => {
   // const dispatch = useDispatch()
 
   useEffect(() => {
-    if (categories.length === 0) {
+    if (!categories?.length) {
       fetchCategories()
     }
-  }, [])
+  }, [categories?.length, fetchCategories])
 
   if (isLoading) return <Loading />
 
   return (
     <Container>
       {categories.map((category) => (
-        <div key={category.id} className='category-overview-item'>
-          {/* <CategoryOverview category={category} /> */}
-          <h2>{category.displayName}</h2>
-        </div>
+        <CategoryOverview key={category.id} category={category} />
       ))}
     </Container>
   )
