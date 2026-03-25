@@ -26,6 +26,7 @@ import {
 import { auth, db } from '../../config/firebase.config'
 import { addDoc, collection } from 'firebase/firestore'
 import { UserContext } from '../../contexts/user.context'
+import Loading from '../../components/loading/loading.component'
 
 interface SignUpForm {
   firstName: string
@@ -91,7 +92,7 @@ const SignUpPage = () => {
     <>
       <Header />
 
-      {/* {isLoading && <Loading />} */}
+      {isLoading && <Loading message='Criando conta, por favor aguarde...' />}
 
       <SignUpContainer>
         <SignUpContent>
