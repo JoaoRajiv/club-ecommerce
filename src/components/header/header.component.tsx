@@ -23,11 +23,14 @@ const Header = () => {
   const handleHomeClick = () => {
     navigate('/')
   }
+  const handleExploreClick = () => {
+    navigate('/explore')
+  }
   return (
     <HeaderContainer>
       <HeaderTitle onClick={handleHomeClick}>CLUB CLOTHING</HeaderTitle>
       <HeaderItems>
-        <HeaderItem>Explorar</HeaderItem>
+        <HeaderItem onClick={handleExploreClick}>Explorar</HeaderItem>
         {!isAuthenticated ? (
           <>
             <HeaderItem onClick={handleLoginClick}>Login</HeaderItem>
