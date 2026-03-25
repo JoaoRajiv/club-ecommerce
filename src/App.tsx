@@ -10,6 +10,7 @@ import { auth, db } from './config/firebase.config'
 import { UserContext } from './contexts/user.context'
 import { collection, getDocs, query, where } from 'firebase/firestore'
 import { User } from './types/user.types'
+import Loading from './components/loading/loading.component'
 
 const App: FunctionComponent = () => {
   const [isInitializing, setIsInitializing] = useState(true)
@@ -34,7 +35,7 @@ const App: FunctionComponent = () => {
   })
 
   if (isInitializing) {
-    return <div>Loading...</div>
+    return <Loading message='Loading, please wait...' />
   }
   return (
     <BrowserRouter>
