@@ -1,6 +1,6 @@
 import { BsGoogle } from 'react-icons/bs'
 import { FiLogIn } from 'react-icons/fi'
-import type { ComponentType } from 'react'
+import { useContext, useEffect, type ComponentType } from 'react'
 import CustomButton from '../../components/custom-button/custom-button.component'
 import Header from '../../components/header/header.component'
 import {
@@ -24,6 +24,8 @@ import {
 } from 'firebase/auth'
 import { auth, db, googleProvider } from '../../config/firebase.config'
 import { addDoc, collection, getDocs, query, where } from 'firebase/firestore'
+import { UserContext } from '../../contexts/user.context'
+import { useNavigate } from 'react-router-dom'
 
 interface LoginForm {
   email: string
@@ -34,12 +36,22 @@ const LoginPage = () => {
   const FiLogInIcon = FiLogIn as unknown as ComponentType<{ size?: number }>
   const BsGoogleIcon = BsGoogle as unknown as ComponentType<{ size?: number }>
 
+  const navigate = useNavigate()
+
   const {
     register,
     setError,
     formState: { errors },
     handleSubmit
   } = useForm<LoginForm>()
+
+  const { isAuthenticated } = useContext(UserContext)
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate('/')
+    }
+  }, [isAuthenticated])
 
   const handleSubmitPress = async (data: LoginForm) => {
     try {

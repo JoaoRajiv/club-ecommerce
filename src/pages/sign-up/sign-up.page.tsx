@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form'
 import validator from 'validator'
 
 import { useNavigate } from 'react-router-dom'
-import { ComponentType, useEffect, useState } from 'react'
+import { ComponentType, useContext, useEffect, useState } from 'react'
 
 // Components
 import CustomButton from '../../components/custom-button/custom-button.component'
@@ -25,6 +25,7 @@ import {
 } from 'firebase/auth'
 import { auth, db } from '../../config/firebase.config'
 import { addDoc, collection } from 'firebase/firestore'
+import { UserContext } from '../../contexts/user.context'
 
 interface SignUpForm {
   firstName: string
@@ -49,6 +50,14 @@ const SignUpPage = () => {
   const watchPassword = watch('password')
 
   const navigate = useNavigate()
+
+  const { isAuthenticated } = useContext(UserContext)
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate('/')
+    }
+  }, [isAuthenticated])
 
   const handleSubmitPress = async (data: SignUpForm) => {
     try {
