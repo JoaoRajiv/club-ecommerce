@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom'
 
 const CategoryDetailsPage: FunctionComponent = () => {
   const { id } = useParams()
-  if (!id) return null
+  if (!id) return <p>Categoria não encontrada</p>
   return (
     <>
       <Header />
