@@ -21,7 +21,7 @@ const CategoriesOverview: FunctionComponent = () => {
     }
   }, [categories?.length, fetchCategories])
 
-  if (isLoading) return <Loading />
+  if (isLoading) return <Loading message='Carregando categorias...' />
 
   return (
     <Container>

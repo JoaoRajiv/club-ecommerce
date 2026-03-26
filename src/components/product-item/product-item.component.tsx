@@ -26,7 +26,7 @@ const ProductItem: FunctionComponent<ProductItemProps> = ({ product }) => {
   return (
     <ProductContainer>
       <ProductImage imageUrl={product.imageUrl}>
-        <CustomButton startIcon={BsCartPlusIcon}>
+        <CustomButton startIcon={<BsCartPlusIcon />}>
           Adicionar ao carrinho
         </CustomButton>
       </ProductImage>

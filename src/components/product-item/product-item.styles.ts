@@ -47,7 +47,7 @@ export const ProductImage = styled.div<ProductImageProps>`
   }
 
   &:hover {
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.3);
     background-blend-mode: color;
     cursor: pointer;
 
