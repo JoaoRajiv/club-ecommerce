@@ -82,17 +82,6 @@ const CartContextProvider: FunctionComponent = ({ children }) => {
       )
     }
 
-    // // se sim -> aumentar sua quantidade
-    // if (productIsAlreadyInCart) {
-    //   return setProducts((products) =>
-    //     products.map((item) =>
-    //       item.id === product.id
-    //         ? { ...item, quantity: item.quantity + 1 }
-    //         : item
-    //     )
-    //   )
-    // }
-
     // se não -> adicioná-lo
     setProducts((prevState) => [...prevState, { ...product, quantity: 1 }])
   }

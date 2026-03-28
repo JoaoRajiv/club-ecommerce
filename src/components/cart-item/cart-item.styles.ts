@@ -17,8 +17,8 @@ export const CartItemContainer = styled.div`
 
 export const CartItemImage = styled.div<CartItemImageProps>`
   background-image: ${(props) => `url('${props.imageUrl}')`};
-  height: 250px;
-  width: 170px;
+  height: 100px;
+  width: 100px;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;

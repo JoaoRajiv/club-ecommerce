@@ -28,11 +28,17 @@ const CartItem: FunctionComponent<CartItemProps> = ({ product }) => {
   const AiOutlineCloseIcon = AiOutlineClose as unknown as FunctionComponent<{
     size?: number
   }>
+
+  const {
+    removeProductFromCart,
+    increaseProductQuantity,
+    decreaseProductQuantity
+  } = useContext(CartContext)
   // const dispatch = useDispatch()
 
-  // const handleRemoveClick = () => {
-  //   dispatch(removeProductFromCart(product.id))
-  // }
+  const handleRemoveClick = () => {
+    removeProductFromCart(product.id)
+  }
 
   // const handleIncreaseClick = () => {
   //   dispatch(increaseCartProductQuantity(product.id))
@@ -56,7 +62,7 @@ const CartItem: FunctionComponent<CartItemProps> = ({ product }) => {
       </CartItemInfo>
 
       <RemoveButton
-        // onClick={handleRemoveClick}
+        onClick={handleRemoveClick}
         aria-label={`Remove ${product.name}`}
       >
         <AiOutlineCloseIcon size={25} />
