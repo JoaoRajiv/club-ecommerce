@@ -25,6 +25,9 @@ interface CartItemProps {
 }
 
 const CartItem: FunctionComponent<CartItemProps> = ({ product }) => {
+  const AiOutlineCloseIcon = AiOutlineClose as unknown as FunctionComponent<{
+    size?: number
+  }>
   // const dispatch = useDispatch()
 
   // const handleRemoveClick = () => {
@@ -47,26 +50,16 @@ const CartItem: FunctionComponent<CartItemProps> = ({ product }) => {
         <p>{product.name}</p>
         <p>R${product.price}</p>
 
-        {/* <CartItemQuantity>
-          <AiOutlineMinus
-            size={20}
-            onClick={handleDecreaseClick}
-            aria-label={`Decrease quantity of ${product.name}`}
-          />
+        <CartItemQuantity>
           <p>{product.quantity}</p>
-          <AiOutlinePlus
-            size={20}
-            onClick={handleIncreaseClick}
-            aria-label={`Increase quantity of ${product.name}`}
-          />
-        </CartItemQuantity> */}
+        </CartItemQuantity>
       </CartItemInfo>
 
       <RemoveButton
         // onClick={handleRemoveClick}
         aria-label={`Remove ${product.name}`}
       >
-        {/* <AiOutlineClose size={25} /> */}
+        <AiOutlineCloseIcon size={25} />
       </RemoveButton>
     </CartItemContainer>
   )

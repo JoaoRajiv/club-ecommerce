@@ -28,12 +28,10 @@ import CartItem from '../cart-item/cart-item.component'
 import CustomButton from '../custom-button/custom-button.component'
 
 const Cart: FunctionComponent = () => {
-  const { isVisible, toggleCart } = useContext(CartContext)
-
   const BsCartCheckIcon = BsCartCheck as unknown as ComponentType<{
     size?: number
   }>
-  const { products, productsTotalPrice, productsCount } =
+  const { products, productsTotalPrice, productsCount, isVisible, toggleCart } =
     useContext(CartContext)
   // const { isVisible, products } = useAppSelector((state) => state.cartReducer)
 

@@ -14,7 +14,7 @@ import { CartContext } from '../../contexts/cart.context'
 
 const Header = () => {
   const { isAuthenticated } = useContext(UserContext)
-  const { toggleCart } = useContext(CartContext)
+  const { toggleCart, productsCount } = useContext(CartContext)
   const navigate = useNavigate()
   const handleLoginClick = () => {
     navigate('/login')
@@ -44,7 +44,7 @@ const Header = () => {
         <HeaderItem onClick={toggleCart}>
           {/* @ts-expect-error: Conflito temporário de tipagem do React 17 */}
           <BsCart size={25} />
-          <p style={{ marginLeft: 5 }}>5</p>
+          <p style={{ marginLeft: 5 }}>{productsCount}</p>
         </HeaderItem>
       </HeaderItems>
     </HeaderContainer>
