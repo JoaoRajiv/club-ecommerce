@@ -61,20 +61,19 @@ const Cart: FunctionComponent = () => {
           <CartItem key={product.id} product={product} />
         ))}
 
-        {productsCount > 0 && (
-          <CartTotal>Total: R${productsTotalPrice}</CartTotal>
+        {productsCount > 0 ? (
+          <>
+            <CartTotal>Total: R${productsTotalPrice}</CartTotal>
+            <CustomButton
+              startIcon={<BsCartCheckIcon />}
+              // onClick={handleGoToCheckoutClick}
+            >
+              Ir para o Checkout
+            </CustomButton>
+          </>
+        ) : (
+          <p>Seu carrinho está vazio!</p>
         )}
-
-        {productsCount > 0 && (
-          <CustomButton
-            startIcon={<BsCartCheckIcon />}
-            // onClick={handleGoToCheckoutClick}
-          >
-            Ir para o Checkout
-          </CustomButton>
-        )}
-
-        {productsCount === 0 && <p>Seu carrinho está vazio!</p>}
       </CartContent>
     </CartContainer>
   )

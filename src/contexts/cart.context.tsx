@@ -1,6 +1,7 @@
 import {
   createContext,
   FunctionComponent,
+  useCallback,
   useEffect,
   useMemo,
   useState
@@ -66,25 +67,26 @@ const CartContextProvider: FunctionComponent = ({ children }) => {
     setIsVisible((prev) => !prev)
   }
 
-  const addProductToCart = (product: Product) => {
-    // verificar se o produto já está no carrinho
-    const productIsAlreadyInCart = products.some(
-      (item) => item.id === product.id
-    )
-
-    if (productIsAlreadyInCart) {
-      return setProducts((products) =>
-        products.map((item) =>
-          item.id === product.id
-            ? { ...item, quantity: item.quantity + 1 }
-            : item
-        )
+  const addProductToCart = useCallback((product: Product) => {
+    setProducts((currentProducts) => {
+      // Otimização: percorre o array apenas uma vez
+      const productIndex = currentProducts.findIndex(
+        (item) => item.id === product.id
       )
-    }
 
-    // se não -> adicioná-lo
-    setProducts((prevState) => [...prevState, { ...product, quantity: 1 }])
-  }
+      if (productIndex >= 0) {
+        // Copia o array e o item para manter a imutabilidade, mas altera só o índice exato
+        const updatedProducts = [...currentProducts]
+        updatedProducts[productIndex] = {
+          ...updatedProducts[productIndex],
+          quantity: updatedProducts[productIndex].quantity + 1
+        }
+        return updatedProducts
+      }
+
+      return [...currentProducts, { ...product, quantity: 1 }]
+    })
+  }, [])
 
   const removeProductFromCart = (productId: string) => {
     setProducts((products) =>
