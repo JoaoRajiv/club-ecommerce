@@ -28,6 +28,14 @@ const CartItem: FunctionComponent<CartItemProps> = ({ product }) => {
   const AiOutlineCloseIcon = AiOutlineClose as unknown as FunctionComponent<{
     size?: number
   }>
+  const AiOutlineMinusIcon = AiOutlineMinus as unknown as FunctionComponent<{
+    onClick?: () => void
+    size?: number
+  }>
+  const AiOutlinePlusIcon = AiOutlinePlus as unknown as FunctionComponent<{
+    onClick?: () => void
+    size?: number
+  }>
 
   const {
     removeProductFromCart,
@@ -40,13 +48,13 @@ const CartItem: FunctionComponent<CartItemProps> = ({ product }) => {
     removeProductFromCart(product.id)
   }
 
-  // const handleIncreaseClick = () => {
-  //   dispatch(increaseCartProductQuantity(product.id))
-  // }
+  const handleIncreaseClick = () => {
+    increaseProductQuantity(product.id)
+  }
 
-  // const handleDecreaseClick = () => {
-  //   dispatch(decreaseCartProductQuantity(product.id))
-  // }
+  const handleDecreaseClick = () => {
+    decreaseProductQuantity(product.id)
+  }
 
   return (
     <CartItemContainer>
@@ -57,7 +65,17 @@ const CartItem: FunctionComponent<CartItemProps> = ({ product }) => {
         <p>R${product.price}</p>
 
         <CartItemQuantity>
+          <AiOutlineMinusIcon
+            size={20}
+            onClick={handleDecreaseClick}
+            aria-label={`Decrease quantity of ${product.name}`}
+          />
           <p>{product.quantity}</p>
+          <AiOutlinePlusIcon
+            size={20}
+            onClick={handleIncreaseClick}
+            aria-label={`Increase quantity of ${product.name}`}
+          />
         </CartItemQuantity>
       </CartItemInfo>
 
