@@ -24,6 +24,8 @@ import {
   CartTotal
 } from './cart.styles'
 import { CartContext } from '../../contexts/cart.context'
+import CartItem from '../cart-item/cart-item.component'
+import CustomButton from '../custom-button/custom-button.component'
 
 const Cart: FunctionComponent = () => {
   const { isVisible, toggleCart } = useContext(CartContext)
@@ -31,6 +33,8 @@ const Cart: FunctionComponent = () => {
   const BsCartCheckIcon = BsCartCheck as unknown as ComponentType<{
     size?: number
   }>
+  const { products, productsTotalPrice, productsCount } =
+    useContext(CartContext)
   // const { isVisible, products } = useAppSelector((state) => state.cartReducer)
 
   // const productsTotalPrice = useAppSelector(selectProductsTotalPrice)
@@ -55,7 +59,6 @@ const Cart: FunctionComponent = () => {
       <CartContent>
         <CartTitle>Seu Carrinho</CartTitle>
 
-        {/* produtos
         {products.map((product) => (
           <CartItem key={product.id} product={product} />
         ))}
@@ -67,13 +70,13 @@ const Cart: FunctionComponent = () => {
         {productsCount > 0 && (
           <CustomButton
             startIcon={<BsCartCheckIcon />}
-            onClick={handleGoToCheckoutClick}
+            // onClick={handleGoToCheckoutClick}
           >
             Ir para o Checkout
           </CustomButton>
-        )} */}
+        )}
 
-        {/* {productsCount === 0 && <p>Seu carrinho está vazio!</p>} */}
+        {productsCount === 0 && <p>Seu carrinho está vazio!</p>}
       </CartContent>
     </CartContainer>
   )
