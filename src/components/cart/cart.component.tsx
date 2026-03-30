@@ -42,10 +42,10 @@ const Cart: FunctionComponent = () => {
 
   // const dispatch = useDispatch()
 
-  // const handleGoToCheckoutClick = () => {
-  //   navigate('/checkout')
-  //   dispatch(toggleCart())
-  // }
+  const handleGoToCheckoutClick = () => {
+    navigate('/checkout')
+    toggleCart()
+  }
 
   const handleEscapeAreaClick = () => {
     // dispatch(toggleCart())
@@ -66,7 +66,7 @@ const Cart: FunctionComponent = () => {
             <CartTotal>Total: R${productsTotalPrice}</CartTotal>
             <CustomButton
               startIcon={<BsCartCheckIcon />}
-              // onClick={handleGoToCheckoutClick}
+              onClick={handleGoToCheckoutClick}
             >
               Ir para o Checkout
             </CustomButton>
