@@ -21,7 +21,8 @@ import {
   CartContent,
   CartEscapeArea,
   CartTitle,
-  CartTotal
+  CartTotal,
+  EmptyCart
 } from './cart.styles'
 import { CartContext } from '../../contexts/cart.context'
 import CartItem from '../cart-item/cart-item.component'
@@ -31,8 +32,14 @@ const Cart: FunctionComponent = () => {
   const BsCartCheckIcon = BsCartCheck as unknown as ComponentType<{
     size?: number
   }>
-  const { products, productsTotalPrice, productsCount, isVisible, toggleCart } =
-    useContext(CartContext)
+  const {
+    products,
+    productsTotalPrice,
+    productsCount,
+    isVisible,
+    toggleCart,
+    clearProducts
+  } = useContext(CartContext)
   // const { isVisible, products } = useAppSelector((state) => state.cartReducer)
 
   // const productsTotalPrice = useAppSelector(selectProductsTotalPrice)
@@ -55,7 +62,12 @@ const Cart: FunctionComponent = () => {
     <CartContainer isVisible={isVisible}>
       <CartEscapeArea onClick={toggleCart} />
       <CartContent>
-        <CartTitle>Seu Carrinho</CartTitle>
+        <CartTitle>
+          Seu Carrinho
+          <EmptyCart onClick={clearProducts}>
+            <p>Limpar Carrinho</p>
+          </EmptyCart>
+        </CartTitle>
 
         {products.map((product) => (
           <CartItem key={product.id} product={product} />

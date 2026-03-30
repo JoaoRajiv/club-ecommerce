@@ -43,6 +43,9 @@ export const CartContent = styled.div`
   }
 `
 export const CartTitle = styled.p`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   font-size: 1.325rem;
   font-weight: 600;
   margin-bottom: 15px;
@@ -51,4 +54,22 @@ export const CartTotal = styled.p`
   font-weight: 600;
   font-size: 1.125rem;
   margin-bottom: 15px;
+`
+
+export const EmptyCart = styled.p`
+  font-size: 0.875rem;
+  color: ${Colors.error};
+  padding: 5px 10px;
+  border-radius: 5px;
+  background-color: ${Colors.text.white};
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  p {
+    transition: all 0.3s ease;
+  }
+
+  p:hover {
+    color: ${Colors.error};
+  }
 `
