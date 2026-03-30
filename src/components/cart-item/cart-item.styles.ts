@@ -9,6 +9,7 @@ export const CartItemContainer = styled.div`
   display: flex;
   align-items: center;
   margin-bottom: 15px;
+  padding-top: 15px;
 
   p {
     color: ${Colors.text.dark};
