@@ -62,12 +62,8 @@ const Cart: FunctionComponent = () => {
     <CartContainer isVisible={isVisible}>
       <CartEscapeArea onClick={toggleCart} />
       <CartContent>
-        <CartTitle>
-          Seu Carrinho
-          <EmptyCart onClick={clearProducts}>
-            <p>Limpar Carrinho</p>
-          </EmptyCart>
-        </CartTitle>
+        <CartTitle>Seu Carrinho</CartTitle>
+        <EmptyCart onClick={clearProducts}>Limpar Carrinho</EmptyCart>
 
         {products.map((product) => (
           <CartItem key={product.id} product={product} />

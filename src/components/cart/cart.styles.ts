@@ -64,12 +64,4 @@ export const EmptyCart = styled.p`
   background-color: ${Colors.text.white};
   cursor: pointer;
   transition: all 0.3s ease;
-
-  p {
-    transition: all 0.3s ease;
-  }
-
-  p:hover {
-    color: ${Colors.error};
-  }
 `
