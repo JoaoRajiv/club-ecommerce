@@ -27,6 +27,7 @@ import { auth, db } from '../../config/firebase.config'
 import { addDoc, collection } from 'firebase/firestore'
 import { UserContext } from '../../contexts/user.context'
 import Loading from '../../components/loading/loading.component'
+import { useSelector } from 'react-redux'
 
 interface SignUpForm {
   firstName: string
@@ -52,7 +53,9 @@ const SignUpPage = () => {
 
   const navigate = useNavigate()
 
-  const { isAuthenticated } = useContext(UserContext)
+  const { isAuthenticated } = useSelector(
+    (rootReducer: any) => rootReducer.userReducer
+  )
 
   useEffect(() => {
     if (isAuthenticated) {

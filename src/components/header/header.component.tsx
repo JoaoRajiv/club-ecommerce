@@ -11,9 +11,14 @@ import { auth } from '../../config/firebase.config'
 import { UserContext } from '../../contexts/user.context'
 import { useContext } from 'react'
 import { CartContext } from '../../contexts/cart.context'
+import { useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 
 const Header = () => {
-  const { isAuthenticated } = useContext(UserContext)
+  const { isAuthenticated } = useSelector(
+    (rootReducer: any) => rootReducer.userReducer
+  )
+  const dispatch = useDispatch()
   const { toggleCart, productsCount } = useContext(CartContext)
   const navigate = useNavigate()
   const handleLoginClick = () => {
@@ -28,6 +33,11 @@ const Header = () => {
   const handleExploreClick = () => {
     navigate('/explore')
   }
+  const handleSignOutClick = () => {
+    dispatch({ type: 'LOGOUT' })
+    signOut(auth)
+  }
+
   return (
     <HeaderContainer>
       <HeaderTitle onClick={handleHomeClick}>CLUB CLOTHING</HeaderTitle>
@@ -39,7 +49,7 @@ const Header = () => {
             <HeaderItem onClick={handleSignUpClick}>Criar Conta</HeaderItem>
           </>
         ) : (
-          <HeaderItem onClick={() => signOut(auth)}>Sair</HeaderItem>
+          <HeaderItem onClick={handleSignOutClick}>Sair</HeaderItem>
         )}
         <HeaderItem onClick={toggleCart}>
           {/* @ts-expect-error: Conflito temporário de tipagem do React 17 */}

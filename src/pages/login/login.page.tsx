@@ -27,6 +27,7 @@ import { addDoc, collection, getDocs, query, where } from 'firebase/firestore'
 import { UserContext } from '../../contexts/user.context'
 import { useNavigate } from 'react-router-dom'
 import Loading from '../../components/loading/loading.component'
+import { useSelector } from 'react-redux'
 
 interface LoginForm {
   email: string
@@ -48,7 +49,9 @@ const LoginPage = () => {
 
   const [isLoading, setIsLoading] = useState(false)
 
-  const { isAuthenticated } = useContext(UserContext)
+  const { isAuthenticated } = useSelector(
+    (rootReducer: any) => rootReducer.userReducer
+  )
 
   useEffect(() => {
     if (isAuthenticated) {
