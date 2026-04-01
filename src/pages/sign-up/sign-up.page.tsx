@@ -28,6 +28,7 @@ import { addDoc, collection } from 'firebase/firestore'
 import { UserContext } from '../../contexts/user.context'
 import Loading from '../../components/loading/loading.component'
 import { useSelector } from 'react-redux'
+import { useAppSelector } from '../../hooks/redux.hooks'
 
 interface SignUpForm {
   firstName: string
@@ -53,8 +54,8 @@ const SignUpPage = () => {
 
   const navigate = useNavigate()
 
-  const { isAuthenticated } = useSelector(
-    (rootReducer: any) => rootReducer.userReducer
+  const { isAuthenticated } = useAppSelector(
+    (rootState) => rootState.userReducer
   )
 
   useEffect(() => {

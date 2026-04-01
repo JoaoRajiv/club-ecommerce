@@ -19,14 +19,15 @@ import PaymentConfirmationPage from './pages/payment-confirmation/payment-confim
 import { useDispatch } from 'react-redux'
 import { useSelector } from 'react-redux'
 import { loginUser, logoutUser } from './store/reducers/user/user.action'
+import { useAppSelector } from './hooks/redux.hooks'
 
 const App: FunctionComponent = () => {
   const [isInitializing, setIsInitializing] = useState(true)
 
   const dispatch = useDispatch()
 
-  const { isAuthenticated } = useSelector(
-    (rootReducer: any) => rootReducer.userReducer
+  const { isAuthenticated } = useAppSelector(
+    (rootReducer) => rootReducer.userReducer
   )
 
   useEffect(() => {

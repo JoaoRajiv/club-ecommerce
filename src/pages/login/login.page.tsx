@@ -14,7 +14,7 @@ import CustomInput from '../../components/custom-input/custom-input.component'
 
 import validator from 'validator'
 
-import { set, useForm } from 'react-hook-form'
+import { useForm } from 'react-hook-form'
 import InputErrorMessage from '../../components/input-error-message/input-error-message.component'
 import {
   AuthError,
@@ -24,10 +24,9 @@ import {
 } from 'firebase/auth'
 import { auth, db, googleProvider } from '../../config/firebase.config'
 import { addDoc, collection, getDocs, query, where } from 'firebase/firestore'
-import { UserContext } from '../../contexts/user.context'
 import { useNavigate } from 'react-router-dom'
 import Loading from '../../components/loading/loading.component'
-import { useSelector } from 'react-redux'
+import { useAppSelector } from '../../hooks/redux.hooks'
 
 interface LoginForm {
   email: string
@@ -49,8 +48,8 @@ const LoginPage = () => {
 
   const [isLoading, setIsLoading] = useState(false)
 
-  const { isAuthenticated } = useSelector(
-    (rootReducer: any) => rootReducer.userReducer
+  const { isAuthenticated } = useAppSelector(
+    (rootState) => rootState.userReducer
   )
 
   useEffect(() => {
