@@ -7,12 +7,10 @@ import LoginPage from './pages/login/login.page'
 import SignUpPage from './pages/sign-up/sign-up.page'
 import { onAuthStateChanged } from 'firebase/auth'
 import { auth, db } from './config/firebase.config'
-import { UserContext } from './contexts/user.context'
 import { collection, getDocs, query, where } from 'firebase/firestore'
 import User from './types/user.types'
 import Loading from './components/loading/loading.component'
 import ExplorePage from './pages/explore/explore.page'
-import CategoryDetails from './components/category-details/category-detail.component'
 import CategoryDetailsPage from './pages/category-details/category-detail.page'
 import Cart from './components/cart/cart.component'
 import CheckoutPage from './pages/checkout/checkout.page'
@@ -20,6 +18,7 @@ import AuthenticationGuard from './guards/authentication.guard'
 import PaymentConfirmationPage from './pages/payment-confirmation/payment-confimation.page'
 import { useDispatch } from 'react-redux'
 import { useSelector } from 'react-redux'
+import { loginUser, logoutUser } from './store/reducers/user/user.action'
 
 const App: FunctionComponent = () => {
   const [isInitializing, setIsInitializing] = useState(true)
@@ -30,13 +29,11 @@ const App: FunctionComponent = () => {
     (rootReducer: any) => rootReducer.userReducer
   )
 
-  // const { isAuthenticated, loginUser, logoutUser } = useContext(UserContext)
-
   useEffect(() => {
     ;(onAuthStateChanged(auth, async (user) => {
       const isSigningOut = isAuthenticated && !user
       if (isSigningOut) {
-        dispatch({ type: 'LOGOUT' })
+        dispatch(logoutUser())
         return setIsInitializing(false)
       }
 
@@ -46,15 +43,14 @@ const App: FunctionComponent = () => {
           query(collection(db, 'users'), where('id', '==', user.uid))
         )
         const userFromFirestore = querySnapshot.docs[0]?.data()
-        dispatch({
-          type: 'LOGIN',
-          payload: userFromFirestore
-        })
+
+        dispatch(loginUser(userFromFirestore as User))
+
         return setIsInitializing(false)
       }
       return setIsInitializing(false)
     }),
-      [isAuthenticated])
+      [dispatch])
   })
 
   if (isInitializing) {
