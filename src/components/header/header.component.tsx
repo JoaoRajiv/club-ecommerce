@@ -14,13 +14,14 @@ import { CartContext } from '../../contexts/cart.context'
 import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
 import { logoutUser } from '../../store/reducers/user/user.action'
+import { toggleCart } from '../../store/reducers/cart/cart.action'
 
 const Header = () => {
   const { isAuthenticated } = useSelector(
     (rootReducer: any) => rootReducer.userReducer
   )
   const dispatch = useDispatch()
-  const { toggleCart, productsCount } = useContext(CartContext)
+  const { productsCount } = useContext(CartContext)
   const navigate = useNavigate()
   const handleLoginClick = () => {
     navigate('/login')
@@ -38,6 +39,9 @@ const Header = () => {
     dispatch(logoutUser())
     signOut(auth)
   }
+  const handleCartClick = () => {
+    dispatch(toggleCart())
+  }
 
   return (
     <HeaderContainer>
@@ -52,7 +56,7 @@ const Header = () => {
         ) : (
           <HeaderItem onClick={handleSignOutClick}>Sair</HeaderItem>
         )}
-        <HeaderItem onClick={toggleCart}>
+        <HeaderItem onClick={handleCartClick}>
           {/* @ts-expect-error: Conflito temporário de tipagem do React 17 */}
           <BsCart size={25} />
           <p style={{ marginLeft: 5 }}>{productsCount}</p>
