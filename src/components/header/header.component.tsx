@@ -9,7 +9,7 @@ import { BsCart } from 'react-icons/bs'
 import { useNavigate } from 'react-router-dom'
 import { auth } from '../../config/firebase.config'
 import { UserContext } from '../../contexts/user.context'
-import { useContext } from 'react'
+import { Component, ComponentType, useContext } from 'react'
 import { CartContext } from '../../contexts/cart.context'
 import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
@@ -17,6 +17,7 @@ import { logoutUser } from '../../store/reducers/user/user.action'
 import { toggleCart } from '../../store/reducers/cart/cart.action'
 
 const Header = () => {
+  const BsCartIcon = BsCart as unknown as ComponentType<{ size?: number }>
   const { isAuthenticated } = useSelector(
     (rootReducer: any) => rootReducer.userReducer
   )
@@ -57,13 +58,13 @@ const Header = () => {
           <HeaderItem onClick={handleSignOutClick}>Sair</HeaderItem>
         )}
         <HeaderItem onClick={handleCartClick}>
-          {/* @ts-expect-error: Conflito temporário de tipagem do React 17 */}
-          <BsCart size={25} />
+          <BsCartIcon size={25} />
           <p style={{ marginLeft: 5 }}>{productsCount}</p>
         </HeaderItem>
       </HeaderItems>
     </HeaderContainer>
   )
+  
 }
 
 export default Header
