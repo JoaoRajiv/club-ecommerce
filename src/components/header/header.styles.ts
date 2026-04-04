@@ -32,7 +32,7 @@ export const HeaderTitle = styled.h2`
 export const HeaderItems = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: 24px;
 
   @media (max-width: 768px) {
     width: 100%;
@@ -46,15 +46,9 @@ export const HeaderItem = styled.div`
   display: flex;
   align-items: center;
 
-  &:nth-child(1),
-  &:nth-child(2),
-  &:nth-child(3) {
-    margin-right: 40px;
-
     @media (max-width: 768px) {
       margin-right: 0;
     }
-  }
 
   &:hover {
     cursor: pointer;

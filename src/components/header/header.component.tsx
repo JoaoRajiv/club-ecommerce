@@ -8,8 +8,7 @@ import {
 import { BsCart } from 'react-icons/bs'
 import { useNavigate } from 'react-router-dom'
 import { auth } from '../../config/firebase.config'
-import { UserContext } from '../../contexts/user.context'
-import { Component, ComponentType, useContext } from 'react'
+import { ComponentType, useContext } from 'react'
 import { CartContext } from '../../contexts/cart.context'
 import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
@@ -18,11 +17,12 @@ import { toggleCart } from '../../store/reducers/cart/cart.action'
 
 const Header = () => {
   const BsCartIcon = BsCart as unknown as ComponentType<{ size?: number }>
-  const { isAuthenticated } = useSelector(
+  const { isAuthenticated, currentUser } = useSelector(
     (rootReducer: any) => rootReducer.userReducer
   )
   const dispatch = useDispatch()
   const { productsCount } = useContext(CartContext)
+
   const navigate = useNavigate()
   const handleLoginClick = () => {
     navigate('/login')
@@ -48,6 +48,7 @@ const Header = () => {
     <HeaderContainer>
       <HeaderTitle onClick={handleHomeClick}>CLUB CLOTHING</HeaderTitle>
       <HeaderItems>
+        <HeaderItem onClick={handleExploreClick}>Olá, {currentUser.firstName}</HeaderItem>
         <HeaderItem onClick={handleExploreClick}>Explorar</HeaderItem>
         {!isAuthenticated ? (
           <>
@@ -64,7 +65,7 @@ const Header = () => {
       </HeaderItems>
     </HeaderContainer>
   )
-  
+
 }
 
 export default Header
