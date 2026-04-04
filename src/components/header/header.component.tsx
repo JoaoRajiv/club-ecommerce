@@ -8,12 +8,13 @@ import {
 import { BsCart } from 'react-icons/bs'
 import { useNavigate } from 'react-router-dom'
 import { auth } from '../../config/firebase.config'
-import { ComponentType, useContext } from 'react'
-import { CartContext } from '../../contexts/cart.context'
+import { ComponentType } from 'react'
 import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
 import { logoutUser } from '../../store/reducers/user/user.action'
 import { toggleCart } from '../../store/reducers/cart/cart.action'
+import { useAppSelector } from '../../hooks/redux.hooks'
+import { selectProductsCount } from '../../store/reducers/cart/cart.selectors'
 
 const Header = () => {
   const BsCartIcon = BsCart as unknown as ComponentType<{ size?: number }>
@@ -21,7 +22,7 @@ const Header = () => {
     (rootReducer: any) => rootReducer.userReducer
   )
   const dispatch = useDispatch()
-  const { productsCount } = useContext(CartContext)
+   const productsCount = useAppSelector(selectProductsCount)
 
   const navigate = useNavigate()
   const handleLoginClick = () => {
