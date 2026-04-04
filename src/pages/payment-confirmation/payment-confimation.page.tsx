@@ -19,6 +19,8 @@ import CustomButton from '../../components/custom-button/custom-button.component
 // Utilities
 import Colors from '../../theme/theme.colors'
 import { CartContext } from '../../contexts/cart.context'
+import { useDispatch } from 'react-redux'
+import { clearCartProducts } from '../../store/reducers/cart/cart.action'
 
 const PaymentConfirmationPage: FunctionComponent = () => {
   const AiOutlineCheckCircleIcon =
@@ -36,6 +38,7 @@ const PaymentConfirmationPage: FunctionComponent = () => {
   }>
 
   const { clearProducts } = useContext(CartContext)
+  const dispatch = useDispatch()
 
   const [searchParams] = useSearchParams()
 
@@ -46,7 +49,7 @@ const PaymentConfirmationPage: FunctionComponent = () => {
 
   useEffect(() => {
     if (status === 'true') {
-      clearProducts()
+      dispatch(clearCartProducts())
     }
   }, [status])
 
