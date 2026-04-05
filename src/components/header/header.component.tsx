@@ -22,7 +22,7 @@ const Header = () => {
     (rootReducer: any) => rootReducer.userReducer
   )
   const dispatch = useDispatch()
-   const productsCount = useAppSelector(selectProductsCount)
+  const productsCount = useAppSelector(selectProductsCount)
 
   const navigate = useNavigate()
   const handleLoginClick = () => {
@@ -49,11 +49,13 @@ const Header = () => {
     <HeaderContainer>
       <HeaderTitle onClick={handleHomeClick}>CLUB CLOTHING</HeaderTitle>
       <HeaderItems>
-        <HeaderItem onClick={handleExploreClick}>Olá, {currentUser.firstName}</HeaderItem>
+        <HeaderItem onClick={handleExploreClick}>
+          Olá, {currentUser.firstName}
+        </HeaderItem>
         <HeaderItem onClick={handleExploreClick}>Explorar</HeaderItem>
         {!isAuthenticated ? (
           <>
-            <HeaderItem onClick={handleLoginClick}>Login</HeaderItem>
+            <HeaderItem onClick={handleLoginClick}>Entrar</HeaderItem>
             <HeaderItem onClick={handleSignUpClick}>Criar Conta</HeaderItem>
           </>
         ) : (
@@ -66,7 +68,6 @@ const Header = () => {
       </HeaderItems>
     </HeaderContainer>
   )
-
 }
 
 export default Header
