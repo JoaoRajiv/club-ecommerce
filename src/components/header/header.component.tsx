@@ -49,9 +49,9 @@ const Header = () => {
     <HeaderContainer>
       <HeaderTitle onClick={handleHomeClick}>CLUB CLOTHING</HeaderTitle>
       <HeaderItems>
-        <HeaderItem onClick={handleExploreClick}>
-          Olá, {currentUser.firstName}
-        </HeaderItem>
+        {isAuthenticated && (
+          <HeaderItem>Olá, {currentUser.firstName}</HeaderItem>
+        )}
         <HeaderItem onClick={handleExploreClick}>Explorar</HeaderItem>
         {!isAuthenticated ? (
           <>
