@@ -22,7 +22,8 @@ import {
   CartEscapeArea,
   CartTitle,
   CartTotal,
-  EmptyCart
+  ClearButton,
+  TotalPriceContainer
 } from './cart.styles'
 import {
   clearCartProducts,
@@ -60,26 +61,27 @@ const Cart: FunctionComponent = () => {
       <CartEscapeArea onClick={handleEscapeAreaClick} />
       <CartContent>
         <CartTitle>Seu Carrinho</CartTitle>
-        <EmptyCart onClick={handleClearCartClick}>Limpar Carrinho</EmptyCart>
 
         {products.map((product) => (
           <CartItem key={product.id} product={product} />
         ))}
 
         {productsCount > 0 ? (
-        <>
-          <CartTotal>Total: R${productsTotalPrice}</CartTotal>
-          <CustomButton
-            startIcon={<BsCartCheckIcon />}
-            onClick={handleGoToCheckoutClick}
-          >
-            Ir para o Checkout
-          </CustomButton>
-        </>
+          <>
+            <TotalPriceContainer>
+              <CartTotal>Total: R${productsTotalPrice}</CartTotal>
+              <ClearButton onClick={handleClearCartClick}>Limpar</ClearButton>
+            </TotalPriceContainer>
+            <CustomButton
+              startIcon={<BsCartCheckIcon />}
+              onClick={handleGoToCheckoutClick}
+            >
+              Ir para o Checkout
+            </CustomButton>
+          </>
         ) : (
           <p>Seu carrinho está vazio!</p>
-        )
-        }
+        )}
       </CartContent>
     </CartContainer>
   )

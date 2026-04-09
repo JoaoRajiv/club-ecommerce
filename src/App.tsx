@@ -18,7 +18,7 @@ import AuthenticationGuard from './guards/authentication.guard'
 import PaymentConfirmationPage from './pages/payment-confirmation/payment-confimation.page'
 import { useDispatch } from 'react-redux'
 import { useSelector } from 'react-redux'
-import { loginUser, logoutUser } from './store/reducers/user/user.action'
+import { loginUser, logoutUser } from './store/toolkit/user/user.slice'
 import { useAppSelector } from './hooks/redux.hooks'
 
 const App: FunctionComponent = () => {

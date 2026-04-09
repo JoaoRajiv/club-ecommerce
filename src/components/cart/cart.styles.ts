@@ -53,15 +53,28 @@ export const CartTitle = styled.p`
 export const CartTotal = styled.p`
   font-weight: 600;
   font-size: 1.125rem;
+`
+
+export const TotalPriceContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-bottom: 15px;
 `
 
-export const EmptyCart = styled.p`
-  font-size: 0.875rem;
-  color: ${Colors.error};
+export const ClearButton = styled.button`
+  display: flex;
+  width: auto;
   padding: 5px 10px;
+  align-items: center;
+  background-color: ${Colors.primary};
+  color: white;
+  border: none;
   border-radius: 5px;
-  background-color: ${Colors.text.white};
   cursor: pointer;
   transition: all 0.3s ease;
+
+  &:hover {
+    background-color: #d14646;
+  }
 `
