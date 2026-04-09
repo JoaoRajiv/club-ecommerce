@@ -8,7 +8,7 @@ import { Container } from './categories-overview.styles'
 import Loading from '../loading/loading.component'
 import CategoryOverview from '../category-overview/category-overview.component'
 import { useAppSelector } from '../../hooks/redux.hooks'
-import { fetchCategories } from '../../store/reducers/category/category.action'
+import { fetchCategories } from '../../store/toolkit/category/category.slice'
 
 const CategoriesOverview: FunctionComponent = () => {
   const { categories, isLoading } = useAppSelector(
