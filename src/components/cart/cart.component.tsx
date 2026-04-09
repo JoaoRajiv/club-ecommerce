@@ -28,7 +28,7 @@ import {
 import {
   clearCartProducts,
   toggleCart
-} from '../../store/reducers/cart/cart.action'
+} from '../../store/toolkit/cart/cart.slice'
 
 const Cart: FunctionComponent = () => {
   const BsCartCheckIcon = BsCartCheck as unknown as ComponentType<{

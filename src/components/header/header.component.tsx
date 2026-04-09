@@ -12,7 +12,7 @@ import { ComponentType } from 'react'
 import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
 import { logoutUser } from '../../store//toolkit/user/user.slice'
-import { toggleCart } from '../../store/reducers/cart/cart.action'
+import { toggleCart } from '../../store/toolkit/cart/cart.slice'
 import { useAppSelector } from '../../hooks/redux.hooks'
 import { selectProductsCount } from '../../store/reducers/cart/cart.selectors'
 

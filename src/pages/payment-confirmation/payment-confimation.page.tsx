@@ -20,7 +20,7 @@ import CustomButton from '../../components/custom-button/custom-button.component
 import Colors from '../../theme/theme.colors'
 import { CartContext } from '../../contexts/cart.context'
 import { useDispatch } from 'react-redux'
-import { clearCartProducts } from '../../store/reducers/cart/cart.action'
+import { clearCartProducts } from '../../store/toolkit/cart/cart.slice'
 
 const PaymentConfirmationPage: FunctionComponent = () => {
   const AiOutlineCheckCircleIcon =
