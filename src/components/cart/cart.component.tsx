@@ -9,7 +9,7 @@ import { useAppSelector } from '../../hooks/redux.hooks'
 import {
   selectProductsCount,
   selectProductsTotalPrice
-} from '../../store/reducers/cart/cart.selectors'
+} from '../../store/toolkit/cart/cart.selectors'
 
 // Components
 import CustomButton from '../custom-button/custom-button.component'

@@ -13,7 +13,7 @@ import {
 import axios from 'axios'
 import Loading from '../loading/loading.component'
 import { useAppSelector } from '../../hooks/redux.hooks'
-import { selectProductsTotalPrice } from '../../store/reducers/cart/cart.selectors'
+import { selectProductsTotalPrice } from '../../store/toolkit/cart/cart.selectors'
 
 const Checkout: FunctionComponent = () => {
   const BsBagCheckIcon = BsBagCheck as unknown as ComponentType<{}>

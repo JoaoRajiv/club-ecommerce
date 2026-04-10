@@ -14,7 +14,7 @@ import { useDispatch } from 'react-redux'
 import { logoutUser } from '../../store//toolkit/user/user.slice'
 import { toggleCart } from '../../store/toolkit/cart/cart.slice'
 import { useAppSelector } from '../../hooks/redux.hooks'
-import { selectProductsCount } from '../../store/reducers/cart/cart.selectors'
+import { selectProductsCount } from '../../store/toolkit/cart/cart.selectors'
 
 const Header = () => {
   const BsCartIcon = BsCart as unknown as ComponentType<{ size?: number }>
