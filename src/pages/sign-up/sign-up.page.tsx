@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form'
 import validator from 'validator'
 
 import { useNavigate } from 'react-router-dom'
-import { ComponentType, useContext, useEffect, useState } from 'react'
+import { ComponentType, useEffect, useState } from 'react'
 
 // Components
 import CustomButton from '../../components/custom-button/custom-button.component'
@@ -25,9 +25,7 @@ import {
 } from 'firebase/auth'
 import { auth, db } from '../../config/firebase.config'
 import { addDoc, collection } from 'firebase/firestore'
-import { UserContext } from '../../contexts/user.context'
 import Loading from '../../components/loading/loading.component'
-import { useSelector } from 'react-redux'
 import { useAppSelector } from '../../hooks/redux.hooks'
 
 interface SignUpForm {
@@ -135,7 +133,7 @@ const SignUpPage = () => {
               placeholder='Digite seu e-mail'
               {...register('email', {
                 required: true,
-                validate: (value) => {
+                validate: (value: string) => {
                   return validator.isEmail(value)
                 }
               })}
@@ -186,7 +184,7 @@ const SignUpPage = () => {
               {...register('passwordConfirmation', {
                 required: true,
                 minLength: 6,
-                validate: (value) => {
+                validate: (value: string) => {
                   return value === watchPassword
                 }
               })}
