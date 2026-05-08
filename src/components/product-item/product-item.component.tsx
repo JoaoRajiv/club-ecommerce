@@ -1,4 +1,4 @@
-import { ComponentType, FunctionComponent } from 'react'
+import type { ComponentType, FunctionComponent } from 'react'
 import { BsCartPlus } from 'react-icons/bs'
 
 // Components
@@ -12,7 +12,7 @@ import {
 } from './product-item.styles'
 
 // Utilities
-import Product from '../../types/product.types'
+import type Product from '../../types/product.types'
 import { useDispatch } from 'react-redux'
 import { addProductToCart } from '../../store/toolkit/cart/cart.slice'
 

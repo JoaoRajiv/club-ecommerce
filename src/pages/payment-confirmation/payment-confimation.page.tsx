@@ -1,4 +1,5 @@
-import { ComponentType, FunctionComponent, useContext, useEffect } from 'react'
+import type { ComponentType, FunctionComponent } from 'react'
+import { useEffect } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import {
   AiOutlineCheckCircle,
@@ -18,7 +19,6 @@ import CustomButton from '../../components/custom-button/custom-button.component
 
 // Utilities
 import Colors from '../../theme/theme.colors'
-import { CartContext } from '../../contexts/cart.context'
 import { useDispatch } from 'react-redux'
 import { clearCartProducts } from '../../store/toolkit/cart/cart.slice'
 
@@ -37,7 +37,6 @@ const PaymentConfirmationPage: FunctionComponent = () => {
     size?: number
   }>
 
-  const { clearProducts } = useContext(CartContext)
   const dispatch = useDispatch()
 
   const [searchParams] = useSearchParams()
@@ -51,7 +50,7 @@ const PaymentConfirmationPage: FunctionComponent = () => {
     if (status === 'true') {
       dispatch(clearCartProducts())
     }
-  }, [status])
+  }, [dispatch, status])
 
   const handleGoToHomePageClick = () => {
     navigate('/')

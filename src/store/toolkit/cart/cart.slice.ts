@@ -1,6 +1,7 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import CartProduct from '../../../types/cart.types'
-import Product from '../../../types/product.types'
+import type { PayloadAction } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit'
+import type CartProduct from '../../../types/cart.types'
+import type Product from '../../../types/product.types'
 
 interface InitialState {
   isVisible: boolean

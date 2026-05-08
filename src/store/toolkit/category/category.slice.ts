@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 
 import { getDocs, collection } from 'firebase/firestore'
 import { db } from '../../../config/firebase.config'
-import Category from '../../../types/category.types'
+import type Category from '../../../types/category.types'
 
 export const fetchCategories = createAsyncThunk(
   'categories/fetch',

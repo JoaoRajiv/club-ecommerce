@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+// @ts-ignore
 import './index.css'
 import App from './App'
 
@@ -9,7 +10,6 @@ import { PersistGate } from 'redux-persist/integration/react'
 
 import UserContextProvider from './contexts/user.context'
 import CategoryContextProvider from './contexts/category.context'
-import CartContextProvider from './contexts/cart.context'
 import { store, persistedStore } from './store/store'
 
 ReactDOM.render(

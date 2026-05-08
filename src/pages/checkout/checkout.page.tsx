@@ -1,4 +1,4 @@
-import { FunctionComponent } from 'react'
+import type { FunctionComponent } from 'react'
 
 // Components
 import Checkout from '../../components/checkout/checkout.component'

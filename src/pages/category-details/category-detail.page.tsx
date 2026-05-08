@@ -1,4 +1,4 @@
-import { FunctionComponent } from 'react'
+import type { FunctionComponent } from 'react'
 import Header from '../../components/header/header.component'
 import CategoryDetails from '../../components/category-details/category-detail.component'
 import { useParams } from 'react-router-dom'

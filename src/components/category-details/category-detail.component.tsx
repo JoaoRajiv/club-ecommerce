@@ -1,11 +1,12 @@
-import { ComponentType, FunctionComponent, useEffect, useState } from 'react'
+import type { ComponentType, FunctionComponent } from 'react'
+import { useEffect, useState } from 'react'
 import { collection, getDocs, query, where } from 'firebase/firestore'
 import { BiChevronLeft } from 'react-icons/bi'
 import { useNavigate } from 'react-router-dom'
 
 // Utilities
 import { db } from '../../config/firebase.config'
-import Category from '../../types/category.types'
+import type Category from '../../types/category.types'
 
 // Components
 import ProductItem from '../product-item/product-item.component'
@@ -58,7 +59,7 @@ const CategoryDetails: FunctionComponent<CategoryDetailsProps> = ({
     }
 
     fetchCategory()
-  }, [])
+  }, [categoryId])
 
   if (isLoading) return <Loading />
 

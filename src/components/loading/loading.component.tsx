@@ -1,4 +1,4 @@
-import { FunctionComponent } from 'react'
+import type { FunctionComponent } from 'react'
 import SyncLoader from 'react-spinners/SyncLoader'
 
 import { LoadingContainer } from './loading.styles'

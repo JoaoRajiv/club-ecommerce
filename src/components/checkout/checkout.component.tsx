@@ -1,4 +1,5 @@
-import { ComponentType, FunctionComponent, useContext, useState } from 'react'
+import type { ComponentType, FunctionComponent} from 'react';
+import { useState } from 'react'
 import { BsBagCheck } from 'react-icons/bs'
 
 import CartItem from '../cart-item/cart-item.component'

@@ -1,7 +1,7 @@
-import { FunctionComponent } from 'react'
+import type { FunctionComponent } from 'react'
 
 // Utilities
-import Category from '../../types/category.types'
+import type Category from '../../types/category.types'
 
 // Styles
 import { CategoryItemContainer, CategoryName } from './category-item.styles'

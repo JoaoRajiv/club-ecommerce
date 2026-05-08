@@ -1,4 +1,5 @@
-import { FunctionComponent, useContext, useEffect, useState } from 'react'
+import type { FunctionComponent } from 'react'
+import { useEffect, useState } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 // Pages
@@ -8,7 +9,7 @@ import SignUpPage from './pages/sign-up/sign-up.page'
 import { onAuthStateChanged } from 'firebase/auth'
 import { auth, db } from './config/firebase.config'
 import { collection, getDocs, query, where } from 'firebase/firestore'
-import User from './types/user.types'
+import type User from './types/user.types'
 import Loading from './components/loading/loading.component'
 import ExplorePage from './pages/explore/explore.page'
 import CategoryDetailsPage from './pages/category-details/category-detail.page'
@@ -30,7 +31,7 @@ const App: FunctionComponent = () => {
   )
 
   useEffect(() => {
-    ;(onAuthStateChanged(auth, async (user) => {
+    const unsubscribe = onAuthStateChanged(auth, async (user) => {
       const isSigningOut = isAuthenticated && !user
       if (isSigningOut) {
         dispatch(logoutUser())
@@ -49,9 +50,10 @@ const App: FunctionComponent = () => {
         return setIsInitializing(false)
       }
       return setIsInitializing(false)
-    }),
-      [dispatch])
-  })
+    })
+
+    return unsubscribe
+  }, [dispatch, isAuthenticated])
 
   if (isInitializing) {
     return <Loading message='Loading, please wait...' />

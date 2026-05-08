@@ -1,4 +1,4 @@
-import { ComponentType, FunctionComponent } from 'react'
+import type { ComponentType, FunctionComponent } from 'react'
 import { BsCartCheck } from 'react-icons/bs'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'

@@ -1,6 +1,6 @@
 import { BsGoogle } from 'react-icons/bs'
 import { FiLogIn } from 'react-icons/fi'
-import { useContext, useEffect, useState, type ComponentType } from 'react'
+import { useEffect, useState, type ComponentType } from 'react'
 import CustomButton from '../../components/custom-button/custom-button.component'
 import Header from '../../components/header/header.component'
 import {
@@ -14,10 +14,11 @@ import CustomInput from '../../components/custom-input/custom-input.component'
 
 import validator from 'validator'
 
+// @ts-ignore - workaround for local react-hook-form type resolution issue
 import { useForm } from 'react-hook-form'
 import InputErrorMessage from '../../components/input-error-message/input-error-message.component'
+import type { AuthError } from 'firebase/auth'
 import {
-  AuthError,
   AuthErrorCodes,
   signInWithEmailAndPassword,
   signInWithPopup
@@ -56,7 +57,7 @@ const LoginPage = () => {
     if (isAuthenticated) {
       navigate('/')
     }
-  }, [isAuthenticated])
+  }, [isAuthenticated, navigate])
 
   const handleSubmitPress = async (data: LoginForm) => {
     try {
@@ -138,7 +139,7 @@ const LoginPage = () => {
               placeholder='Digite seu e-mail'
               {...register('email', {
                 required: true,
-                validate: (value) => {
+                validate: (value: string) => {
                   return validator.isEmail(value)
                 }
               })}

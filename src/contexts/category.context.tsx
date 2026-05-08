@@ -1,9 +1,10 @@
 import { collection, getDocs } from 'firebase/firestore'
-import { createContext, FunctionComponent, useState } from 'react'
+import type { FunctionComponent} from 'react';
+import { createContext, useState } from 'react'
 
 // Utilities
 import { db } from '../config/firebase.config'
-import Category from '../types/category.types'
+import type Category from '../types/category.types'
 
 interface ICategoryContext {
   categories: Category[]

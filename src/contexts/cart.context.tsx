@@ -1,13 +1,14 @@
+import type {
+  FunctionComponent} from 'react';
 import {
   createContext,
-  FunctionComponent,
   useCallback,
   useEffect,
   useMemo,
   useState
 } from 'react'
-import CartProduct from '../types/cart.types'
-import Product from '../types/product.types'
+import type CartProduct from '../types/cart.types'
+import type Product from '../types/product.types'
 
 interface ICartContext {
   isVisible: boolean

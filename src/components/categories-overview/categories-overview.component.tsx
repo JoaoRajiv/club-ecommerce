@@ -1,4 +1,5 @@
-import { FunctionComponent, useEffect } from 'react'
+import type { FunctionComponent } from 'react'
+import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 
 // Styles
@@ -21,7 +22,7 @@ const CategoriesOverview: FunctionComponent = () => {
     if (!categories?.length) {
       dispatch(fetchCategories() as any)
     }
-  }, [categories?.length, fetchCategories])
+  }, [categories?.length, dispatch])
 
   if (isLoading) return <Loading message='Carregando categorias...' />
 

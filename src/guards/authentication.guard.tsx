@@ -1,4 +1,5 @@
-import { FunctionComponent, useContext, useEffect } from 'react'
+import type { FunctionComponent } from 'react'
+import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 // Components
@@ -19,7 +20,7 @@ const AuthenticationGuard: FunctionComponent = ({ children }) => {
         navigate('/login')
       }, 3000)
     }
-  }, [isAuthenticated])
+  }, [isAuthenticated, navigate])
 
   if (!isAuthenticated) {
     return (

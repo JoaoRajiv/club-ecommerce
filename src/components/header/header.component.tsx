@@ -8,7 +8,7 @@ import {
 import { BsCart } from 'react-icons/bs'
 import { useNavigate } from 'react-router-dom'
 import { auth } from '../../config/firebase.config'
-import { ComponentType } from 'react'
+import type { ComponentType } from 'react'
 import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
 import { logoutUser } from '../../store//toolkit/user/user.slice'

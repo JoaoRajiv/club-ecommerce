@@ -1,9 +1,11 @@
 import { FiLogIn } from 'react-icons/fi'
+// @ts-ignore
 import { useForm } from 'react-hook-form'
 import validator from 'validator'
 
 import { useNavigate } from 'react-router-dom'
-import { ComponentType, useEffect, useState } from 'react'
+import type { ComponentType } from 'react'
+import { useEffect, useState } from 'react'
 
 // Components
 import CustomButton from '../../components/custom-button/custom-button.component'
@@ -18,11 +20,8 @@ import {
   SignUpHeadline,
   SignUpInputContainer
 } from './sign-up.styles'
-import {
-  AuthError,
-  AuthErrorCodes,
-  createUserWithEmailAndPassword
-} from 'firebase/auth'
+import type { AuthError } from 'firebase/auth'
+import { AuthErrorCodes, createUserWithEmailAndPassword } from 'firebase/auth'
 import { auth, db } from '../../config/firebase.config'
 import { addDoc, collection } from 'firebase/firestore'
 import Loading from '../../components/loading/loading.component'
@@ -60,7 +59,7 @@ const SignUpPage = () => {
     if (isAuthenticated) {
       navigate('/')
     }
-  }, [isAuthenticated])
+  }, [isAuthenticated, navigate])
 
   const handleSubmitPress = async (data: SignUpForm) => {
     try {

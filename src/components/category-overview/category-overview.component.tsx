@@ -1,4 +1,4 @@
-import { FunctionComponent } from 'react'
+import type { FunctionComponent } from 'react'
 
 // Styles
 import {
@@ -8,7 +8,7 @@ import {
 } from './category-overview.styles'
 
 // Utilities
-import Category from '../../types/category.types'
+import type Category from '../../types/category.types'
 import ProductItem from '../product-item/product-item.component'
 
 // Components

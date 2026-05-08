@@ -1,4 +1,5 @@
-import React, { FunctionComponent, ButtonHTMLAttributes } from 'react'
+import type { FunctionComponent, ButtonHTMLAttributes } from 'react';
+import type React from 'react'
 import { CustomButtonContainer, IconContainer } from './custom-button.styles'
 
 interface CustomButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {

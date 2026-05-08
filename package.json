@@ -26,6 +26,7 @@
     "redux-logger": "3.0.6",
     "redux-persist": "6.0.0",
     "redux-thunk": "2.4.1",
+    "repomix": "^1.14.0",
     "styled-components": "5.3.3",
     "typescript": "^4.4.2",
     "validator": "13.7.0",
@@ -33,7 +34,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "CI=false react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "husky:prepare": "husky install"
@@ -41,7 +42,8 @@
   "eslintConfig": {
     "extends": [
       "react-app",
-      "react-app/jest"
+      "react-app/jest",
+      "prettier"
     ]
   },
   "browserslist": {
@@ -61,11 +63,9 @@
     "@types/redux-logger": "3.0.9",
     "@types/styled-components": "5.1.24",
     "@types/validator": "13.7.0",
-    "eslint": "^10.0.2",
+    "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-react": "^7.37.5",
-    "globals": "^17.4.0",
-    "prettier-config-standard": "^7.0.0",
-    "typescript-eslint": "^8.56.1"
+    "prettier-config-standard": "^7.0.0"
   },
   "resolutions": {
     "@types/react": "^17.0.0",

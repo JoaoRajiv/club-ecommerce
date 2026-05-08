@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 const { addDoc, collection } = require('firebase/firestore')
 const { getFirestore } = require('firebase/firestore')
 const { initializeApp } = require('firebase/app')

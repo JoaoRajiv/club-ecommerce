@@ -1,0 +1,3673 @@
+This file is a merged representation of the entire codebase, combined into a single document by Repomix.
+
+<file_summary>
+This section contains a summary of this file.
+
+<purpose>
+This file contains a packed representation of the entire repository's contents.
+It is designed to be easily consumable by AI systems for analysis, code review,
+or other automated processes.
+</purpose>
+
+<file_format>
+The content is organized as follows:
+1. This summary section
+2. Repository information
+3. Directory structure
+4. Repository files (if enabled)
+5. Multiple file entries, each consisting of:
+  - File path as an attribute
+  - Full contents of the file
+</file_format>
+
+<usage_guidelines>
+- This file should be treated as read-only. Any changes should be made to the
+  original repository files, not this packed version.
+- When processing this file, use the file path to distinguish
+  between different files in the repository.
+- Be aware that this file may contain sensitive information. Handle it with
+  the same level of security as you would the original repository.
+</usage_guidelines>
+
+<notes>
+- Some files may have been excluded based on .gitignore rules and Repomix's configuration
+- Binary files are not included in this packed representation. Please refer to the Repository Structure section for a complete list of file paths, including binary files
+- Files matching patterns in .gitignore are excluded
+- Files matching default ignore patterns are excluded
+- Files are sorted by Git change count (files with more changes are at the bottom)
+</notes>
+
+</file_summary>
+
+<directory_structure>
+.husky/
+  pre-commit
+public/
+  favicon.ico
+  index.html
+  logo192.png
+  logo512.png
+  manifest.json
+  robots.txt
+src/
+  components/
+    cart/
+      cart.component.tsx
+      cart.styles.ts
+    cart-item/
+      cart-item.component.tsx
+      cart-item.styles.ts
+    categories/
+      categories.component.tsx
+      categories.styles.ts
+    categories-overview/
+      categories-overview.component.tsx
+      categories-overview.styles.ts
+    category-details/
+      category-detail.component.tsx
+      category-details.styles.ts
+    category-item/
+      category-item.component.tsx
+      category-item.styles.ts
+    category-overview/
+      category-overview.component.tsx
+      category-overview.styles.ts
+    checkout/
+      checkout.component.tsx
+      checkout.styles.ts
+    custom-button/
+      custom-button.component.tsx
+      custom-button.styles.ts
+    custom-input/
+      custom-input.component.tsx
+      custom-input.styles.ts
+    header/
+      header.component.tsx
+      header.styles.ts
+    input-error-message/
+      input-error-message.component.tsx
+      input-error-message.styles.ts
+    loading/
+      loading.component.tsx
+      loading.styles.ts
+    product-item/
+      product-item.component.tsx
+      product-item.styles.ts
+  config/
+    env.config.ts
+    firebase.config.ts
+  contexts/
+    cart.context.tsx
+    category.context.tsx
+    user.context.tsx
+  guards/
+    authentication.guard.tsx
+  hooks/
+    redux.hooks.ts
+  pages/
+    category-details/
+      category-detail.page.tsx
+    checkout/
+      checkout.page.tsx
+    explore/
+      explore.page.tsx
+    home/
+      home.page.tsx
+    login/
+      login.page.tsx
+      login.styles.ts
+    payment-confirmation/
+      payment-confimation.page.tsx
+      payment-confimation.styles.ts
+    sign-up/
+      sign-up.page.tsx
+      sign-up.styles.ts
+  scripts/
+    firestore-script.js
+  store/
+    toolkit/
+      cart/
+        cart.selectors.ts
+        cart.slice.ts
+      category/
+        category.slice.ts
+      user/
+        user.slice.ts
+    root-reducer.ts
+    store.ts
+  theme/
+    theme.colors.ts
+  types/
+    cart.types.ts
+    category.types.ts
+    product.types.ts
+    user.types.ts
+  App.tsx
+  index.css
+  index.tsx
+  logo.svg
+.eslintrc.json
+.gitignore
+.lintstagedrc.json
+.prettierrc.json
+eslint.config.mts
+package.json
+README.md
+tsconfig.json
+</directory_structure>
+
+<files>
+This section contains the contents of the repository's files.
+
+<file path="public/manifest.json">
+{
+  "short_name": "React App",
+  "name": "Create React App Sample",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "logo192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "logo512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
+</file>
+
+<file path="public/robots.txt">
+# https://www.robotstxt.org/robotstxt.html
+User-agent: *
+Disallow:
+</file>
+
+<file path="src/components/categories/categories.styles.ts">
+import styled from 'styled-components'
+
+export const CategoriesContainer = styled.div`
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+`
+
+export const CategoriesContent = styled.div`
+  height: 100%;
+  width: 1920px;
+  display: grid;
+  grid-template-areas:
+    'a b'
+    'c c'
+    'd e';
+  grid-gap: 15px;
+  padding: 30px;
+
+  & div:nth-child(1) {
+    grid-area: a;
+  }
+
+  & div:nth-child(2) {
+    grid-area: b;
+  }
+
+  & div:nth-child(3) {
+    grid-area: c;
+  }
+
+  & div:nth-child(4) {
+    grid-area: d;
+  }
+
+  & div:nth-child(5) {
+    grid-area: e;
+  }
+
+  @media (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+
+    & div:nth-child(1) {
+      flex: 1;
+    }
+
+    & div:nth-child(2) {
+      flex: 1;
+    }
+
+    & div:nth-child(3) {
+      flex: 1;
+    }
+
+    & div:nth-child(4) {
+      flex: 1;
+    }
+
+    & div:nth-child(5) {
+      flex: 1;
+    }
+  }
+`
+</file>
+
+<file path="src/components/categories-overview/categories-overview.styles.ts">
+import styled from 'styled-components'
+
+export const Container = styled.div`
+  padding: 0px 40px 20px 40px;
+`
+</file>
+
+<file path="src/components/category-details/category-detail.component.tsx">
+import { ComponentType, FunctionComponent, useEffect, useState } from 'react'
+import { collection, getDocs, query, where } from 'firebase/firestore'
+import { BiChevronLeft } from 'react-icons/bi'
+import { useNavigate } from 'react-router-dom'
+
+// Utilities
+import { db } from '../../config/firebase.config'
+import Category from '../../types/category.types'
+
+// Components
+import ProductItem from '../product-item/product-item.component'
+import Loading from '../loading/loading.component'
+
+// Styles
+import {
+  Container,
+  CategoryTitle,
+  IconContainer,
+  ProductsContainer
+} from './category-details.styles'
+
+interface CategoryDetailsProps {
+  categoryId: string
+}
+
+const CategoryDetails: FunctionComponent<CategoryDetailsProps> = ({
+  categoryId
+}) => {
+  const BiChevronLeftIcon = BiChevronLeft as unknown as ComponentType<{
+    size?: number
+  }>
+  const [category, setCategory] = useState<Category | null>(null)
+  const [isLoading, setIsLoading] = useState(false)
+
+  const navigate = useNavigate()
+
+  const handleBackClick = () => {
+    navigate('/')
+  }
+
+  useEffect(() => {
+    const fetchCategory = async () => {
+      try {
+        setIsLoading(true)
+
+        const querySnapshot = await getDocs(
+          query(collection(db, 'categories'), where('id', '==', categoryId))
+        )
+
+        const category = querySnapshot.docs[0]?.data()
+
+        setCategory(category as Category)
+      } catch (error) {
+        console.log(error)
+      } finally {
+        setIsLoading(false)
+      }
+    }
+
+    fetchCategory()
+  }, [])
+
+  if (isLoading) return <Loading />
+
+  return (
+    <Container>
+      <CategoryTitle>
+        <IconContainer onClick={handleBackClick}>
+          <BiChevronLeftIcon size={36} />
+        </IconContainer>
+        <p>Explorar: {category?.displayName}</p>
+      </CategoryTitle>
+
+      <ProductsContainer>
+        {category?.products.map((product) => (
+          <ProductItem key={product.id} product={product} />
+        ))}
+      </ProductsContainer>
+    </Container>
+  )
+}
+
+export default CategoryDetails
+</file>
+
+<file path="src/components/category-details/category-details.styles.ts">
+import styled from 'styled-components'
+
+export const Container = styled.div`
+  padding: 0px 40px 20px 40px;
+`
+
+export const CategoryTitle = styled.div`
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+
+  p {
+    font-size: 21px;
+    font-weight: 500;
+  }
+`
+
+export const ProductsContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-items: start;
+  margin-top: 5px;
+  grid-row-gap: 20px;
+
+  @media (max-width: 768px) {
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+  }
+`
+
+export const IconContainer = styled.div`
+  display: flex;
+
+  &:hover {
+    cursor: pointer;
+  }
+`
+</file>
+
+<file path="src/components/category-overview/category-overview.component.tsx">
+import { FunctionComponent } from 'react'
+
+// Styles
+import {
+  CategoryContainer,
+  CategoryTitle,
+  ProductsContainer
+} from './category-overview.styles'
+
+// Utilities
+import Category from '../../types/category.types'
+import ProductItem from '../product-item/product-item.component'
+
+// Components
+// import ProductItem from '../product-item/product-item.component'
+interface CategoryOverviewProps {
+  category: Category
+}
+
+const CategoryOverview: FunctionComponent<CategoryOverviewProps> = ({
+  category
+}) => {
+  return (
+    <CategoryContainer>
+      <CategoryTitle>{category.displayName}</CategoryTitle>
+
+      <ProductsContainer>
+        {category.products.slice(0, 4).map((product) => (
+          <ProductItem key={product.id} product={product} />
+        ))}
+      </ProductsContainer>
+    </CategoryContainer>
+  )
+}
+
+export default CategoryOverview
+</file>
+
+<file path="src/components/category-overview/category-overview.styles.ts">
+import styled from 'styled-components'
+
+export const CategoryContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-top: 20px;
+`
+
+export const CategoryTitle = styled.p`
+  font-size: 21px;
+  font-weight: 500;
+  margin-bottom: 5px;
+`
+
+export const ProductsContainer = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+  @media (max-width: 768px) {
+    grid-row-gap: 20px;
+  }
+`
+</file>
+
+<file path="src/components/custom-button/custom-button.component.tsx">
+import React, { FunctionComponent, ButtonHTMLAttributes } from 'react'
+import { CustomButtonContainer, IconContainer } from './custom-button.styles'
+
+interface CustomButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  startIcon?: React.ReactNode
+}
+
+const CustomButton: FunctionComponent<CustomButtonProps> = ({
+  startIcon,
+  children,
+  ...rest
+}) => {
+  return (
+    <CustomButtonContainer {...rest}>
+      {startIcon && <IconContainer>{startIcon}</IconContainer>}
+      {children}
+    </CustomButtonContainer>
+  )
+}
+
+export default CustomButton
+</file>
+
+<file path="src/components/custom-button/custom-button.styles.ts">
+import styled from 'styled-components'
+import Colors from '../../theme/theme.colors'
+
+export const CustomButtonContainer = styled.button`
+  width: 100%;
+  background-color: ${Colors.background.dark};
+  color: ${Colors.text.white};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
+  border: none;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 15px;
+  padding-left: 15px;
+  font-weight: 600;
+  transition: all 0.5s ease;
+
+  &:hover {
+    cursor: pointer;
+    background-color: #000000;
+  }
+`
+
+export const IconContainer = styled.div`
+  margin-right: 8px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+`
+</file>
+
+<file path="src/components/custom-input/custom-input.styles.ts">
+import styled from 'styled-components'
+import Colors from '../../theme/theme.colors'
+
+type CustomInputContainerProps = {
+  hasError?: boolean
+}
+
+export const CustomInputContainer = styled.input<CustomInputContainerProps>`
+  border: none;
+  width: 100%;
+  background-color: ${Colors.input.background};
+  padding-right: 20px;
+  padding-left: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  color: ${Colors.text.dark};
+  border: ${(props) => (props.hasError ? `2px solid ${Colors.error}` : 'none')};
+
+  &::placeholder {
+    color: ${(props) =>
+      props.hasError ? Colors.error : Colors.input.placeholder};
+  }
+
+  &:focus {
+    outline: ${(props) =>
+      props.hasError ? 'none' : `2px solid ${Colors.input.placeholder}`};
+  }
+`
+</file>
+
+<file path="src/components/input-error-message/input-error-message.styles.ts">
+import styled from 'styled-components'
+import Colors from '../../theme/theme.colors'
+
+export const InputErrorMessageContainer = styled.p`
+  width: 100%;
+  color: ${Colors.error};
+  font-size: 0.75rem;
+  margin-top: 5px;
+`
+</file>
+
+<file path="src/components/loading/loading.component.tsx">
+import { FunctionComponent } from 'react'
+import SyncLoader from 'react-spinners/SyncLoader'
+
+import { LoadingContainer } from './loading.styles'
+
+interface LoadingProps {
+  message?: string
+}
+
+const Loading: FunctionComponent<LoadingProps> = ({ message }) => {
+  return (
+    <LoadingContainer>
+      {message && <p>{message}</p>}
+      <SyncLoader size={30} />
+    </LoadingContainer>
+  )
+}
+
+export default Loading
+</file>
+
+<file path="src/components/loading/loading.styles.ts">
+import styled from 'styled-components'
+import Colors from '../../theme/theme.colors'
+
+export const LoadingContainer = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 100;
+
+  p {
+    color: ${Colors.text.white};
+    font-weight: 500;
+    margin-bottom: 25px;
+    font-size: 1.325rem;
+    max-width: 50%;
+    text-align: center;
+  }
+`
+</file>
+
+<file path="src/contexts/category.context.tsx">
+import { collection, getDocs } from 'firebase/firestore'
+import { createContext, FunctionComponent, useState } from 'react'
+
+// Utilities
+import { db } from '../config/firebase.config'
+import Category from '../types/category.types'
+
+interface ICategoryContext {
+  categories: Category[]
+  isLoading: boolean
+  fetchCategories: () => Promise<void>
+}
+
+export const CategoryContext = createContext<ICategoryContext>({
+  categories: [],
+  isLoading: false,
+  fetchCategories: () => Promise.resolve()
+})
+
+const CategoryContextProvider: FunctionComponent = ({ children }) => {
+  const [categories, setCategories] = useState<Category[]>([])
+  const [isLoading, setIsLoading] = useState(false)
+
+  const fetchCategories = async () => {
+    try {
+      setIsLoading(true)
+
+      const categoriesFromFirestore: Category[] = []
+
+      const querySnapshot = await getDocs(collection(db, 'categories'))
+
+      querySnapshot.forEach((doc) => {
+        categoriesFromFirestore.push(doc.data() as Category)
+      })
+
+      setCategories(categoriesFromFirestore)
+    } catch (error) {
+      console.log({ error })
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
+  return (
+    <CategoryContext.Provider
+      value={{ categories, isLoading, fetchCategories }}
+    >
+      {children}
+    </CategoryContext.Provider>
+  )
+}
+
+export default CategoryContextProvider
+</file>
+
+<file path="src/hooks/redux.hooks.ts">
+import { TypedUseSelectorHook, useSelector } from 'react-redux'
+import { RootState } from '../store/store'
+
+export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector
+</file>
+
+<file path="src/pages/checkout/checkout.page.tsx">
+import { FunctionComponent } from 'react'
+
+// Components
+import Checkout from '../../components/checkout/checkout.component'
+import Header from '../../components/header/header.component'
+
+const CheckoutPage: FunctionComponent = () => {
+  return (
+    <>
+      <Header />
+      <Checkout />
+    </>
+  )
+}
+
+export default CheckoutPage
+</file>
+
+<file path="src/pages/explore/explore.page.tsx">
+import { FunctionComponent } from 'react'
+import Header from '../../components/header/header.component'
+import CategoriesOverview from '../../components/categories-overview/categories-overview.component'
+
+const ExplorePage: FunctionComponent = () => {
+  return (
+    <>
+      <Header />
+      <CategoriesOverview />
+    </>
+  )
+}
+
+export default ExplorePage
+</file>
+
+<file path="src/pages/login/login.styles.ts">
+import styled from 'styled-components'
+import Colors from '../../theme/theme.colors'
+
+export const LoginContainer = styled.div`
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
+
+export const LoginHeadline = styled.p`
+  font-weight: 600;
+  font-size: 1.3rem;
+  margin-bottom: 20px;
+  color: ${Colors.text.dark};
+`
+
+export const LoginContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 450px;
+
+  @media (max-width: 768px) {
+    width: 90%;
+  }
+`
+
+export const LoginSubtitle = styled.p`
+  color: ${Colors.text.dark};
+  padding-bottom: 20px;
+  border-bottom: 1px solid #6c757d;
+  width: 100%;
+  margin-top: 20px;
+  text-align: center;
+  font-weight: 500;
+  margin-bottom: 20px;
+`
+
+export const LoginInputContainer = styled.div`
+  width: 100%;
+  margin-bottom: 20px;
+
+  p:nth-child(1) {
+    font-weight: 600;
+    margin-bottom: 5px;
+  }
+`
+</file>
+
+<file path="src/pages/payment-confirmation/payment-confimation.styles.ts">
+import styled from 'styled-components'
+
+export const PaymentConfirmationContainer = styled.div`
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`
+
+export const PaymentConfirmationContent = styled.div`
+  text-align: center;
+  width: 500px;
+
+  p {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    font-size: 1.125rem;
+    font-weight: 500;
+  }
+`
+</file>
+
+<file path="src/pages/sign-up/sign-up.styles.ts">
+import styled from 'styled-components'
+import Colors from '../../theme/theme.colors'
+
+export const SignUpContainer = styled.div`
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
+
+export const SignUpHeadline = styled.p`
+  font-weight: 600;
+  font-size: 1.3rem;
+  margin-bottom: 20px;
+  color: ${Colors.text.dark};
+  padding-bottom: 20px;
+  border-bottom: 1px solid #6c757d;
+  width: 100%;
+  text-align: center;
+`
+
+export const SignUpContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 450px;
+
+  @media (max-width: 768px) {
+    width: 90%;
+  }
+`
+
+export const SignUpInputContainer = styled.div`
+  width: 100%;
+  margin-bottom: 20px;
+
+  p:nth-child(1) {
+    font-weight: 600;
+    margin-bottom: 5px;
+  }
+`
+</file>
+
+<file path="src/scripts/firestore-script.js">
+const { addDoc, collection } = require('firebase/firestore')
+const { getFirestore } = require('firebase/firestore')
+const { initializeApp } = require('firebase/app')
+
+const firebaseConfig = {
+  apiKey: 'AIzaSyAzTxzIJcQWOLlMP0Y--Zv_PqPu43o-LFM',
+  authDomain: 'club-ecommerce-abc39.firebaseapp.com',
+  projectId: 'club-ecommerce-abc39',
+  storageBucket: 'club-ecommerce-abc39.firebasestorage.app',
+  messagingSenderId: '650749646986',
+  appId: '1:650749646986:web:24176069ec523cb32e7573'
+}
+
+const app = initializeApp(firebaseConfig)
+const db = getFirestore(app)
+
+const categories = [
+  {
+    id: '6228fc5cb7e6cb904bbe014b',
+    name: 'jackets',
+    displayName: 'Jaquetas',
+    imageUrl:
+      'https://images.unsplash.com/photo-1601924994987-69e26d50dc26?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
+    products: [
+      {
+        id: '6228fc8bb7e6cb904bbe014e',
+        name: 'Regata Azul',
+        price: 150,
+        imageUrl:
+          'https://images.unsplash.com/photo-1469334031218-e382a71b716b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80s'
+      },
+      {
+        id: '6228fcb9b7e6cb904bbe0152',
+        name: 'Jaqueta Jeans Ccinza',
+        price: 250,
+        imageUrl:
+          'https://images.unsplash.com/photo-1601333144130-8cbb312386b6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80'
+      },
+      {
+        id: '6228fce4b7e6cb904bbe0154',
+        name: 'Jaqueta de Couro Preta',
+        price: 500,
+        imageUrl:
+          'https://images.unsplash.com/photo-1521223890158-f9f7c3d5d504?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=680&q=80'
+      },
+      {
+        id: '6228fd19b7e6cb904bbe0157',
+        name: 'Blusa Colete Preta',
+        price: 250,
+        imageUrl:
+          'https://images.unsplash.com/photo-1557418669-db3f781a58c0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=697&q=80'
+      },
+      {
+        id: '6228fd3bb7e6cb904bbe015a',
+        name: 'Blusão Rosa',
+        price: 300,
+        imageUrl:
+          'https://images.unsplash.com/flagged/photo-1554033750-2137b5cfd7ce?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTl8fGphY2tldHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60'
+      },
+      {
+        id: '6228fda4b7e6cb904bbe015f',
+        name: 'Corta Vento',
+        price: 250,
+        imageUrl:
+          'https://images.unsplash.com/photo-1604025677169-6b07c4b5d3c3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80'
+      },
+      {
+        id: '6228fca3b7e6cb904bbe0150',
+        name: 'Jaqueta Jeans Azul',
+        price: 300,
+        imageUrl:
+          'https://images.unsplash.com/photo-1527016021513-b09758b777bd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1472&q=80'
+      },
+      {
+        id: '6228fd63b7e6cb904bbe015c',
+        name: 'Blazer Bege',
+        price: 400,
+        imageUrl:
+          'https://images.unsplash.com/photo-1611485988300-b7530defb8e2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80'
+      }
+    ]
+  },
+  {
+    id: '6228f760b7e6cb904bbe012e',
+    name: 'sneakers',
+    displayName: 'Tênis',
+    imageUrl:
+      'https://images.unsplash.com/photo-1552346154-21d32810aba3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80',
+    products: [
+      {
+        id: '6228f7a3b7e6cb904bbe0134',
+        name: 'Vans Old Skool',
+        price: 350,
+        imageUrl:
+          'https://images.unsplash.com/photo-1563183222-ff776d1076e1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80'
+      },
+      {
+        id: '6228f93db7e6cb904bbe0140',
+        name: 'Nike Dunk Low Retro',
+        price: 900,
+        imageUrl:
+          'https://images.unsplash.com/photo-1612015670817-0127d21628d4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80'
+      },
+      {
+        id: '6228f8c7b7e6cb904bbe013b',
+        name: 'All Star',
+        price: 200,
+        imageUrl:
+          'https://images.unsplash.com/photo-1610832745704-b5cd3ce9bcff?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80'
+      },
+      {
+        id: '6228f96bb7e6cb904bbe0142',
+        name: 'Nike Basketball Black',
+        price: 500,
+        imageUrl:
+          'https://images.unsplash.com/photo-1605348532760-6753d2c43329?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80'
+      },
+      {
+        id: '6228f7f1b7e6cb904bbe0136',
+        name: 'Nike Air Force',
+        price: 600,
+        imageUrl:
+          'https://images.unsplash.com/photo-1600269452121-4f2416e55c28?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=765&q=80'
+      },
+      {
+        id: '6228f8afb7e6cb904bbe0139',
+        name: 'Nike Air Jordan 1',
+        price: 1000,
+        imageUrl:
+          'https://images.unsplash.com/photo-1556906781-9a412961c28c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80'
+      },
+      {
+        id: '6228f986b7e6cb904bbe0145',
+        name: 'Nike Jordan Retro High',
+        price: 1500,
+        imageUrl:
+          'https://images.unsplash.com/photo-1586525198428-225f6f12cff5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80'
+      },
+      {
+        id: '6228f8f9b7e6cb904bbe013d',
+        name: 'Vans Slip In Xadrez',
+        price: 280,
+        imageUrl:
+          'https://images.unsplash.com/photo-1517583010307-3f789911b89c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80'
+      }
+    ]
+  },
+  {
+    id: '623064ee22376f1e6b869471',
+    name: 'male',
+    displayName: 'Masculino',
+    imageUrl:
+      'https://images.pexels.com/photos/1182825/pexels-photo-1182825.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260',
+    products: [
+      {
+        id: '6230655f22376f1e6b869473',
+        name: 'Camiseta de Manga Comprida',
+        price: 200,
+        imageUrl:
+          'https://images.unsplash.com/photo-1614495039153-e9cd13240469?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80'
+      },
+      {
+        id: '623065f422376f1e6b869488',
+        name: 'Jaqueta Jeans',
+        price: 300,
+        imageUrl:
+          'https://images.unsplash.com/photo-1594067598377-478c61d59f3f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80'
+      },
+      {
+        id: '6230662e22376f1e6b86948e',
+        name: 'Blazer Clássico',
+        price: 350,
+        imageUrl:
+          'https://images.unsplash.com/photo-1555069519-127aadedf1ee?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80'
+      },
+      {
+        id: '6230661122376f1e6b86948a',
+        name: 'Jaqueta de Couro',
+        price: 400,
+        imageUrl:
+          'https://images.unsplash.com/photo-1520975954732-35dd22299614?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80'
+      },
+      {
+        id: '6230661f22376f1e6b86948c',
+        name: 'Calça Jeans',
+        price: 300,
+        imageUrl:
+          'https://images.unsplash.com/photo-1511105043137-7e66f28270e3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80'
+      },
+      {
+        id: '6230658322376f1e6b86947b',
+        name: 'Camiseta Branca',
+        price: 100,
+        imageUrl:
+          'https://images.unsplash.com/photo-1622445275463-afa2ab738c34?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80'
+      },
+      {
+        id: '623065b022376f1e6b869480',
+        name: 'Camisa Florida',
+        price: 200,
+        imageUrl:
+          'https://images.unsplash.com/photo-1517191297489-48c463380e8f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80'
+      }
+    ]
+  },
+  {
+    id: '6228fdd8b7e6cb904bbe0162',
+    name: 'female',
+    displayName: 'Feminino',
+    imageUrl:
+      'https://images.unsplash.com/photo-1597586124394-fbd6ef244026?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80',
+    products: [
+      {
+        id: '6228fe63b7e6cb904bbe0165',
+        name: 'Suéter Branco',
+        price: 150,
+        imageUrl:
+          'https://images.unsplash.com/flagged/photo-1559502867-c406bd78ff24?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=685&q=80'
+      },
+      {
+        id: '6228fec7b7e6cb904bbe016f',
+        name: 'Regata Azul',
+        price: 150,
+        imageUrl:
+          'https://images.unsplash.com/photo-1469334031218-e382a71b716b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80s'
+      },
+      {
+        id: '6228ff71b7e6cb904bbe0175',
+        name: 'Suéter Vermelho Vibrante',
+        price: 200,
+        imageUrl:
+          'https://images.unsplash.com/photo-1584670747417-594a9412fba5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80'
+      },
+      {
+        id: '6228ff93b7e6cb904bbe0177',
+        name: 'Vestido Vermelho',
+        price: 250,
+        imageUrl:
+          'https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=746&q=80'
+      },
+      {
+        id: '6228fe80b7e6cb904bbe0168',
+        name: 'Jaqueta Xadrez',
+        price: 300,
+        imageUrl:
+          'https://images.unsplash.com/photo-1525450824786-227cbef70703?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80'
+      },
+      {
+        id: '6228ff31b7e6cb904bbe0172',
+        name: 'Blusa Branca',
+        price: 200,
+        imageUrl:
+          'https://images.unsplash.com/photo-1624206112918-f140f087f9b5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80'
+      },
+      {
+        id: '62290014b7e6cb904bbe017c',
+        name: 'Calça Jeans Azul',
+        price: 200,
+        imageUrl:
+          'https://images.unsplash.com/photo-1582418702059-97ebafb35d09?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=715&q=80'
+      },
+      {
+        id: '6228ffa5b7e6cb904bbe017a',
+        name: 'Vestido Branco',
+        price: 250,
+        imageUrl:
+          'https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=688&q=80'
+      }
+    ]
+  },
+  {
+    id: '6228f52eb7e6cb904bbe0111',
+    name: 'hats',
+    displayName: 'Chapéus',
+    imageUrl:
+      'https://images.unsplash.com/photo-1511231115599-3edad51208c1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1632&q=80',
+    products: [
+      {
+        id: '6228f5beb7e6cb904bbe0119',
+        name: 'Boné Casquinha',
+        price: 60,
+        imageUrl:
+          'https://images.unsplash.com/photo-1575428652377-a2d80e2277fc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80'
+      },
+      {
+        id: '6228f60bb7e6cb904bbe011f',
+        name: 'Chapéu Pôr do Sol',
+        price: 100,
+        imageUrl:
+          'https://images.unsplash.com/photo-1582791694770-cbdc9dda338f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80'
+      },
+      {
+        id: '6228f6c8b7e6cb904bbe012c',
+        name: 'Gorro Vermelho',
+        price: 90,
+        imageUrl:
+          'https://images.unsplash.com/photo-1532073150508-0c1df022bdd1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=781&q=80'
+      },
+      {
+        id: '6228f5e8b7e6cb904bbe011d',
+        name: 'Boné Palmeira',
+        price: 75,
+        imageUrl:
+          'https://images.unsplash.com/photo-1534215754734-18e55d13e346?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=704&q=80'
+      },
+      {
+        id: '6228f68eb7e6cb904bbe0125',
+        name: 'Chapéu Meia Noite',
+        price: 110,
+        imageUrl:
+          'https://images.unsplash.com/photo-1514326005837-fb4791d25e03?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80'
+      },
+      {
+        id: '6228f591b7e6cb904bbe0115',
+        name: 'Boné Branco',
+        price: 60,
+        imageUrl:
+          'https://images.unsplash.com/photo-1622445275576-721325763afe?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2574&q=80'
+      },
+      {
+        id: '6228f625b7e6cb904bbe0121',
+        name: 'Chapéu Vermelho Vibrante',
+        price: 120,
+        imageUrl:
+          'https://images.unsplash.com/photo-1593476087123-36d1de271f08?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80'
+      },
+      {
+        id: '6228f648b7e6cb904bbe0123',
+        name: 'Boné Cinza',
+        price: 65,
+        imageUrl:
+          'https://images.unsplash.com/photo-1517941823-815bea90d291?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80'
+      }
+    ]
+  }
+]
+
+const main = async () => {
+  await Promise.all(
+    categories.map(async (category) => {
+      await addDoc(collection(db, 'categories'), category)
+    })
+  )
+}
+
+main().then(() => process.exit())
+</file>
+
+<file path="src/store/toolkit/cart/cart.selectors.ts">
+import { RootState } from '../../store'
+
+export const selectProductsTotalPrice = (state: RootState) => {
+  return state.cartReducer.products.reduce((acc, currentProduct) => {
+    return acc + currentProduct.price * currentProduct.quantity
+  }, 0)
+}
+
+export const selectProductsCount = (state: RootState) => {
+  return state.cartReducer.products.reduce((acc, currentProduct) => {
+    return acc + currentProduct.quantity
+  }, 0)
+}
+</file>
+
+<file path="src/store/toolkit/user/user.slice.ts">
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import User from '../../../types/user.types'
+
+interface InitialState {
+  currentUser: User | null
+  isAuthenticated: boolean
+}
+
+const initialState: InitialState = {
+  currentUser: null,
+  isAuthenticated: false
+}
+
+const userSlice = createSlice({
+  name: 'user',
+  initialState,
+  reducers: {
+    loginUser: (state, action: PayloadAction<User>) => {
+      state.currentUser = action.payload
+      state.isAuthenticated = true
+    },
+    logoutUser: (state) => {
+      state.currentUser = null
+      state.isAuthenticated = false
+    }
+  }
+})
+
+export const { loginUser, logoutUser } = userSlice.actions
+
+export default userSlice.reducer
+</file>
+
+<file path="src/theme/theme.colors.ts">
+const Colors = {
+  primary: '#212529',
+  text: {
+    white: '#F8F9FA',
+    dark: '#343A40'
+  },
+  background: {
+    dark: '#212529',
+    white: '#F8F9FA'
+  },
+  input: {
+    background: '#E9ECEF',
+    placeholder: '#6C757D'
+  },
+  error: '#FF6A6A',
+  success: '#198754'
+}
+
+export default Colors
+</file>
+
+<file path="src/types/cart.types.ts">
+import Product from './product.types'
+
+interface CartProduct extends Product {
+  quantity: number
+}
+
+export default CartProduct
+</file>
+
+<file path="src/types/product.types.ts">
+interface Product {
+  id: string
+  imageUrl: string
+  name: string
+  price: number
+}
+
+export default Product
+</file>
+
+<file path="src/logo.svg">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 841.9 595.3"><g fill="#61DAFB"><path d="M666.3 296.5c0-32.5-40.7-63.3-103.1-82.4 14.4-63.6 8-114.2-20.2-130.4-6.5-3.8-14.1-5.6-22.4-5.6v22.3c4.6 0 8.3.9 11.4 2.6 13.6 7.8 19.5 37.5 14.9 75.7-1.1 9.4-2.9 19.3-5.1 29.4-19.6-4.8-41-8.5-63.5-10.9-13.5-18.5-27.5-35.3-41.6-50 32.6-30.3 63.2-46.9 84-46.9V78c-27.5 0-63.5 19.6-99.9 53.6-36.4-33.8-72.4-53.2-99.9-53.2v22.3c20.7 0 51.4 16.5 84 46.6-14 14.7-28 31.4-41.3 49.9-22.6 2.4-44 6.1-63.6 11-2.3-10-4-19.7-5.2-29-4.7-38.2 1.1-67.9 14.6-75.8 3-1.8 6.9-2.6 11.5-2.6V78.5c-8.4 0-16 1.8-22.6 5.6-28.1 16.2-34.4 66.7-19.9 130.1-62.2 19.2-102.7 49.9-102.7 82.3 0 32.5 40.7 63.3 103.1 82.4-14.4 63.6-8 114.2 20.2 130.4 6.5 3.8 14.1 5.6 22.5 5.6 27.5 0 63.5-19.6 99.9-53.6 36.4 33.8 72.4 53.2 99.9 53.2 8.4 0 16-1.8 22.6-5.6 28.1-16.2 34.4-66.7 19.9-130.1 62-19.1 102.5-49.9 102.5-82.3zm-130.2-66.7c-3.7 12.9-8.3 26.2-13.5 39.5-4.1-8-8.4-16-13.1-24-4.6-8-9.5-15.8-14.4-23.4 14.2 2.1 27.9 4.7 41 7.9zm-45.8 106.5c-7.8 13.5-15.8 26.3-24.1 38.2-14.9 1.3-30 2-45.2 2-15.1 0-30.2-.7-45-1.9-8.3-11.9-16.4-24.6-24.2-38-7.6-13.1-14.5-26.4-20.8-39.8 6.2-13.4 13.2-26.8 20.7-39.9 7.8-13.5 15.8-26.3 24.1-38.2 14.9-1.3 30-2 45.2-2 15.1 0 30.2.7 45 1.9 8.3 11.9 16.4 24.6 24.2 38 7.6 13.1 14.5 26.4 20.8 39.8-6.3 13.4-13.2 26.8-20.7 39.9zm32.3-13c5.4 13.4 10 26.8 13.8 39.8-13.1 3.2-26.9 5.9-41.2 8 4.9-7.7 9.8-15.6 14.4-23.7 4.6-8 8.9-16.1 13-24.1zM421.2 430c-9.3-9.6-18.6-20.3-27.8-32 9 .4 18.2.7 27.5.7 9.4 0 18.7-.2 27.8-.7-9 11.7-18.3 22.4-27.5 32zm-74.4-58.9c-14.2-2.1-27.9-4.7-41-7.9 3.7-12.9 8.3-26.2 13.5-39.5 4.1 8 8.4 16 13.1 24 4.7 8 9.5 15.8 14.4 23.4zM420.7 163c9.3 9.6 18.6 20.3 27.8 32-9-.4-18.2-.7-27.5-.7-9.4 0-18.7.2-27.8.7 9-11.7 18.3-22.4 27.5-32zm-74 58.9c-4.9 7.7-9.8 15.6-14.4 23.7-4.6 8-8.9 16-13 24-5.4-13.4-10-26.8-13.8-39.8 13.1-3.1 26.9-5.8 41.2-7.9zm-90.5 125.2c-35.4-15.1-58.3-34.9-58.3-50.6 0-15.7 22.9-35.6 58.3-50.6 8.6-3.7 18-7 27.7-10.1 5.7 19.6 13.2 40 22.5 60.9-9.2 20.8-16.6 41.1-22.2 60.6-9.9-3.1-19.3-6.5-28-10.2zM310 490c-13.6-7.8-19.5-37.5-14.9-75.7 1.1-9.4 2.9-19.3 5.1-29.4 19.6 4.8 41 8.5 63.5 10.9 13.5 18.5 27.5 35.3 41.6 50-32.6 30.3-63.2 46.9-84 46.9-4.5-.1-8.3-1-11.3-2.7zm237.2-76.2c4.7 38.2-1.1 67.9-14.6 75.8-3 1.8-6.9 2.6-11.5 2.6-20.7 0-51.4-16.5-84-46.6 14-14.7 28-31.4 41.3-49.9 22.6-2.4 44-6.1 63.6-11 2.3 10.1 4.1 19.8 5.2 29.1zm38.5-66.7c-8.6 3.7-18 7-27.7 10.1-5.7-19.6-13.2-40-22.5-60.9 9.2-20.8 16.6-41.1 22.2-60.6 9.9 3.1 19.3 6.5 28.1 10.2 35.4 15.1 58.3 34.9 58.3 50.6-.1 15.7-23 35.6-58.4 50.6zM320.8 78.4z"/><circle cx="420.9" cy="296.5" r="45.7"/><path d="M520.5 78.1z"/></g></svg>
+</file>
+
+<file path=".lintstagedrc.json">
+{
+  "*.ts": ["yarn eslint --ext .ts --fix", "git add"],
+  "*.tsx": ["yarn eslint --ext .ts --fix", "git add"]
+}
+</file>
+
+<file path="README.md">
+# Getting Started with Create React App
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+## Available Scripts
+
+In the project directory, you can run:
+
+### `yarn start`
+
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+The page will reload if you make edits.\
+You will also see any lint errors in the console.
+
+### `yarn test`
+
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+
+### `yarn build`
+
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
+
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
+
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+### `yarn eject`
+
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+
+## Learn More
+
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+To learn React, check out the [React documentation](https://reactjs.org/).
+</file>
+
+<file path="public/index.html">
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Web site created using create-react-app"
+    />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <!--
+      Notice the use of %PUBLIC_URL% in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <title>React App</title>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
+
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
+  </body>
+</html>
+</file>
+
+<file path="src/components/category-item/category-item.styles.ts">
+import styled from 'styled-components'
+import Colors from '../../theme/theme.colors'
+
+interface CategoryItemContainerProps {
+  backgroundImage: string
+}
+
+export const CategoryItemContainer = styled.div<CategoryItemContainerProps>`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  grid-gap: 15px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 10px;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
+  background-blend-mode: color;
+  background-image: ${(props) => `url('${props.backgroundImage}')`};
+
+  @media (max-width: 768px) {
+    padding: 0 50px 0 50px;
+    height: 300px;
+  }
+`
+
+export const CategoryName = styled.div`
+  color: ${Colors.text.white};
+  text-align: center;
+  background: rgba(233, 236, 239, 0.45);
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 30px;
+  padding-left: 30px;
+  border-radius: 10px;
+  border: 1px solid ${Colors.primary};
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  transition: all 0.5s ease;
+
+  &:hover {
+    cursor: pointer;
+    background: rgba(233, 236, 239, 0.55);
+  }
+
+  & p:nth-child(1) {
+    font-weight: 600;
+  }
+`
+</file>
+
+<file path="src/components/checkout/checkout.styles.ts">
+import styled from 'styled-components'
+import Colors from '../../theme/theme.colors'
+
+export const CheckoutContainer = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  overflow: hidden;
+
+  p {
+    color: ${Colors.text.dark};
+  }
+
+  button {
+    width: 650px;
+  }
+
+  @media (max-width: 768px) {
+    button {
+      width: 100%;
+    }
+    padding: 30px;
+  }
+`
+
+export const CheckoutTitle = styled.p`
+  font-weight: bold;
+  font-size: 1.325rem;
+`
+
+export const CheckoutProducts = styled.div`
+  min-width: 650px;
+  overflow-y: scroll;
+  margin-top: 15px;
+  margin-bottom: 15px;
+
+  /* width */
+  ::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: ${Colors.input.background};
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: ${Colors.text.dark};
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: ${Colors.text.dark};
+  }
+
+  @media (max-width: 768px) {
+    min-width: 100%;
+  }
+`
+
+export const CheckoutTotal = styled.p`
+  width: 650px;
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+`
+</file>
+
+<file path="src/components/custom-input/custom-input.component.tsx">
+import React, { FunctionComponent } from 'react'
+import { CustomInputContainer } from './custom-input.styles'
+
+interface CustomInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+  hasError?: boolean
+}
+
+const CustomInput: FunctionComponent<CustomInputProps> = React.forwardRef(
+  (props, ref) => {
+    return <CustomInputContainer {...props} ref={ref as any} />
+  }
+)
+
+CustomInput.displayName = 'CustomInput'
+
+export default CustomInput
+</file>
+
+<file path="src/components/input-error-message/input-error-message.component.tsx">
+import { ReactNode } from 'react'
+
+// Styles
+import { InputErrorMessageContainer } from './input-error-message.styles'
+
+const InputErrorMessage = ({ children }: { children: ReactNode }) => {
+  return <InputErrorMessageContainer>{children}</InputErrorMessageContainer>
+}
+
+export default InputErrorMessage
+</file>
+
+<file path="src/components/product-item/product-item.styles.ts">
+import styled from 'styled-components'
+
+interface ProductImageProps {
+  imageUrl: string
+}
+
+export const ProductContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+`
+
+export const ProductInfo = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5px;
+
+  p {
+    font-size: 1rem;
+    font-weight: 500;
+  }
+`
+
+export const ProductImage = styled.div<ProductImageProps>`
+  background-image: ${(props) => `url('${props.imageUrl}')`};
+  height: 380px;
+  width: 300px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 10px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  display: flex;
+  align-items: flex-end;
+  transition: all 0.3s ease;
+  background-color: transparent;
+  background-blend-mode: color;
+
+  button {
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.5s ease;
+    margin: 20px;
+  }
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.3);
+    background-blend-mode: color;
+    cursor: pointer;
+
+    button {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+`
+</file>
+
+<file path="src/config/env.config.ts">
+export const env = {
+  apiUrl: process.env.REACT_APP_API_URL
+}
+</file>
+
+<file path="src/contexts/user.context.tsx">
+import { createContext, FunctionComponent, useState } from 'react'
+import User from '../types/user.types'
+
+interface IUserContext {
+  currentUser: User | null
+  isAuthenticated: boolean
+  loginUser: (user: User) => void
+  logoutUser: () => void
+}
+
+export const UserContext = createContext<IUserContext>({
+  currentUser: null,
+  isAuthenticated: false,
+  loginUser: () => {},
+  logoutUser: () => {}
+})
+
+const UserContextProvider: FunctionComponent = ({ children }) => {
+  const [currentUser, setCurrentUser] = useState<User | null>(null)
+  const isAuthenticated = !!currentUser
+  const loginUser = (user: User) => {
+    setCurrentUser(user)
+  }
+  const logoutUser = () => {
+    setCurrentUser(null)
+  }
+  return (
+    <UserContext.Provider
+      value={{ currentUser, isAuthenticated, loginUser, logoutUser }}
+    >
+      {children}
+    </UserContext.Provider>
+  )
+}
+
+export default UserContextProvider
+</file>
+
+<file path="src/guards/authentication.guard.tsx">
+import { FunctionComponent, useContext, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
+
+// Components
+import Header from '../components/header/header.component'
+import Loading from '../components/loading/loading.component'
+import { useSelector } from 'react-redux'
+
+const AuthenticationGuard: FunctionComponent = ({ children }) => {
+  const { isAuthenticated } = useSelector(
+    (rootReducer: any) => rootReducer.userReducer
+  )
+
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    if (!isAuthenticated) {
+      setTimeout(() => {
+        navigate('/login')
+      }, 3000)
+    }
+  }, [isAuthenticated])
+
+  if (!isAuthenticated) {
+    return (
+      <>
+        <Header />
+        <Loading message='Você precisa estar logado para acessar esta página. Você será redirecionado para a página de login em instantes...' />
+      </>
+    )
+  }
+
+  return <>{children}</>
+}
+
+export default AuthenticationGuard
+</file>
+
+<file path="src/pages/category-details/category-detail.page.tsx">
+import { FunctionComponent } from 'react'
+import Header from '../../components/header/header.component'
+import CategoryDetails from '../../components/category-details/category-detail.component'
+import { useParams } from 'react-router-dom'
+
+const CategoryDetailsPage: FunctionComponent = () => {
+  const { id } = useParams()
+  if (!id) return <p>Categoria não encontrada</p>
+  return (
+    <>
+      <Header />
+      <CategoryDetails categoryId={id} />
+    </>
+  )
+}
+
+export default CategoryDetailsPage
+</file>
+
+<file path="src/store/toolkit/category/category.slice.ts">
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
+
+import { getDocs, collection } from 'firebase/firestore'
+import { db } from '../../../config/firebase.config'
+import Category from '../../../types/category.types'
+
+export const fetchCategories = createAsyncThunk(
+  'categories/fetch',
+  async () => {
+    const categoriesFromFirestore: Category[] = []
+
+    const querySnapshot = await getDocs(collection(db, 'categories'))
+
+    querySnapshot.forEach((doc) => {
+      categoriesFromFirestore.push(doc.data() as Category)
+    })
+
+    return categoriesFromFirestore
+  }
+)
+
+interface InitialState {
+  categories: Category[]
+  isLoading: boolean
+}
+
+const initialState: InitialState = {
+  categories: [],
+  isLoading: false
+}
+
+const categorySlice = createSlice({
+  name: 'category',
+  initialState,
+  reducers: {},
+  extraReducers: (builder) => {
+    // início da action
+    builder.addCase(fetchCategories.pending, (state) => {
+      state.isLoading = true
+    })
+    // caso de sucesso
+    builder.addCase(fetchCategories.fulfilled, (state, action) => {
+      state.categories = action.payload
+      state.isLoading = false
+    })
+    // caso de erro
+    builder.addCase(fetchCategories.rejected, (state) => {
+      state.isLoading = false
+    })
+  }
+})
+
+export default categorySlice.reducer
+</file>
+
+<file path="src/types/category.types.ts">
+import Product from './product.types'
+
+interface Category {
+  id: string
+  name: string
+  displayName: string
+  imageUrl: string
+  products: Product[]
+}
+
+export default Category
+</file>
+
+<file path=".gitignore">
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+.env
+
+# testing
+/coverage
+
+# production
+/build
+
+# misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+</file>
+
+<file path="eslint.config.mts">
+import globals from 'globals'
+import tseslint from 'typescript-eslint'
+import pluginReact from 'eslint-plugin-react'
+import { defineConfig } from 'eslint/config'
+
+export default defineConfig([
+  {
+    files: ['**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
+    languageOptions: { globals: globals.browser }
+  },
+  tseslint.configs.recommended,
+  pluginReact.configs.flat.recommended
+])
+</file>
+
+<file path=".husky/pre-commit">
+
+</file>
+
+<file path="src/components/cart-item/cart-item.styles.ts">
+import styled from 'styled-components'
+import Colors from '../../theme/theme.colors'
+
+interface CartItemImageProps {
+  imageUrl: string
+}
+
+export const CartItemContainer = styled.div`
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  padding-top: 15px;
+
+  p {
+    color: ${Colors.text.dark};
+  }
+`
+
+export const CartItemImage = styled.div<CartItemImageProps>`
+  background-image: ${(props) => `url('${props.imageUrl}')`};
+  height: 100px;
+  width: 100px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: block;
+  border-radius: 10px;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+`
+
+export const CartItemInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+  flex: 1;
+
+  p:nth-child(1) {
+    font-weight: 600;
+    margin-bottom: 5px;
+  }
+
+  p:nth-child(2) {
+    font-weight: 500;
+  }
+`
+
+export const CartItemQuantity = styled.div`
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+
+  p {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+  svg:hover {
+    cursor: pointer;
+  }
+`
+
+export const RemoveButton = styled.div`
+  margin-right: 20px;
+
+  &:hover {
+    cursor: pointer;
+  }
+`
+</file>
+
+<file path="src/components/header/header.styles.ts">
+import styled from 'styled-components'
+import Colors from '../../theme/theme.colors'
+
+export const HeaderContainer = styled.header`
+  width: 100%;
+  background-color: ${Colors.background.dark};
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  color: ${Colors.text.white};
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+`
+
+export const HeaderTitle = styled.h2`
+  font-weight: bold;
+  font-size: 1.5rem;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  @media (max-width: 768px) {
+    margin-bottom: 16px;
+  }
+`
+
+export const HeaderItems = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 24px;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    justify-content: space-evenly;
+  }
+`
+
+export const HeaderItem = styled.div`
+  font-weight: 600;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+
+    @media (max-width: 768px) {
+      margin-right: 0;
+    }
+
+  &:hover {
+    cursor: pointer;
+  }
+`
+</file>
+
+<file path="src/config/firebase.config.ts">
+import { initializeApp } from 'firebase/app'
+import { getFirestore } from 'firebase/firestore'
+import { getAuth, GoogleAuthProvider } from 'firebase/auth'
+
+const firebaseConfig = {
+  apiKey: 'AIzaSyAzTxzIJcQWOLlMP0Y--Zv_PqPu43o-LFM',
+  authDomain: 'club-ecommerce-abc39.firebaseapp.com',
+  projectId: 'club-ecommerce-abc39',
+  storageBucket: 'club-ecommerce-abc39.firebasestorage.app',
+  messagingSenderId: '650749646986',
+  appId: '1:650749646986:web:24176069ec523cb32e7573'
+}
+
+const app = initializeApp(firebaseConfig)
+export const db = getFirestore(app)
+export const auth = getAuth(app)
+export const googleProvider = new GoogleAuthProvider()
+</file>
+
+<file path="src/pages/home/home.page.tsx">
+import Categories from '../../components/categories/categories.component'
+import Header from '../../components/header/header.component'
+
+const HomePage = () => {
+  return (
+    <>
+      <Header />
+
+      <Categories />
+    </>
+  )
+}
+export default HomePage
+</file>
+
+<file path="src/pages/payment-confirmation/payment-confimation.page.tsx">
+import { ComponentType, FunctionComponent, useContext, useEffect } from 'react'
+import { useNavigate, useSearchParams } from 'react-router-dom'
+import {
+  AiOutlineCheckCircle,
+  AiOutlineCloseCircle,
+  AiOutlineHome
+} from 'react-icons/ai'
+
+// Styles
+import {
+  PaymentConfirmationContainer,
+  PaymentConfirmationContent
+} from './payment-confimation.styles'
+
+// Components
+import Header from '../../components/header/header.component'
+import CustomButton from '../../components/custom-button/custom-button.component'
+
+// Utilities
+import Colors from '../../theme/theme.colors'
+import { CartContext } from '../../contexts/cart.context'
+import { useDispatch } from 'react-redux'
+import { clearCartProducts } from '../../store/toolkit/cart/cart.slice'
+
+const PaymentConfirmationPage: FunctionComponent = () => {
+  const AiOutlineCheckCircleIcon =
+    AiOutlineCheckCircle as unknown as ComponentType<{
+      size?: number
+      color?: string
+    }>
+  const AiOutlineCloseCircleIcon =
+    AiOutlineCloseCircle as unknown as ComponentType<{
+      size?: number
+      color?: string
+    }>
+  const AiOutlineHomeIcon = AiOutlineHome as unknown as ComponentType<{
+    size?: number
+  }>
+
+  const { clearProducts } = useContext(CartContext)
+  const dispatch = useDispatch()
+
+  const [searchParams] = useSearchParams()
+
+  const navigate = useNavigate()
+
+  const status = searchParams.get('success')
+  const isCanceled = searchParams.get('canceled') === 'true'
+
+  useEffect(() => {
+    if (status === 'true') {
+      dispatch(clearCartProducts())
+    }
+  }, [status])
+
+  const handleGoToHomePageClick = () => {
+    navigate('/')
+  }
+
+  return (
+    <>
+      <Header />
+      <PaymentConfirmationContainer>
+        <PaymentConfirmationContent>
+          {status === 'true' && (
+            <>
+              <AiOutlineCheckCircleIcon size={120} color={Colors.success} />
+              <p>Sua compra foi finalizada com sucesso!</p>
+            </>
+          )}
+
+          {(status === 'false' || isCanceled) && (
+            <>
+              <AiOutlineCloseCircleIcon size={120} color={Colors.error} />
+              <p>
+                Ocorreu um erro ao finalizar sua compra. Por favor, tente
+                novamente.
+              </p>
+            </>
+          )}
+
+          <CustomButton
+            startIcon={<AiOutlineHomeIcon />}
+            onClick={handleGoToHomePageClick}
+          >
+            Ir para a Página Inicial
+          </CustomButton>
+        </PaymentConfirmationContent>
+      </PaymentConfirmationContainer>
+    </>
+  )
+}
+
+export default PaymentConfirmationPage
+</file>
+
+<file path="src/store/toolkit/cart/cart.slice.ts">
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import CartProduct from '../../../types/cart.types'
+import Product from '../../../types/product.types'
+
+interface InitialState {
+  isVisible: boolean
+  products: CartProduct[]
+}
+
+const initialState: InitialState = {
+  isVisible: false,
+  products: []
+}
+
+const cartSlice = createSlice({
+  name: 'cart',
+  initialState,
+  reducers: {
+    toggleCart: (state) => {
+      state.isVisible = !state.isVisible
+    },
+    addProductToCart: (state, action: PayloadAction<Product>) => {
+      const product = action.payload
+      // verificar se o produto já está no carrinho
+      const productIsAlreadyInCart = state.products.some(
+        (item) => item.id === product.id
+      )
+      // se sim -> aumentar sua quantidade
+      if (productIsAlreadyInCart) {
+        state.products = state.products.map((item) =>
+          item.id === product.id
+            ? { ...item, quantity: item.quantity + 1 }
+            : item
+        )
+        return
+      }
+      // se não -> adicioná-lo
+      state.products = [...state.products, { ...product, quantity: 1 }]
+    },
+
+    removeProductFromCart: (state, action: PayloadAction<string>) => {
+      state.products = state.products.filter(
+        (product) => product.id !== action.payload
+      )
+    },
+
+    increaseCartProductQuantity: (state, action: PayloadAction<string>) => {
+      state.products = state.products.map((product) =>
+        product.id === action.payload
+          ? { ...product, quantity: product.quantity + 1 }
+          : product
+      )
+    },
+
+    decreaseCartProductQuantity: (state, action: PayloadAction<string>) => {
+      state.products = state.products
+        .map((product) =>
+          product.id === action.payload
+            ? { ...product, quantity: product.quantity - 1 }
+            : product
+        )
+        .filter((product) => product.quantity > 0)
+    },
+    clearCartProducts: (state) => {
+      state.products = []
+    }
+  }
+})
+
+export const {
+  toggleCart,
+  addProductToCart,
+  removeProductFromCart,
+  increaseCartProductQuantity,
+  decreaseCartProductQuantity,
+  clearCartProducts
+} = cartSlice.actions
+
+export default cartSlice.reducer
+</file>
+
+<file path="src/types/user.types.ts">
+export default interface User {
+  firstName: string
+  lastName: string
+  email: string
+  provider: 'google' | 'email'
+}
+</file>
+
+<file path="src/index.css">
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+html,
+body {
+  height: 100%;
+}
+</file>
+
+<file path=".prettierrc.json">
+"prettier-config-standard"
+</file>
+
+<file path="src/components/category-item/category-item.component.tsx">
+import { FunctionComponent } from 'react'
+
+// Utilities
+import Category from '../../types/category.types'
+
+// Styles
+import { CategoryItemContainer, CategoryName } from './category-item.styles'
+import { useNavigate } from 'react-router-dom'
+
+interface CategoryItemProps {
+  category: Category
+}
+
+const CategoryItem: FunctionComponent<CategoryItemProps> = ({ category }) => {
+  const navigate = useNavigate()
+
+  const handleExploreClick = () => {
+    navigate(`/category/${category.id}`)
+  }
+  return (
+    <CategoryItemContainer backgroundImage={category.imageUrl}>
+      <CategoryName onClick={handleExploreClick}>
+        <p>{category.displayName}</p>
+        <p>Explorar</p>
+      </CategoryName>
+    </CategoryItemContainer>
+  )
+}
+
+export default CategoryItem
+</file>
+
+<file path="src/components/checkout/checkout.component.tsx">
+import { ComponentType, FunctionComponent, useContext, useState } from 'react'
+import { BsBagCheck } from 'react-icons/bs'
+
+import CartItem from '../cart-item/cart-item.component'
+import CustomButton from '../custom-button/custom-button.component'
+
+import {
+  CheckoutContainer,
+  CheckoutTitle,
+  CheckoutProducts,
+  CheckoutTotal
+} from './checkout.styles'
+import axios from 'axios'
+import Loading from '../loading/loading.component'
+import { useAppSelector } from '../../hooks/redux.hooks'
+import { selectProductsTotalPrice } from '../../store/toolkit/cart/cart.selectors'
+
+const Checkout: FunctionComponent = () => {
+  const BsBagCheckIcon = BsBagCheck as unknown as ComponentType<{}>
+  const { products } = useAppSelector((state) => state.cartReducer)
+  const productsTotalPrice = useAppSelector(selectProductsTotalPrice)
+
+  const [isLoading, setIsLoading] = useState(false)
+
+  const handleFinishPurchaseClick = async () => {
+    try {
+      setIsLoading(true)
+      const { data } = await axios.post(
+        `${process.env.REACT_APP_API_URL!}/create-checkout-session`,
+        {
+          products
+        }
+      )
+      window.location.href = data.url
+      console.log('Resposta da API:', data.url)
+    } catch (error) {
+      console.error('Erro ao finalizar compra:', error)
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
+  return (
+    <CheckoutContainer>
+      {isLoading && <Loading />}
+      <CheckoutTitle>Checkout</CheckoutTitle>
+
+      {products.length > 0 ? (
+        <>
+          <CheckoutProducts>
+            {products.map((product) => (
+              <CartItem key={product.id} product={product} />
+            ))}
+          </CheckoutProducts>
+
+          <CheckoutTotal>Total: R${productsTotalPrice}</CheckoutTotal>
+
+          <CustomButton
+            startIcon={<BsBagCheckIcon />}
+            onClick={handleFinishPurchaseClick}
+          >
+            Finalizar Compra
+          </CustomButton>
+        </>
+      ) : (
+        <p>Seu carrinho está vazio!</p>
+      )}
+    </CheckoutContainer>
+  )
+}
+
+export default Checkout
+</file>
+
+<file path=".eslintrc.json">
+{
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:react/jsx-runtime",
+    "plugin:react-hooks/recommended"
+  ],
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
+  "rules": {
+    "no-unused-vars": "warn",
+    "no-undef": "warn",
+    "eqeqeq": "warn",
+    "multiline-ternary": "off",
+    "no-extra-semi": "off"
+  }
+}
+</file>
+
+<file path="tsconfig.json">
+{
+  "compilerOptions": {
+    "target": "es2020",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "types": ["node"],
+    "ignoreDeprecations": "5.0"
+  },
+  "include": ["src"]
+}
+</file>
+
+<file path="src/components/cart/cart.styles.ts">
+import styled from 'styled-components'
+import Colors from '../../theme/theme.colors'
+
+interface CartContainerPros {
+  isVisible: boolean
+}
+
+export const CartContainer = styled.div<CartContainerPros>`
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: flex-end;
+  visibility: ${(props) => (props.isVisible ? 'visible' : 'hidden')};
+  opacity: ${(props) => (props.isVisible ? '1' : '0')};
+  transition: all 0.3s ease;
+
+  p {
+    color: ${Colors.text.dark};
+  }
+`
+
+export const CartEscapeArea = styled.div`
+  width: 100%;
+`
+
+export const CartContent = styled.div`
+  height: 100%;
+  width: 450px;
+  min-width: 400px;
+  z-index: 200;
+  background-color: white;
+  padding: 20px;
+  overflow-y: scroll;
+
+  @media (max-width: 768px) {
+    min-width: 85%;
+  }
+`
+export const CartTitle = styled.p`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.325rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+`
+export const CartTotal = styled.p`
+  font-weight: 600;
+  font-size: 1.125rem;
+`
+
+export const TotalPriceContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+`
+
+export const ClearButton = styled.button`
+  display: flex;
+  width: auto;
+  padding: 5px 10px;
+  align-items: center;
+  background-color: ${Colors.primary};
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: #d14646;
+  }
+`
+</file>
+
+<file path="src/components/categories-overview/categories-overview.component.tsx">
+import { FunctionComponent, useEffect } from 'react'
+import { useDispatch } from 'react-redux'
+
+// Styles
+import { Container } from './categories-overview.styles'
+
+// Components
+import Loading from '../loading/loading.component'
+import CategoryOverview from '../category-overview/category-overview.component'
+import { useAppSelector } from '../../hooks/redux.hooks'
+import { fetchCategories } from '../../store/toolkit/category/category.slice'
+
+const CategoriesOverview: FunctionComponent = () => {
+  const { categories, isLoading } = useAppSelector(
+    (state) => state.categoryReducer
+  )
+
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    if (!categories?.length) {
+      dispatch(fetchCategories() as any)
+    }
+  }, [categories?.length, fetchCategories])
+
+  if (isLoading) return <Loading message='Carregando categorias...' />
+
+  return (
+    <Container>
+      {categories.map((category) => (
+        <CategoryOverview key={category.id} category={category} />
+      ))}
+    </Container>
+  )
+}
+
+export default CategoriesOverview
+</file>
+
+<file path="src/components/product-item/product-item.component.tsx">
+import { ComponentType, FunctionComponent } from 'react'
+import { BsCartPlus } from 'react-icons/bs'
+
+// Components
+import CustomButton from '../custom-button/custom-button.component'
+
+// Styles
+import {
+  ProductContainer,
+  ProductImage,
+  ProductInfo
+} from './product-item.styles'
+
+// Utilities
+import Product from '../../types/product.types'
+import { useDispatch } from 'react-redux'
+import { addProductToCart } from '../../store/toolkit/cart/cart.slice'
+
+interface ProductItemProps {
+  product: Product
+}
+
+const ProductItem: FunctionComponent<ProductItemProps> = ({ product }) => {
+  const BsCartPlusIcon = BsCartPlus as unknown as ComponentType<{
+    size?: number
+  }>
+  const dispatch = useDispatch()
+
+  const handleAddToCartClick = () => {
+    dispatch(addProductToCart(product))
+  }
+
+  return (
+    <ProductContainer>
+      <ProductImage imageUrl={product.imageUrl}>
+        <CustomButton
+          startIcon={<BsCartPlusIcon />}
+          onClick={handleAddToCartClick}
+        >
+          Adicionar ao carrinho
+        </CustomButton>
+      </ProductImage>
+
+      <ProductInfo>
+        <p>{product.name}</p>
+        <p>R${product.price}</p>
+      </ProductInfo>
+    </ProductContainer>
+  )
+}
+
+export default ProductItem
+</file>
+
+<file path="src/contexts/cart.context.tsx">
+import {
+  createContext,
+  FunctionComponent,
+  useCallback,
+  useEffect,
+  useMemo,
+  useState
+} from 'react'
+import CartProduct from '../types/cart.types'
+import Product from '../types/product.types'
+
+interface ICartContext {
+  isVisible: boolean
+  productsTotalPrice: number
+  productsCount: number
+  products: CartProduct[]
+  toggleCart: () => void
+  addProductToCart: (product: Product) => void
+  removeProductFromCart: (productId: string) => void
+  increaseProductQuantity: (productId: string) => void
+  decreaseProductQuantity: (productId: string) => void
+  clearProducts: () => void
+}
+
+export const CartContext = createContext<ICartContext>({
+  isVisible: false,
+  productsTotalPrice: 0,
+  productsCount: 0,
+  products: [],
+  toggleCart: () => {},
+  addProductToCart: () => {},
+  removeProductFromCart: () => {},
+  increaseProductQuantity: () => {},
+  decreaseProductQuantity: () => {},
+  clearProducts: () => {}
+})
+
+const CartContextProvider: FunctionComponent = ({ children }) => {
+  const [isVisible, setIsVisible] = useState(false)
+  const [products, setProducts] = useState<CartProduct[]>([])
+
+  useEffect(() => {
+    const productsFromLocalStorage = JSON.parse(
+      localStorage.getItem('cartProducts')!
+    )
+
+    setProducts(productsFromLocalStorage)
+  }, [])
+
+  useEffect(() => {
+    localStorage.setItem('cartProducts', JSON.stringify(products))
+  }, [products])
+
+  const productsTotalPrice = useMemo(() => {
+    return products.reduce((acc, currentProduct) => {
+      return acc + currentProduct.price * currentProduct.quantity
+    }, 0)
+  }, [products])
+
+  const productsCount = useMemo(() => {
+    return products.reduce((acc, currentProduct) => {
+      return acc + currentProduct.quantity
+    }, 0)
+  }, [products])
+
+  const toggleCart = () => {
+    setIsVisible((prev) => !prev)
+  }
+
+  const addProductToCart = useCallback((product: Product) => {
+    setProducts((currentProducts) => {
+      // Otimização: percorre o array apenas uma vez
+      const productIndex = currentProducts.findIndex(
+        (item) => item.id === product.id
+      )
+
+      if (productIndex >= 0) {
+        // Copia o array e o item para manter a imutabilidade, mas altera só o índice exato
+        const updatedProducts = [...currentProducts]
+        updatedProducts[productIndex] = {
+          ...updatedProducts[productIndex],
+          quantity: updatedProducts[productIndex].quantity + 1
+        }
+        return updatedProducts
+      }
+
+      return [...currentProducts, { ...product, quantity: 1 }]
+    })
+  }, [])
+
+  const removeProductFromCart = (productId: string) => {
+    setProducts((products) =>
+      products.filter((product) => product.id !== productId)
+    )
+  }
+
+  const increaseProductQuantity = (productId: string) => {
+    setProducts((products) =>
+      products.map((product) =>
+        product.id === productId
+          ? { ...product, quantity: product.quantity + 1 }
+          : product
+      )
+    )
+  }
+
+  const decreaseProductQuantity = (productId: string) => {
+    setProducts((products) =>
+      products
+        .map((product) =>
+          product.id === productId
+            ? { ...product, quantity: product.quantity - 1 }
+            : product
+        )
+        .filter((product) => product.quantity > 0)
+    )
+  }
+
+  const clearProducts = () => {
+    setProducts([])
+  }
+
+  return (
+    <CartContext.Provider
+      value={{
+        isVisible,
+        products,
+        productsTotalPrice,
+        productsCount,
+        toggleCart,
+        addProductToCart,
+        removeProductFromCart,
+        increaseProductQuantity,
+        decreaseProductQuantity,
+        clearProducts
+      }}
+    >
+      {children}
+    </CartContext.Provider>
+  )
+}
+
+export default CartContextProvider
+</file>
+
+<file path="src/components/cart-item/cart-item.component.tsx">
+import { FunctionComponent } from 'react'
+import { AiOutlinePlus, AiOutlineMinus, AiOutlineClose } from 'react-icons/ai'
+import { useDispatch } from 'react-redux'
+// import {
+//   decreaseCartProductQuantity,
+//   increaseCartProductQuantity,
+//   removeProductFromCart
+// } from '../../store/toolkit/cart/cart.slice'
+import {
+  decreaseCartProductQuantity,
+  increaseCartProductQuantity,
+  removeProductFromCart
+} from '../../store/toolkit/cart/cart.slice'
+
+// Utilities
+import CartProduct from '../../types/cart.types'
+
+// Styles
+import {
+  CartItemContainer,
+  CartItemImage,
+  CartItemInfo,
+  CartItemQuantity,
+  RemoveButton
+} from './cart-item.styles'
+
+interface CartItemProps {
+  product: CartProduct
+}
+
+const CartItem: FunctionComponent<CartItemProps> = ({ product }) => {
+  const AiOutlineCloseIcon = AiOutlineClose as unknown as FunctionComponent<{
+    size?: number
+  }>
+  const AiOutlineMinusIcon = AiOutlineMinus as unknown as FunctionComponent<{
+    onClick?: () => void
+    size?: number
+  }>
+  const AiOutlinePlusIcon = AiOutlinePlus as unknown as FunctionComponent<{
+    onClick?: () => void
+    size?: number
+  }>
+
+  const dispatch = useDispatch()
+
+  const handleRemoveClick = () => {
+    dispatch(removeProductFromCart(product.id))
+  }
+
+  const handleIncreaseClick = () => {
+    dispatch(increaseCartProductQuantity(product.id))
+  }
+
+  const handleDecreaseClick = () => {
+    dispatch(decreaseCartProductQuantity(product.id))
+  }
+
+  return (
+    <CartItemContainer>
+      <CartItemImage imageUrl={product.imageUrl} />
+
+      <CartItemInfo>
+        <p>{product.name}</p>
+        <p>R${product.price}</p>
+
+        <CartItemQuantity>
+          <AiOutlineMinusIcon
+            size={20}
+            onClick={handleDecreaseClick}
+            aria-label={`Decrease quantity of ${product.name}`}
+          />
+          <p>{product.quantity}</p>
+          <AiOutlinePlusIcon
+            size={20}
+            onClick={handleIncreaseClick}
+            aria-label={`Increase quantity of ${product.name}`}
+          />
+        </CartItemQuantity>
+      </CartItemInfo>
+
+      <RemoveButton
+        onClick={handleRemoveClick}
+        aria-label={`Remove ${product.name}`}
+      >
+        <AiOutlineCloseIcon size={25} />
+      </RemoveButton>
+    </CartItemContainer>
+  )
+}
+
+export default CartItem
+</file>
+
+<file path="src/store/store.ts">
+import { configureStore } from '@reduxjs/toolkit'
+import logger from 'redux-logger'
+import thunk from 'redux-thunk'
+import rootReducer from './root-reducer'
+// @ts-ignore
+import storage from 'redux-persist/lib/storage'
+// @ts-ignore
+import persistReducer from 'redux-persist/es/persistReducer'
+// @ts-ignore
+import persistStore from 'redux-persist/es/persistStore'
+
+const persistConfig = {
+  key: 'root',
+  storage,
+  whiteList: ['cartReducer']
+}
+
+const persitedRootReducer: typeof rootReducer = persistReducer(
+  persistConfig,
+  rootReducer
+)
+
+export const store = configureStore({
+  reducer: persitedRootReducer,
+  middleware: [thunk, logger]
+})
+
+export const persistedStore = persistStore(store)
+
+export type RootState = ReturnType<typeof store.getState>
+</file>
+
+<file path="src/index.tsx">
+import React from 'react'
+import ReactDOM from 'react-dom'
+import './index.css'
+import App from './App'
+
+import { Provider } from 'react-redux'
+// @ts-ignore
+import { PersistGate } from 'redux-persist/integration/react'
+
+import UserContextProvider from './contexts/user.context'
+import CategoryContextProvider from './contexts/category.context'
+import CartContextProvider from './contexts/cart.context'
+import { store, persistedStore } from './store/store'
+
+ReactDOM.render(
+  <React.StrictMode>
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistedStore}>
+        <UserContextProvider>
+          <CategoryContextProvider>
+            <App />
+          </CategoryContextProvider>
+        </UserContextProvider>
+      </PersistGate>
+    </Provider>
+  </React.StrictMode>,
+  document.getElementById('root')
+)
+</file>
+
+<file path="src/components/categories/categories.component.tsx">
+import { useEffect } from 'react'
+
+import CategoryItem from '../category-item/category-item.component'
+import { CategoriesContainer, CategoriesContent } from './categories.styles'
+import Loading from '../loading/loading.component'
+import { useDispatch } from 'react-redux'
+import { fetchCategories } from '../../store/toolkit/category/category.slice'
+import Category from '../../types/category.types'
+import { useAppSelector } from '../../hooks/redux.hooks'
+
+const Categories = () => {
+  // const { categories, isLoading } = useContext(CategoryContext)
+
+  const { categories, isLoading } = useAppSelector(
+    (state) => state.categoryReducer
+  )
+
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(fetchCategories() as any)
+  }, [])
+  return (
+    <>
+      <CategoriesContainer>
+        {isLoading && <Loading />}
+        <CategoriesContent>
+          {categories.map((category: Category) => (
+            <div key={category.id} className='category-item'>
+              <CategoryItem category={category} />
+            </div>
+          ))}
+        </CategoriesContent>
+      </CategoriesContainer>
+    </>
+  )
+}
+
+export default Categories
+</file>
+
+<file path="src/pages/sign-up/sign-up.page.tsx">
+import { FiLogIn } from 'react-icons/fi'
+import { useForm } from 'react-hook-form'
+import validator from 'validator'
+
+import { useNavigate } from 'react-router-dom'
+import { ComponentType, useEffect, useState } from 'react'
+
+// Components
+import CustomButton from '../../components/custom-button/custom-button.component'
+import CustomInput from '../../components/custom-input/custom-input.component'
+import Header from '../../components/header/header.component'
+import InputErrorMessage from '../../components/input-error-message/input-error-message.component'
+
+// Styles
+import {
+  SignUpContainer,
+  SignUpContent,
+  SignUpHeadline,
+  SignUpInputContainer
+} from './sign-up.styles'
+import {
+  AuthError,
+  AuthErrorCodes,
+  createUserWithEmailAndPassword
+} from 'firebase/auth'
+import { auth, db } from '../../config/firebase.config'
+import { addDoc, collection } from 'firebase/firestore'
+import Loading from '../../components/loading/loading.component'
+import { useAppSelector } from '../../hooks/redux.hooks'
+
+interface SignUpForm {
+  firstName: string
+  lastName: string
+  email: string
+  password: string
+  passwordConfirmation: string
+}
+
+const SignUpPage = () => {
+  const FiLogInIcon = FiLogIn as unknown as ComponentType<{ size?: number }>
+  const {
+    register,
+    handleSubmit,
+    watch,
+    setError,
+    formState: { errors }
+  } = useForm<SignUpForm>()
+
+  const [isLoading, setIsLoading] = useState(false)
+
+  const watchPassword = watch('password')
+
+  const navigate = useNavigate()
+
+  const { isAuthenticated } = useAppSelector(
+    (rootState) => rootState.userReducer
+  )
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate('/')
+    }
+  }, [isAuthenticated])
+
+  const handleSubmitPress = async (data: SignUpForm) => {
+    try {
+      setIsLoading(true)
+
+      const userCredentials = await createUserWithEmailAndPassword(
+        auth,
+        data.email,
+        data.password
+      )
+
+      await addDoc(collection(db, 'users'), {
+        id: userCredentials.user.uid,
+        email: userCredentials.user.email,
+        firstName: data.firstName,
+        lastName: data.lastName,
+        provider: 'firebase'
+      })
+    } catch (error) {
+      const _error = error as AuthError
+      console.log(_error.message)
+      if (_error.code === AuthErrorCodes.EMAIL_EXISTS) {
+        return setError('email', { type: 'alreadyInUse' })
+      }
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
+  return (
+    <>
+      <Header />
+
+      {isLoading && <Loading message='Criando conta, por favor aguarde...' />}
+
+      <SignUpContainer>
+        <SignUpContent>
+          <SignUpHeadline>Crie sua conta</SignUpHeadline>
+
+          <SignUpInputContainer>
+            <p>Nome</p>
+            <CustomInput
+              hasError={!!errors?.firstName}
+              placeholder='Digite seu nome'
+              {...register('firstName', { required: true })}
+            />
+
+            {errors?.firstName?.type === 'required' && (
+              <InputErrorMessage>O nome é obrigatório.</InputErrorMessage>
+            )}
+          </SignUpInputContainer>
+
+          <SignUpInputContainer>
+            <p>Sobrenome</p>
+            <CustomInput
+              hasError={!!errors?.lastName}
+              placeholder='Digite seu sobrenome'
+              {...register('lastName', { required: true })}
+            />
+
+            {errors?.lastName?.type === 'required' && (
+              <InputErrorMessage>O sobrenome é obrigatório.</InputErrorMessage>
+            )}
+          </SignUpInputContainer>
+
+          <SignUpInputContainer>
+            <p>E-mail</p>
+            <CustomInput
+              hasError={!!errors?.email}
+              placeholder='Digite seu e-mail'
+              {...register('email', {
+                required: true,
+                validate: (value: string) => {
+                  return validator.isEmail(value)
+                }
+              })}
+            />
+            {errors?.email?.type === 'required' && (
+              <InputErrorMessage>O e-mail é obrigatório.</InputErrorMessage>
+            )}
+
+            {errors?.email?.type === 'alreadyInUse' && (
+              <InputErrorMessage>
+                Este e-mail já está sendo utilizado.
+              </InputErrorMessage>
+            )}
+
+            {errors?.email?.type === 'validate' && (
+              <InputErrorMessage>
+                Por favor, insira um e-mail válido.
+              </InputErrorMessage>
+            )}
+          </SignUpInputContainer>
+
+          <SignUpInputContainer>
+            <p>Senha</p>
+            <CustomInput
+              hasError={!!errors?.password}
+              placeholder='Digite sua senha'
+              type='password'
+              {...register('password', { required: true, minLength: 6 })}
+            />
+
+            {errors?.password?.type === 'required' && (
+              <InputErrorMessage>A senha é obrigatória.</InputErrorMessage>
+            )}
+
+            {errors?.password?.type === 'minLength' && (
+              <InputErrorMessage>
+                A senha precisa ter no mínimo 6 caracteres.
+              </InputErrorMessage>
+            )}
+          </SignUpInputContainer>
+
+          <SignUpInputContainer>
+            <p>Confirmação de Senha</p>
+            <CustomInput
+              hasError={!!errors?.passwordConfirmation}
+              placeholder='Digite novamente sua senha'
+              type='password'
+              {...register('passwordConfirmation', {
+                required: true,
+                minLength: 6,
+                validate: (value: string) => {
+                  return value === watchPassword
+                }
+              })}
+            />
+
+            {errors?.passwordConfirmation?.type === 'required' && (
+              <InputErrorMessage>
+                A confirmação de senha é obrigatória.
+              </InputErrorMessage>
+            )}
+
+            {errors?.passwordConfirmation?.type === 'minLength' && (
+              <InputErrorMessage>
+                A confirmação de senha precisa ter no mínimo 6 caracteres.
+              </InputErrorMessage>
+            )}
+
+            {errors?.passwordConfirmation?.type === 'validate' && (
+              <InputErrorMessage>
+                A confirmação de senha precisa ser igual a senha.
+              </InputErrorMessage>
+            )}
+          </SignUpInputContainer>
+          <CustomButton
+            onClick={() => handleSubmit(handleSubmitPress)()}
+            startIcon={<FiLogInIcon size={18} />}
+          >
+            Criar Conta
+          </CustomButton>
+        </SignUpContent>
+      </SignUpContainer>
+    </>
+  )
+}
+
+export default SignUpPage
+</file>
+
+<file path="src/store/root-reducer.ts">
+import { combineReducers } from 'redux'
+import userReducer from './toolkit/user/user.slice'
+import categoryReducer from './toolkit/category/category.slice'
+import cartReducer from './toolkit/cart/cart.slice'
+
+const rootReducer = combineReducers({
+  cartReducer,
+  userReducer,
+  categoryReducer
+})
+
+export default rootReducer
+</file>
+
+<file path="src/components/cart/cart.component.tsx">
+import { ComponentType, FunctionComponent } from 'react'
+import { BsCartCheck } from 'react-icons/bs'
+import { useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+
+// Utilities
+import { useAppSelector } from '../../hooks/redux.hooks'
+// import { toggleCart } from '../../store/toolkit/cart/cart.slice'
+import {
+  selectProductsCount,
+  selectProductsTotalPrice
+} from '../../store/toolkit/cart/cart.selectors'
+
+// Components
+import CustomButton from '../custom-button/custom-button.component'
+import CartItem from '../cart-item/cart-item.component'
+
+// Styles
+import {
+  CartContainer,
+  CartContent,
+  CartEscapeArea,
+  CartTitle,
+  CartTotal,
+  ClearButton,
+  TotalPriceContainer
+} from './cart.styles'
+import {
+  clearCartProducts,
+  toggleCart
+} from '../../store/toolkit/cart/cart.slice'
+
+const Cart: FunctionComponent = () => {
+  const BsCartCheckIcon = BsCartCheck as unknown as ComponentType<{
+    size?: number
+  }>
+  const { isVisible, products } = useAppSelector((state) => state.cartReducer)
+
+  const productsTotalPrice = useAppSelector(selectProductsTotalPrice)
+  const productsCount = useAppSelector(selectProductsCount)
+
+  const navigate = useNavigate()
+
+  const dispatch = useDispatch()
+
+  const handleGoToCheckoutClick = () => {
+    navigate('/checkout')
+    dispatch(toggleCart())
+  }
+
+  const handleClearCartClick = () => {
+    dispatch(clearCartProducts())
+  }
+
+  const handleEscapeAreaClick = () => {
+    dispatch(toggleCart())
+  }
+
+  return (
+    <CartContainer isVisible={isVisible}>
+      <CartEscapeArea onClick={handleEscapeAreaClick} />
+      <CartContent>
+        <CartTitle>Seu Carrinho</CartTitle>
+
+        {products.map((product) => (
+          <CartItem key={product.id} product={product} />
+        ))}
+
+        {productsCount > 0 ? (
+          <>
+            <TotalPriceContainer>
+              <CartTotal>Total: R${productsTotalPrice}</CartTotal>
+              <ClearButton onClick={handleClearCartClick}>Limpar</ClearButton>
+            </TotalPriceContainer>
+            <CustomButton
+              startIcon={<BsCartCheckIcon />}
+              onClick={handleGoToCheckoutClick}
+            >
+              Ir para o Checkout
+            </CustomButton>
+          </>
+        ) : (
+          <p>Seu carrinho está vazio!</p>
+        )}
+      </CartContent>
+    </CartContainer>
+  )
+}
+
+export default Cart
+</file>
+
+<file path="src/pages/login/login.page.tsx">
+import { BsGoogle } from 'react-icons/bs'
+import { FiLogIn } from 'react-icons/fi'
+import { useContext, useEffect, useState, type ComponentType } from 'react'
+import CustomButton from '../../components/custom-button/custom-button.component'
+import Header from '../../components/header/header.component'
+import {
+  LoginContainer,
+  LoginContent,
+  LoginHeadline,
+  LoginInputContainer,
+  LoginSubtitle
+} from './login.styles'
+import CustomInput from '../../components/custom-input/custom-input.component'
+
+import validator from 'validator'
+
+import { useForm } from 'react-hook-form'
+import InputErrorMessage from '../../components/input-error-message/input-error-message.component'
+import {
+  AuthError,
+  AuthErrorCodes,
+  signInWithEmailAndPassword,
+  signInWithPopup
+} from 'firebase/auth'
+import { auth, db, googleProvider } from '../../config/firebase.config'
+import { addDoc, collection, getDocs, query, where } from 'firebase/firestore'
+import { useNavigate } from 'react-router-dom'
+import Loading from '../../components/loading/loading.component'
+import { useAppSelector } from '../../hooks/redux.hooks'
+
+interface LoginForm {
+  email: string
+  password: string
+}
+
+const LoginPage = () => {
+  const FiLogInIcon = FiLogIn as unknown as ComponentType<{ size?: number }>
+  const BsGoogleIcon = BsGoogle as unknown as ComponentType<{ size?: number }>
+
+  const navigate = useNavigate()
+
+  const {
+    register,
+    setError,
+    formState: { errors },
+    handleSubmit
+  } = useForm<LoginForm>()
+
+  const [isLoading, setIsLoading] = useState(false)
+
+  const { isAuthenticated } = useAppSelector(
+    (rootState) => rootState.userReducer
+  )
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate('/')
+    }
+  }, [isAuthenticated])
+
+  const handleSubmitPress = async (data: LoginForm) => {
+    try {
+      setIsLoading(true)
+      const userCredentials = await signInWithEmailAndPassword(
+        auth,
+        data.email,
+        data.password
+      )
+      console.log(userCredentials)
+    } catch (error) {
+      const _error = error as AuthError
+      console.log(_error)
+      if (_error.code === AuthErrorCodes.INVALID_PASSWORD) {
+        return setError('password', { type: 'invalid' })
+      }
+
+      if (_error.code === AuthErrorCodes.USER_DELETED) {
+        return setError('email', { type: 'notFound' })
+      }
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
+  const handleGoogleSignIn = async () => {
+    try {
+      setIsLoading(true)
+      const userCredentials = await signInWithPopup(auth, googleProvider)
+      const querySnapshot = await getDocs(
+        query(
+          collection(db, 'users'),
+          where('id', '==', userCredentials.user.uid)
+        )
+      )
+      const user = querySnapshot.docs[0]?.data()
+
+      if (!user) {
+        const firstName = userCredentials.user.displayName?.split(' ')[0] || ''
+        const lastName =
+          userCredentials.user.displayName?.split(' ').slice(1).join('') || ''
+        await addDoc(collection(db, 'users'), {
+          id: userCredentials.user.uid,
+          email: userCredentials.user.email,
+          firstName,
+          lastName,
+          provider: 'google'
+        })
+        console.log('Novo usuário criado no Firestore')
+      }
+    } catch (error) {
+      console.error('Error signing in with Google:', error)
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
+  return (
+    <>
+      <Header />
+      {isLoading && <Loading message='Entrando, por favor aguarde...' />}
+      <LoginContainer>
+        <LoginContent>
+          <LoginHeadline>
+            Bem-vindo de volta! Faça login para continuar.
+          </LoginHeadline>
+          <CustomButton
+            startIcon={<BsGoogleIcon size={18} />}
+            onClick={handleGoogleSignIn}
+          >
+            Entrar com Google
+          </CustomButton>
+          <LoginSubtitle>Ou entre com o seu e-mail</LoginSubtitle>
+          <LoginInputContainer>
+            <p>E-mail</p>
+            <CustomInput
+              type='email'
+              hasError={!!errors?.email}
+              placeholder='Digite seu e-mail'
+              {...register('email', {
+                required: true,
+                validate: (value) => {
+                  return validator.isEmail(value)
+                }
+              })}
+            />
+            {errors?.email?.type === 'required' && (
+              <InputErrorMessage>O e-mail é obrigatório.</InputErrorMessage>
+            )}
+
+            {errors?.email?.type === 'invalid' && (
+              <InputErrorMessage>
+                O e-mail não foi encontrado.
+              </InputErrorMessage>
+            )}
+
+            {errors?.email?.type === 'validate' && (
+              <InputErrorMessage>
+                Por favor, insira um e-mail válido.
+              </InputErrorMessage>
+            )}
+          </LoginInputContainer>
+          <LoginInputContainer>
+            <p>Senha</p>
+            <CustomInput
+              hasError={!!errors?.password}
+              type='password'
+              placeholder='Digite sua senha'
+              {...register('password', { required: true })}
+            />
+            {errors?.password?.type === 'required' && (
+              <InputErrorMessage>A senha é obrigatória.</InputErrorMessage>
+            )}
+
+            {errors?.password?.type === 'invalid' && (
+              <InputErrorMessage>A senha é inválida.</InputErrorMessage>
+            )}
+          </LoginInputContainer>
+          <CustomButton
+            startIcon={<FiLogInIcon size={18} />}
+            onClick={() => handleSubmit(handleSubmitPress)()}
+          >
+            Entrar
+          </CustomButton>
+        </LoginContent>
+      </LoginContainer>
+    </>
+  )
+}
+
+export default LoginPage
+</file>
+
+<file path="package.json">
+{
+  "name": "club-ecommerce",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@reduxjs/toolkit": "1.8.3",
+    "@testing-library/dom": "^10.4.0",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^12.1.5",
+    "@testing-library/user-event": "^13.2.1",
+    "@types/jest": "^27.0.1",
+    "@types/node": "18",
+    "@types/react": "17",
+    "@types/react-dom": "17",
+    "axios": "0.26.1",
+    "firebase": "9.8.3",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "react-hook-form": "^7.28.0",
+    "react-icons": "^5.6.0",
+    "react-redux": "8.0.2",
+    "react-router-dom": "6.2.2",
+    "react-scripts": "5.0.1",
+    "react-spinners": "0.12.0",
+    "redux": "4.2.0",
+    "redux-logger": "3.0.6",
+    "redux-persist": "6.0.0",
+    "redux-thunk": "2.4.1",
+    "repomix": "^1.14.0",
+    "styled-components": "5.3.3",
+    "typescript": "^4.4.2",
+    "validator": "13.7.0",
+    "web-vitals": "^2.1.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "husky:prepare": "husky install"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@types/react-redux": "7.1.24",
+    "@types/redux-logger": "3.0.9",
+    "@types/styled-components": "5.1.24",
+    "@types/validator": "13.7.0",
+    "eslint": "^10.0.2",
+    "eslint-plugin-react": "^7.37.5",
+    "globals": "^17.4.0",
+    "prettier-config-standard": "^7.0.0",
+    "typescript-eslint": "^8.56.1"
+  },
+  "resolutions": {
+    "@types/react": "^17.0.0",
+    "@types/react-dom": "^17.0.0"
+  },
+  "overrides": {
+    "@types/react": "^17.0.0",
+    "@types/react-dom": "^17.0.0"
+  }
+}
+</file>
+
+<file path="src/components/header/header.component.tsx">
+import { signOut } from 'firebase/auth'
+import {
+  HeaderContainer,
+  HeaderItem,
+  HeaderItems,
+  HeaderTitle
+} from './header.styles'
+import { BsCart } from 'react-icons/bs'
+import { useNavigate } from 'react-router-dom'
+import { auth } from '../../config/firebase.config'
+import { ComponentType } from 'react'
+import { useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
+import { logoutUser } from '../../store//toolkit/user/user.slice'
+import { toggleCart } from '../../store/toolkit/cart/cart.slice'
+import { useAppSelector } from '../../hooks/redux.hooks'
+import { selectProductsCount } from '../../store/toolkit/cart/cart.selectors'
+
+const Header = () => {
+  const BsCartIcon = BsCart as unknown as ComponentType<{ size?: number }>
+  const { isAuthenticated, currentUser } = useSelector(
+    (rootReducer: any) => rootReducer.userReducer
+  )
+  const dispatch = useDispatch()
+  const productsCount = useAppSelector(selectProductsCount)
+
+  const navigate = useNavigate()
+  const handleLoginClick = () => {
+    navigate('/login')
+  }
+  const handleSignUpClick = () => {
+    navigate('/sign-up')
+  }
+  const handleHomeClick = () => {
+    navigate('/')
+  }
+  const handleExploreClick = () => {
+    navigate('/explore')
+  }
+  const handleSignOutClick = () => {
+    dispatch(logoutUser())
+    signOut(auth)
+  }
+  const handleCartClick = () => {
+    dispatch(toggleCart())
+  }
+
+  return (
+    <HeaderContainer>
+      <HeaderTitle onClick={handleHomeClick}>CLUB CLOTHING</HeaderTitle>
+      <HeaderItems>
+        {isAuthenticated && (
+          <HeaderItem>Olá, {currentUser.firstName}</HeaderItem>
+        )}
+        <HeaderItem onClick={handleExploreClick}>Explorar</HeaderItem>
+        {!isAuthenticated ? (
+          <>
+            <HeaderItem onClick={handleLoginClick}>Entrar</HeaderItem>
+            <HeaderItem onClick={handleSignUpClick}>Criar Conta</HeaderItem>
+          </>
+        ) : (
+          <HeaderItem onClick={handleSignOutClick}>Sair</HeaderItem>
+        )}
+        <HeaderItem onClick={handleCartClick}>
+          <BsCartIcon size={25} />
+          <p style={{ marginLeft: 5 }}>{productsCount}</p>
+        </HeaderItem>
+      </HeaderItems>
+    </HeaderContainer>
+  )
+}
+
+export default Header
+</file>
+
+<file path="src/App.tsx">
+import { FunctionComponent, useContext, useEffect, useState } from 'react'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+
+// Pages
+import HomePage from './pages/home/home.page'
+import LoginPage from './pages/login/login.page'
+import SignUpPage from './pages/sign-up/sign-up.page'
+import { onAuthStateChanged } from 'firebase/auth'
+import { auth, db } from './config/firebase.config'
+import { collection, getDocs, query, where } from 'firebase/firestore'
+import User from './types/user.types'
+import Loading from './components/loading/loading.component'
+import ExplorePage from './pages/explore/explore.page'
+import CategoryDetailsPage from './pages/category-details/category-detail.page'
+import Cart from './components/cart/cart.component'
+import CheckoutPage from './pages/checkout/checkout.page'
+import AuthenticationGuard from './guards/authentication.guard'
+import PaymentConfirmationPage from './pages/payment-confirmation/payment-confimation.page'
+import { useDispatch } from 'react-redux'
+import { loginUser, logoutUser } from './store/toolkit/user/user.slice'
+import { useAppSelector } from './hooks/redux.hooks'
+
+const App: FunctionComponent = () => {
+  const [isInitializing, setIsInitializing] = useState(true)
+
+  const dispatch = useDispatch()
+
+  const { isAuthenticated } = useAppSelector(
+    (rootReducer) => rootReducer.userReducer
+  )
+
+  useEffect(() => {
+    ;(onAuthStateChanged(auth, async (user) => {
+      const isSigningOut = isAuthenticated && !user
+      if (isSigningOut) {
+        dispatch(logoutUser())
+        return setIsInitializing(false)
+      }
+
+      const isSigningIn = !isAuthenticated && user
+      if (isSigningIn) {
+        const querySnapshot = await getDocs(
+          query(collection(db, 'users'), where('id', '==', user.uid))
+        )
+        const userFromFirestore = querySnapshot.docs[0]?.data()
+
+        dispatch(loginUser(userFromFirestore as User))
+
+        return setIsInitializing(false)
+      }
+      return setIsInitializing(false)
+    }),
+      [dispatch])
+  })
+
+  if (isInitializing) {
+    return <Loading message='Loading, please wait...' />
+  }
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<HomePage />} />
+        <Route path='/explore' element={<ExplorePage />} />
+        <Route path='/category/:id' element={<CategoryDetailsPage />} />
+        <Route path='/login' element={<LoginPage />} />
+        <Route path='/sign-up' element={<SignUpPage />} />
+        <Route
+          path='/checkout'
+          element={
+            <AuthenticationGuard>
+              <CheckoutPage />
+            </AuthenticationGuard>
+          }
+        />
+        <Route
+          path='/payment-confirmation'
+          element={<PaymentConfirmationPage />}
+        />
+      </Routes>
+      <Cart />
+    </BrowserRouter>
+  )
+}
+
+export default App
+</file>
+
+</files>

@@ -1,4 +1,4 @@
-import { FunctionComponent } from 'react'
+import type { FunctionComponent } from 'react'
 import { AiOutlinePlus, AiOutlineMinus, AiOutlineClose } from 'react-icons/ai'
 import { useDispatch } from 'react-redux'
 // import {
@@ -13,7 +13,7 @@ import {
 } from '../../store/toolkit/cart/cart.slice'
 
 // Utilities
-import CartProduct from '../../types/cart.types'
+import type CartProduct from '../../types/cart.types'
 
 // Styles
 import {
