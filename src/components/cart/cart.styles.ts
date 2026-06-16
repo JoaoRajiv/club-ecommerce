@@ -1,8 +1,8 @@
-import styled from 'styled-components'
-import Colors from '../../theme/theme.colors'
+import styled from "styled-components";
+import Colors from "../../theme/theme.colors";
 
 interface CartContainerPros {
-  isVisible: boolean
+	isVisible: boolean;
 }
 
 export const CartContainer = styled.div<CartContainerPros>`
@@ -16,18 +16,18 @@ export const CartContainer = styled.div<CartContainerPros>`
   background-color: rgba(0, 0, 0, 0.7);
   display: flex;
   justify-content: flex-end;
-  visibility: ${(props) => (props.isVisible ? 'visible' : 'hidden')};
-  opacity: ${(props) => (props.isVisible ? '1' : '0')};
+  visibility: ${(props) => (props.isVisible ? "visible" : "hidden")};
+  opacity: ${(props) => (props.isVisible ? "1" : "0")};
   transition: all 0.3s ease;
 
   p {
     color: ${Colors.text.dark};
   }
-`
+`;
 
 export const CartEscapeArea = styled.div`
   width: 100%;
-`
+`;
 
 export const CartContent = styled.div`
   height: 100%;
@@ -41,7 +41,7 @@ export const CartContent = styled.div`
   @media (max-width: 768px) {
     min-width: 85%;
   }
-`
+`;
 export const CartTitle = styled.p`
   display: flex;
   justify-content: space-between;
@@ -49,18 +49,18 @@ export const CartTitle = styled.p`
   font-size: 1.325rem;
   font-weight: 600;
   margin-bottom: 15px;
-`
+`;
 export const CartTotal = styled.p`
   font-weight: 600;
   font-size: 1.125rem;
-`
+`;
 
 export const TotalPriceContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 15px;
-`
+`;
 
 export const ClearButton = styled.button`
   display: flex;
@@ -77,4 +77,4 @@ export const ClearButton = styled.button`
   &:hover {
     background-color: #d14646;
   }
-`
+`;

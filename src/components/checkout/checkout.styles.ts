@@ -1,5 +1,5 @@
-import styled from 'styled-components'
-import Colors from '../../theme/theme.colors'
+import styled from "styled-components";
+import Colors from "../../theme/theme.colors";
 
 export const CheckoutContainer = styled.div`
   display: flex;
@@ -23,12 +23,12 @@ export const CheckoutContainer = styled.div`
     }
     padding: 30px;
   }
-`
+`;
 
 export const CheckoutTitle = styled.p`
   font-weight: bold;
   font-size: 1.325rem;
-`
+`;
 
 export const CheckoutProducts = styled.div`
   min-width: 650px;
@@ -59,7 +59,7 @@ export const CheckoutProducts = styled.div`
   @media (max-width: 768px) {
     min-width: 100%;
   }
-`
+`;
 
 export const CheckoutTotal = styled.p`
   width: 650px;
@@ -70,4 +70,4 @@ export const CheckoutTotal = styled.p`
   @media (max-width: 768px) {
     width: 100%;
   }
-`
+`;

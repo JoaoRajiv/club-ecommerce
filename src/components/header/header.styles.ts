@@ -1,5 +1,5 @@
-import styled from 'styled-components'
-import Colors from '../../theme/theme.colors'
+import styled from "styled-components";
+import Colors from "../../theme/theme.colors";
 
 export const HeaderContainer = styled.header`
   width: 100%;
@@ -14,7 +14,7 @@ export const HeaderContainer = styled.header`
     align-items: center;
     justify-content: center;
   }
-`
+`;
 
 export const HeaderTitle = styled.h2`
   font-weight: bold;
@@ -27,7 +27,7 @@ export const HeaderTitle = styled.h2`
   @media (max-width: 768px) {
     margin-bottom: 16px;
   }
-`
+`;
 
 export const HeaderItems = styled.div`
   display: flex;
@@ -38,7 +38,7 @@ export const HeaderItems = styled.div`
     width: 100%;
     justify-content: space-evenly;
   }
-`
+`;
 
 export const HeaderItem = styled.div`
   font-weight: 600;
@@ -53,4 +53,4 @@ export const HeaderItem = styled.div`
   &:hover {
     cursor: pointer;
   }
-`
+`;

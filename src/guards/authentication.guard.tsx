@@ -1,37 +1,36 @@
-import type { FunctionComponent } from 'react'
-import { useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
-
+import type { FunctionComponent } from "react";
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 // Components
-import Header from '../components/header/header.component'
-import Loading from '../components/loading/loading.component'
-import { useSelector } from 'react-redux'
+import Header from "../components/header/header.component";
+import Loading from "../components/loading/loading.component";
 
 const AuthenticationGuard: FunctionComponent = ({ children }) => {
-  const { isAuthenticated } = useSelector(
-    (rootReducer: any) => rootReducer.userReducer
-  )
+	const { isAuthenticated } = useSelector(
+		(rootReducer: any) => rootReducer.userReducer,
+	);
 
-  const navigate = useNavigate()
+	const navigate = useNavigate();
 
-  useEffect(() => {
-    if (!isAuthenticated) {
-      setTimeout(() => {
-        navigate('/login')
-      }, 3000)
-    }
-  }, [isAuthenticated, navigate])
+	useEffect(() => {
+		if (!isAuthenticated) {
+			setTimeout(() => {
+				navigate("/login");
+			}, 3000);
+		}
+	}, [isAuthenticated, navigate]);
 
-  if (!isAuthenticated) {
-    return (
-      <>
-        <Header />
-        <Loading message='Você precisa estar logado para acessar esta página. Você será redirecionado para a página de login em instantes...' />
-      </>
-    )
-  }
+	if (!isAuthenticated) {
+		return (
+			<>
+				<Header />
+				<Loading message="Você precisa estar logado para acessar esta página. Você será redirecionado para a página de login em instantes..." />
+			</>
+		);
+	}
 
-  return <>{children}</>
-}
+	return <>{children}</>;
+};
 
-export default AuthenticationGuard
+export default AuthenticationGuard;

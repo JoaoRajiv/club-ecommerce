@@ -1,16 +1,16 @@
-import type { FunctionComponent } from 'react'
+import type { FunctionComponent } from "react";
 
 // Components
-import Checkout from '../../components/checkout/checkout.component'
-import Header from '../../components/header/header.component'
+import Checkout from "../../components/checkout/checkout.component";
+import Header from "../../components/header/header.component";
 
 const CheckoutPage: FunctionComponent = () => {
-  return (
-    <>
-      <Header />
-      <Checkout />
-    </>
-  )
-}
+	return (
+		<>
+			<Header />
+			<Checkout />
+		</>
+	);
+};
 
-export default CheckoutPage
+export default CheckoutPage;

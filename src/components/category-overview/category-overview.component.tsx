@@ -1,36 +1,34 @@
-import type { FunctionComponent } from 'react'
-
+import type { FunctionComponent } from "react";
+// Utilities
+import type Category from "../../types/category.types";
+import ProductItem from "../product-item/product-item.component";
 // Styles
 import {
-  CategoryContainer,
-  CategoryTitle,
-  ProductsContainer
-} from './category-overview.styles'
-
-// Utilities
-import type Category from '../../types/category.types'
-import ProductItem from '../product-item/product-item.component'
+	CategoryContainer,
+	CategoryTitle,
+	ProductsContainer,
+} from "./category-overview.styles";
 
 // Components
 // import ProductItem from '../product-item/product-item.component'
 interface CategoryOverviewProps {
-  category: Category
+	category: Category;
 }
 
 const CategoryOverview: FunctionComponent<CategoryOverviewProps> = ({
-  category
+	category,
 }) => {
-  return (
-    <CategoryContainer>
-      <CategoryTitle>{category.displayName}</CategoryTitle>
+	return (
+		<CategoryContainer>
+			<CategoryTitle>{category.displayName}</CategoryTitle>
 
-      <ProductsContainer>
-        {category.products.slice(0, 4).map((product) => (
-          <ProductItem key={product.id} product={product} />
-        ))}
-      </ProductsContainer>
-    </CategoryContainer>
-  )
-}
+			<ProductsContainer>
+				{category.products.slice(0, 4).map((product) => (
+					<ProductItem key={product.id} product={product} />
+				))}
+			</ProductsContainer>
+		</CategoryContainer>
+	);
+};
 
-export default CategoryOverview
+export default CategoryOverview;

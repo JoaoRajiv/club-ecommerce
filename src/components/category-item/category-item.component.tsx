@@ -1,30 +1,28 @@
-import type { FunctionComponent } from 'react'
-
+import type { FunctionComponent } from "react";
+import { useNavigate } from "react-router-dom";
 // Utilities
-import type Category from '../../types/category.types'
-
+import type Category from "../../types/category.types";
 // Styles
-import { CategoryItemContainer, CategoryName } from './category-item.styles'
-import { useNavigate } from 'react-router-dom'
+import { CategoryItemContainer, CategoryName } from "./category-item.styles";
 
 interface CategoryItemProps {
-  category: Category
+	category: Category;
 }
 
 const CategoryItem: FunctionComponent<CategoryItemProps> = ({ category }) => {
-  const navigate = useNavigate()
+	const navigate = useNavigate();
 
-  const handleExploreClick = () => {
-    navigate(`/category/${category.id}`)
-  }
-  return (
-    <CategoryItemContainer backgroundImage={category.imageUrl}>
-      <CategoryName onClick={handleExploreClick}>
-        <p>{category.displayName}</p>
-        <p>Explorar</p>
-      </CategoryName>
-    </CategoryItemContainer>
-  )
-}
+	const handleExploreClick = () => {
+		navigate(`/category/${category.id}`);
+	};
+	return (
+		<CategoryItemContainer backgroundImage={category.imageUrl}>
+			<CategoryName onClick={handleExploreClick}>
+				<p>{category.displayName}</p>
+				<p>Explorar</p>
+			</CategoryName>
+		</CategoryItemContainer>
+	);
+};
 
-export default CategoryItem
+export default CategoryItem;

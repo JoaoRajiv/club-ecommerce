@@ -1,8 +1,8 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 export const Container = styled.div`
   padding: 0px 40px 20px 40px;
-`
+`;
 
 export const CategoryTitle = styled.div`
   display: flex;
@@ -13,7 +13,7 @@ export const CategoryTitle = styled.div`
     font-size: 21px;
     font-weight: 500;
   }
-`
+`;
 
 export const ProductsContainer = styled.div`
   display: grid;
@@ -27,7 +27,7 @@ export const ProductsContainer = styled.div`
     gap: 20px;
     flex-direction: column;
   }
-`
+`;
 
 export const IconContainer = styled.div`
   display: flex;
@@ -35,4 +35,4 @@ export const IconContainer = styled.div`
   &:hover {
     cursor: pointer;
   }
-`
+`;

@@ -1,222 +1,219 @@
-import { FiLogIn } from 'react-icons/fi'
-// @ts-ignore
-import { useForm } from 'react-hook-form'
-import validator from 'validator'
-
-import { useNavigate } from 'react-router-dom'
-import type { ComponentType } from 'react'
-import { useEffect, useState } from 'react'
-
+import type { AuthError } from "firebase/auth";
+import { AuthErrorCodes, createUserWithEmailAndPassword } from "firebase/auth";
+import { addDoc, collection } from "firebase/firestore";
+import type { ComponentType } from "react";
+import { useEffect, useState } from "react";
+// @ts-expect-error
+import { useForm } from "react-hook-form";
+import { FiLogIn } from "react-icons/fi";
+import { useNavigate } from "react-router-dom";
+import validator from "validator";
 // Components
-import CustomButton from '../../components/custom-button/custom-button.component'
-import CustomInput from '../../components/custom-input/custom-input.component'
-import Header from '../../components/header/header.component'
-import InputErrorMessage from '../../components/input-error-message/input-error-message.component'
-
+import CustomButton from "../../components/custom-button/custom-button.component";
+import CustomInput from "../../components/custom-input/custom-input.component";
+import Header from "../../components/header/header.component";
+import InputErrorMessage from "../../components/input-error-message/input-error-message.component";
+import Loading from "../../components/loading/loading.component";
+import { auth, db } from "../../config/firebase.config";
+import { useAppSelector } from "../../hooks/redux.hooks";
 // Styles
 import {
-  SignUpContainer,
-  SignUpContent,
-  SignUpHeadline,
-  SignUpInputContainer
-} from './sign-up.styles'
-import type { AuthError } from 'firebase/auth'
-import { AuthErrorCodes, createUserWithEmailAndPassword } from 'firebase/auth'
-import { auth, db } from '../../config/firebase.config'
-import { addDoc, collection } from 'firebase/firestore'
-import Loading from '../../components/loading/loading.component'
-import { useAppSelector } from '../../hooks/redux.hooks'
+	SignUpContainer,
+	SignUpContent,
+	SignUpHeadline,
+	SignUpInputContainer,
+} from "./sign-up.styles";
 
 interface SignUpForm {
-  firstName: string
-  lastName: string
-  email: string
-  password: string
-  passwordConfirmation: string
+	firstName: string;
+	lastName: string;
+	email: string;
+	password: string;
+	passwordConfirmation: string;
 }
 
 const SignUpPage = () => {
-  const FiLogInIcon = FiLogIn as unknown as ComponentType<{ size?: number }>
-  const {
-    register,
-    handleSubmit,
-    watch,
-    setError,
-    formState: { errors }
-  } = useForm<SignUpForm>()
+	const FiLogInIcon = FiLogIn as unknown as ComponentType<{ size?: number }>;
+	const {
+		register,
+		handleSubmit,
+		watch,
+		setError,
+		formState: { errors },
+	} = useForm<SignUpForm>();
 
-  const [isLoading, setIsLoading] = useState(false)
+	const [isLoading, setIsLoading] = useState(false);
 
-  const watchPassword = watch('password')
+	const watchPassword = watch("password");
 
-  const navigate = useNavigate()
+	const navigate = useNavigate();
 
-  const { isAuthenticated } = useAppSelector(
-    (rootState) => rootState.userReducer
-  )
+	const { isAuthenticated } = useAppSelector(
+		(rootState) => rootState.userReducer,
+	);
 
-  useEffect(() => {
-    if (isAuthenticated) {
-      navigate('/')
-    }
-  }, [isAuthenticated, navigate])
+	useEffect(() => {
+		if (isAuthenticated) {
+			navigate("/");
+		}
+	}, [isAuthenticated, navigate]);
 
-  const handleSubmitPress = async (data: SignUpForm) => {
-    try {
-      setIsLoading(true)
+	const handleSubmitPress = async (data: SignUpForm) => {
+		try {
+			setIsLoading(true);
 
-      const userCredentials = await createUserWithEmailAndPassword(
-        auth,
-        data.email,
-        data.password
-      )
+			const userCredentials = await createUserWithEmailAndPassword(
+				auth,
+				data.email,
+				data.password,
+			);
 
-      await addDoc(collection(db, 'users'), {
-        id: userCredentials.user.uid,
-        email: userCredentials.user.email,
-        firstName: data.firstName,
-        lastName: data.lastName,
-        provider: 'firebase'
-      })
-    } catch (error) {
-      const _error = error as AuthError
-      console.log(_error.message)
-      if (_error.code === AuthErrorCodes.EMAIL_EXISTS) {
-        return setError('email', { type: 'alreadyInUse' })
-      }
-    } finally {
-      setIsLoading(false)
-    }
-  }
+			await addDoc(collection(db, "users"), {
+				id: userCredentials.user.uid,
+				email: userCredentials.user.email,
+				firstName: data.firstName,
+				lastName: data.lastName,
+				provider: "firebase",
+			});
+		} catch (error) {
+			const _error = error as AuthError;
+			console.log(_error.message);
+			if (_error.code === AuthErrorCodes.EMAIL_EXISTS) {
+				return setError("email", { type: "alreadyInUse" });
+			}
+		} finally {
+			setIsLoading(false);
+		}
+	};
 
-  return (
-    <>
-      <Header />
+	return (
+		<>
+			<Header />
 
-      {isLoading && <Loading message='Criando conta, por favor aguarde...' />}
+			{isLoading && <Loading message="Criando conta, por favor aguarde..." />}
 
-      <SignUpContainer>
-        <SignUpContent>
-          <SignUpHeadline>Crie sua conta</SignUpHeadline>
+			<SignUpContainer>
+				<SignUpContent>
+					<SignUpHeadline>Crie sua conta</SignUpHeadline>
 
-          <SignUpInputContainer>
-            <p>Nome</p>
-            <CustomInput
-              hasError={!!errors?.firstName}
-              placeholder='Digite seu nome'
-              {...register('firstName', { required: true })}
-            />
+					<SignUpInputContainer>
+						<p>Nome</p>
+						<CustomInput
+							hasError={!!errors?.firstName}
+							placeholder="Digite seu nome"
+							{...register("firstName", { required: true })}
+						/>
 
-            {errors?.firstName?.type === 'required' && (
-              <InputErrorMessage>O nome é obrigatório.</InputErrorMessage>
-            )}
-          </SignUpInputContainer>
+						{errors?.firstName?.type === "required" && (
+							<InputErrorMessage>O nome é obrigatório.</InputErrorMessage>
+						)}
+					</SignUpInputContainer>
 
-          <SignUpInputContainer>
-            <p>Sobrenome</p>
-            <CustomInput
-              hasError={!!errors?.lastName}
-              placeholder='Digite seu sobrenome'
-              {...register('lastName', { required: true })}
-            />
+					<SignUpInputContainer>
+						<p>Sobrenome</p>
+						<CustomInput
+							hasError={!!errors?.lastName}
+							placeholder="Digite seu sobrenome"
+							{...register("lastName", { required: true })}
+						/>
 
-            {errors?.lastName?.type === 'required' && (
-              <InputErrorMessage>O sobrenome é obrigatório.</InputErrorMessage>
-            )}
-          </SignUpInputContainer>
+						{errors?.lastName?.type === "required" && (
+							<InputErrorMessage>O sobrenome é obrigatório.</InputErrorMessage>
+						)}
+					</SignUpInputContainer>
 
-          <SignUpInputContainer>
-            <p>E-mail</p>
-            <CustomInput
-              hasError={!!errors?.email}
-              placeholder='Digite seu e-mail'
-              {...register('email', {
-                required: true,
-                validate: (value: string) => {
-                  return validator.isEmail(value)
-                }
-              })}
-            />
-            {errors?.email?.type === 'required' && (
-              <InputErrorMessage>O e-mail é obrigatório.</InputErrorMessage>
-            )}
+					<SignUpInputContainer>
+						<p>E-mail</p>
+						<CustomInput
+							hasError={!!errors?.email}
+							placeholder="Digite seu e-mail"
+							{...register("email", {
+								required: true,
+								validate: (value: string) => {
+									return validator.isEmail(value);
+								},
+							})}
+						/>
+						{errors?.email?.type === "required" && (
+							<InputErrorMessage>O e-mail é obrigatório.</InputErrorMessage>
+						)}
 
-            {errors?.email?.type === 'alreadyInUse' && (
-              <InputErrorMessage>
-                Este e-mail já está sendo utilizado.
-              </InputErrorMessage>
-            )}
+						{errors?.email?.type === "alreadyInUse" && (
+							<InputErrorMessage>
+								Este e-mail já está sendo utilizado.
+							</InputErrorMessage>
+						)}
 
-            {errors?.email?.type === 'validate' && (
-              <InputErrorMessage>
-                Por favor, insira um e-mail válido.
-              </InputErrorMessage>
-            )}
-          </SignUpInputContainer>
+						{errors?.email?.type === "validate" && (
+							<InputErrorMessage>
+								Por favor, insira um e-mail válido.
+							</InputErrorMessage>
+						)}
+					</SignUpInputContainer>
 
-          <SignUpInputContainer>
-            <p>Senha</p>
-            <CustomInput
-              hasError={!!errors?.password}
-              placeholder='Digite sua senha'
-              type='password'
-              {...register('password', { required: true, minLength: 6 })}
-            />
+					<SignUpInputContainer>
+						<p>Senha</p>
+						<CustomInput
+							hasError={!!errors?.password}
+							placeholder="Digite sua senha"
+							type="password"
+							{...register("password", { required: true, minLength: 6 })}
+						/>
 
-            {errors?.password?.type === 'required' && (
-              <InputErrorMessage>A senha é obrigatória.</InputErrorMessage>
-            )}
+						{errors?.password?.type === "required" && (
+							<InputErrorMessage>A senha é obrigatória.</InputErrorMessage>
+						)}
 
-            {errors?.password?.type === 'minLength' && (
-              <InputErrorMessage>
-                A senha precisa ter no mínimo 6 caracteres.
-              </InputErrorMessage>
-            )}
-          </SignUpInputContainer>
+						{errors?.password?.type === "minLength" && (
+							<InputErrorMessage>
+								A senha precisa ter no mínimo 6 caracteres.
+							</InputErrorMessage>
+						)}
+					</SignUpInputContainer>
 
-          <SignUpInputContainer>
-            <p>Confirmação de Senha</p>
-            <CustomInput
-              hasError={!!errors?.passwordConfirmation}
-              placeholder='Digite novamente sua senha'
-              type='password'
-              {...register('passwordConfirmation', {
-                required: true,
-                minLength: 6,
-                validate: (value: string) => {
-                  return value === watchPassword
-                }
-              })}
-            />
+					<SignUpInputContainer>
+						<p>Confirmação de Senha</p>
+						<CustomInput
+							hasError={!!errors?.passwordConfirmation}
+							placeholder="Digite novamente sua senha"
+							type="password"
+							{...register("passwordConfirmation", {
+								required: true,
+								minLength: 6,
+								validate: (value: string) => {
+									return value === watchPassword;
+								},
+							})}
+						/>
 
-            {errors?.passwordConfirmation?.type === 'required' && (
-              <InputErrorMessage>
-                A confirmação de senha é obrigatória.
-              </InputErrorMessage>
-            )}
+						{errors?.passwordConfirmation?.type === "required" && (
+							<InputErrorMessage>
+								A confirmação de senha é obrigatória.
+							</InputErrorMessage>
+						)}
 
-            {errors?.passwordConfirmation?.type === 'minLength' && (
-              <InputErrorMessage>
-                A confirmação de senha precisa ter no mínimo 6 caracteres.
-              </InputErrorMessage>
-            )}
+						{errors?.passwordConfirmation?.type === "minLength" && (
+							<InputErrorMessage>
+								A confirmação de senha precisa ter no mínimo 6 caracteres.
+							</InputErrorMessage>
+						)}
 
-            {errors?.passwordConfirmation?.type === 'validate' && (
-              <InputErrorMessage>
-                A confirmação de senha precisa ser igual a senha.
-              </InputErrorMessage>
-            )}
-          </SignUpInputContainer>
-          <CustomButton
-            onClick={() => handleSubmit(handleSubmitPress)()}
-            startIcon={<FiLogInIcon size={18} />}
-          >
-            Criar Conta
-          </CustomButton>
-        </SignUpContent>
-      </SignUpContainer>
-    </>
-  )
-}
+						{errors?.passwordConfirmation?.type === "validate" && (
+							<InputErrorMessage>
+								A confirmação de senha precisa ser igual a senha.
+							</InputErrorMessage>
+						)}
+					</SignUpInputContainer>
+					<CustomButton
+						onClick={() => handleSubmit(handleSubmitPress)()}
+						startIcon={<FiLogInIcon size={18} />}
+					>
+						Criar Conta
+					</CustomButton>
+				</SignUpContent>
+			</SignUpContainer>
+		</>
+	);
+};
 
-export default SignUpPage
+export default SignUpPage;

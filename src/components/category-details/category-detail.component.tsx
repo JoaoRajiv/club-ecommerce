@@ -1,84 +1,83 @@
-import type { ComponentType, FunctionComponent } from 'react'
-import { useEffect, useState } from 'react'
-import { collection, getDocs, query, where } from 'firebase/firestore'
-import { BiChevronLeft } from 'react-icons/bi'
-import { useNavigate } from 'react-router-dom'
+import { collection, getDocs, query, where } from "firebase/firestore";
+import type { ComponentType, FunctionComponent } from "react";
+import { useEffect, useState } from "react";
+import { BiChevronLeft } from "react-icons/bi";
+import { useNavigate } from "react-router-dom";
 
 // Utilities
-import { db } from '../../config/firebase.config'
-import type Category from '../../types/category.types'
-
+import { db } from "../../config/firebase.config";
+import type Category from "../../types/category.types";
+import Loading from "../loading/loading.component";
 // Components
-import ProductItem from '../product-item/product-item.component'
-import Loading from '../loading/loading.component'
+import ProductItem from "../product-item/product-item.component";
 
 // Styles
 import {
-  Container,
-  CategoryTitle,
-  IconContainer,
-  ProductsContainer
-} from './category-details.styles'
+	CategoryTitle,
+	Container,
+	IconContainer,
+	ProductsContainer,
+} from "./category-details.styles";
 
 interface CategoryDetailsProps {
-  categoryId: string
+	categoryId: string;
 }
 
 const CategoryDetails: FunctionComponent<CategoryDetailsProps> = ({
-  categoryId
+	categoryId,
 }) => {
-  const BiChevronLeftIcon = BiChevronLeft as unknown as ComponentType<{
-    size?: number
-  }>
-  const [category, setCategory] = useState<Category | null>(null)
-  const [isLoading, setIsLoading] = useState(false)
+	const BiChevronLeftIcon = BiChevronLeft as unknown as ComponentType<{
+		size?: number;
+	}>;
+	const [category, setCategory] = useState<Category | null>(null);
+	const [isLoading, setIsLoading] = useState(false);
 
-  const navigate = useNavigate()
+	const navigate = useNavigate();
 
-  const handleBackClick = () => {
-    navigate('/')
-  }
+	const handleBackClick = () => {
+		navigate("/");
+	};
 
-  useEffect(() => {
-    const fetchCategory = async () => {
-      try {
-        setIsLoading(true)
+	useEffect(() => {
+		const fetchCategory = async () => {
+			try {
+				setIsLoading(true);
 
-        const querySnapshot = await getDocs(
-          query(collection(db, 'categories'), where('id', '==', categoryId))
-        )
+				const querySnapshot = await getDocs(
+					query(collection(db, "categories"), where("id", "==", categoryId)),
+				);
 
-        const category = querySnapshot.docs[0]?.data()
+				const category = querySnapshot.docs[0]?.data();
 
-        setCategory(category as Category)
-      } catch (error) {
-        console.log(error)
-      } finally {
-        setIsLoading(false)
-      }
-    }
+				setCategory(category as Category);
+			} catch (error) {
+				console.log(error);
+			} finally {
+				setIsLoading(false);
+			}
+		};
 
-    fetchCategory()
-  }, [categoryId])
+		fetchCategory();
+	}, [categoryId]);
 
-  if (isLoading) return <Loading />
+	if (isLoading) return <Loading />;
 
-  return (
-    <Container>
-      <CategoryTitle>
-        <IconContainer onClick={handleBackClick}>
-          <BiChevronLeftIcon size={36} />
-        </IconContainer>
-        <p>Explorar: {category?.displayName}</p>
-      </CategoryTitle>
+	return (
+		<Container>
+			<CategoryTitle>
+				<IconContainer onClick={handleBackClick}>
+					<BiChevronLeftIcon size={36} />
+				</IconContainer>
+				<p>Explorar: {category?.displayName}</p>
+			</CategoryTitle>
 
-      <ProductsContainer>
-        {category?.products.map((product) => (
-          <ProductItem key={product.id} product={product} />
-        ))}
-      </ProductsContainer>
-    </Container>
-  )
-}
+			<ProductsContainer>
+				{category?.products.map((product) => (
+					<ProductItem key={product.id} product={product} />
+				))}
+			</ProductsContainer>
+		</Container>
+	);
+};
 
-export default CategoryDetails
+export default CategoryDetails;

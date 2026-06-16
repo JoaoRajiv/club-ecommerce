@@ -1,0 +1,220 @@
+📁 Estrutura do Projeto
+text
+src/
+├── components/        # Comum, Layout, Forms
+├── features/         # Auth, Products, Cart, Checkout, Orders
+├── hooks/            # Custom hooks reutilizáveis
+├── services/         # API e Firebase
+├── store/            # Redux (slices, middlewares)
+├── utils/            # Funções utilitárias
+├── validators/       # Schemas de validação
+├── constants/        # Enums e configurações
+├── types/            # Tipos TypeScript
+├── routes/           # Rotas lazy-loaded
+└── assets/           # Recursos estáticos
+🏗️ Arquitetura
+Feature-based: separação por domínio de negócio
+
+Container/Presentational: quando necessário
+
+Custom Hooks: lógica reutilizável
+
+HOCs: cross-cutting concerns (auth, error boundaries)
+
+Error Boundaries: um por feature module
+
+📏 Regras de Componentes
+Máximo 300 linhas e 5 props
+
+Sempre usar React.memo(), useCallback, useMemo
+
+Lazy loading com React.lazy() + Suspense
+
+Portals para modais/overlays
+
+Cleanup de side effects no useEffect
+
+🗃️ Gerenciamento de Estado
+Tecnologia	Uso
+Redux Toolkit	Global (carrinho, auth, UI)
+Context API	Temas e configs
+useState	UI local
+Redux Persist	Persistência seletiva
+Selectors memoizados (createSelector)
+
+Dados normalizados na store
+
+Imutabilidade obrigatória
+
+🔒 Segurança
+Sanitização: inputs com validator.js
+
+Validação: react-hook-form + schemas
+
+Dados sensíveis: nunca em localStorage
+
+Auth: Firebase com refresh tokens
+
+Headers: CSP e CSRF tokens
+
+Environment variables: secrets e configs
+
+Rate limiting: chamadas API
+
+📝 TypeScript
+Strict mode ativado
+
+interface → objetos/props
+
+type → unions/complexos
+
+Proibido any (usar unknown)
+
+Discriminated unions: loading | error | data
+
+Tipos genéricos para hooks
+
+Readonly para imutabilidade
+
+🎨 Estilização
+styled-components com tema centralizado
+
+Mobile-first responsivo
+
+Flexbox/Grid sobre posicionamento absoluto
+
+react-spinners para loading states
+
+Evitar !important e inline styles
+
+⚡ Performance
+Code splitting por rota
+
+Monitoramento com web-vitals
+
+Debounce/throttle em inputs/scroll
+
+Virtualização para listas longas
+
+Prefetch de rotas comuns
+
+Cache de selectors (Reselect)
+
+Abort de requisições no unmount
+
+🧭 Rotas
+Configuração centralizada
+
+Guards de autenticação (PrivateRoute)
+
+100% lazy loading
+
+Parâmetros tipados
+
+Redirecionamento pós-login
+
+🌐 API Services
+Axios instances por serviço
+
+Interceptors: token + refresh automático
+
+Retry com backoff exponencial
+
+AbortController no cleanup
+
+Transformação na camada de serviço
+
+🧪 Testes
+Jest + Testing Library
+
+Testes unitários, integração e acessibilidade
+
+Mocks: serviços e Firebase
+
+Cobertura mínima: 80% (features core)
+
+Snapshot para UI consistente
+
+✅ Boas Práticas
+Single responsibility principle
+
+Early returns para edge cases
+
+Nomes descritivos e consistentes
+
+JSDoc em hooks e utils
+
+Semantic HTML + ARIA labels
+
+Logs estruturados (redux-logger em dev)
+
+⚠️ Anti-Padrões Proibidos
+❌ Índices como keys
+
+❌ Props drilling (usar composition/Context)
+
+❌ setState em useEffect sem deps
+
+❌ Lógica complexa em JSX
+
+❌ Múltiplas responsabilidades em hooks
+
+❌ Side effects na renderização
+
+❌ Dados mutáveis compartilhados
+
+❌ Timers/listeners sem cleanup
+
+🔧 React 17 Específico
+Hooks sempre no topo
+
+SyntheticEvent tipado
+
+forwardRef quando necessário
+
+Cleanup em useEffect
+
+Sem mutação direta de estado
+
+tsx
+// 📦 Exemplo: Feature Module
+const ProductsList: React.FC = memo(() => {
+  const dispatch = useDispatch();
+  const { items, loading, error } = useSelector(selectProducts);
+  
+  useEffect(() => {
+    const promise = dispatch(fetchProducts());
+    return () => promise?.abort?.();
+  }, [dispatch]);
+
+  if (loading) return <Spinner />;
+  if (error) return <ErrorFallback error={error} />;
+  
+  return (
+    <Grid role="list">
+      {items.map(product => (
+        <ProductCard key={product.id} product={product} />
+      ))}
+    </Grid>
+  );
+});
+🎯 Checklist Rápido
+Componente menor que 300 linhas
+
+Máximo 5 props
+
+Tipado (sem any)
+
+Memoizado se necessário
+
+Inputs validados e sanitizados
+
+Loading/Error states tratados
+
+Acessível (ARIA)
+
+Testes escritos
+
+Sem props drilling
+
+Cleanup em effects

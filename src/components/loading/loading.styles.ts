@@ -1,5 +1,5 @@
-import styled from 'styled-components'
-import Colors from '../../theme/theme.colors'
+import styled from "styled-components";
+import Colors from "../../theme/theme.colors";
 
 export const LoadingContainer = styled.div`
   position: fixed;
@@ -24,4 +24,4 @@ export const LoadingContainer = styled.div`
     max-width: 50%;
     text-align: center;
   }
-`
+`;

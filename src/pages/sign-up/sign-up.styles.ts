@@ -1,12 +1,12 @@
-import styled from 'styled-components'
-import Colors from '../../theme/theme.colors'
+import styled from "styled-components";
+import Colors from "../../theme/theme.colors";
 
 export const SignUpContainer = styled.div`
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-`
+`;
 
 export const SignUpHeadline = styled.p`
   font-weight: 600;
@@ -17,7 +17,7 @@ export const SignUpHeadline = styled.p`
   border-bottom: 1px solid #6c757d;
   width: 100%;
   text-align: center;
-`
+`;
 
 export const SignUpContent = styled.div`
   display: flex;
@@ -28,7 +28,7 @@ export const SignUpContent = styled.div`
   @media (max-width: 768px) {
     width: 90%;
   }
-`
+`;
 
 export const SignUpInputContainer = styled.div`
   width: 100%;
@@ -38,4 +38,4 @@ export const SignUpInputContainer = styled.div`
     font-weight: 600;
     margin-bottom: 5px;
   }
-`
+`;

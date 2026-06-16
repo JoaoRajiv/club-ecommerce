@@ -1,14 +1,14 @@
-import type { FunctionComponent } from 'react'
-import Header from '../../components/header/header.component'
-import CategoriesOverview from '../../components/categories-overview/categories-overview.component'
+import type { FunctionComponent } from "react";
+import CategoriesOverview from "../../components/categories-overview/categories-overview.component";
+import Header from "../../components/header/header.component";
 
 const ExplorePage: FunctionComponent = () => {
-  return (
-    <>
-      <Header />
-      <CategoriesOverview />
-    </>
-  )
-}
+	return (
+		<>
+			<Header />
+			<CategoriesOverview />
+		</>
+	);
+};
 
-export default ExplorePage
+export default ExplorePage;

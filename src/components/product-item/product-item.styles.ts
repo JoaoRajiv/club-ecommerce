@@ -1,7 +1,7 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 interface ProductImageProps {
-  imageUrl: string
+	imageUrl: string;
 }
 
 export const ProductContainer = styled.div`
@@ -11,7 +11,7 @@ export const ProductContainer = styled.div`
   @media (max-width: 768px) {
     width: 100%;
   }
-`
+`;
 
 export const ProductInfo = styled.div`
   display: flex;
@@ -22,7 +22,7 @@ export const ProductInfo = styled.div`
     font-size: 1rem;
     font-weight: 500;
   }
-`
+`;
 
 export const ProductImage = styled.div<ProductImageProps>`
   background-image: ${(props) => `url('${props.imageUrl}')`};
@@ -60,4 +60,4 @@ export const ProductImage = styled.div<ProductImageProps>`
   @media (max-width: 768px) {
     width: 100%;
   }
-`
+`;

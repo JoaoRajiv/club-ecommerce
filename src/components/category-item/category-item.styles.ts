@@ -1,8 +1,8 @@
-import styled from 'styled-components'
-import Colors from '../../theme/theme.colors'
+import styled from "styled-components";
+import Colors from "../../theme/theme.colors";
 
 interface CategoryItemContainerProps {
-  backgroundImage: string
+	backgroundImage: string;
 }
 
 export const CategoryItemContainer = styled.div<CategoryItemContainerProps>`
@@ -35,7 +35,7 @@ export const CategoryItemContainer = styled.div<CategoryItemContainerProps>`
   @media (max-width: 768px) {
     min-height: 300px;
   }
-`
+`;
 
 export const CategoryName = styled.div`
   position: relative;
@@ -67,4 +67,4 @@ export const CategoryName = styled.div`
     font-size: 0.9rem;
     opacity: 0.9;
   }
-`
+`;
