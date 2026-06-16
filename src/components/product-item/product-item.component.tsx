@@ -1,6 +1,8 @@
-import type { ComponentType, FunctionComponent } from "react";
+import type { ComponentType, FunctionComponent, MouseEvent } from "react";
+import { useCallback } from "react";
 import { BsCartPlus } from "react-icons/bs";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { addProductToCart } from "../../store/toolkit/cart/cart.slice";
 
 // Utilities
@@ -16,21 +18,34 @@ import {
 
 interface ProductItemProps {
 	product: Product;
+	categoryId: string;
 }
 
-const ProductItem: FunctionComponent<ProductItemProps> = ({ product }) => {
+const ProductItem: FunctionComponent<ProductItemProps> = ({
+	product,
+	categoryId,
+}) => {
 	const BsCartPlusIcon = BsCartPlus as unknown as ComponentType<{
 		size?: number;
 	}>;
 	const dispatch = useDispatch();
+	const navigate = useNavigate();
 
-	const handleAddToCartClick = () => {
-		dispatch(addProductToCart(product));
-	};
+	const handleAddToCartClick = useCallback(
+		(event: MouseEvent<HTMLButtonElement>) => {
+			event.stopPropagation();
+			dispatch(addProductToCart(product));
+		},
+		[dispatch, product],
+	);
+
+	const handleProductClick = useCallback(() => {
+		navigate(`/category/${categoryId}/product/${product.id}`);
+	}, [navigate, categoryId, product.id]);
 
 	return (
 		<ProductContainer>
-			<ProductImage imageUrl={product.imageUrl}>
+			<ProductImage imageUrl={product.imageUrl} onClick={handleProductClick}>
 				<CustomButton
 					startIcon={<BsCartPlusIcon />}
 					onClick={handleAddToCartClick}
@@ -39,7 +54,7 @@ const ProductItem: FunctionComponent<ProductItemProps> = ({ product }) => {
 				</CustomButton>
 			</ProductImage>
 
-			<ProductInfo>
+			<ProductInfo onClick={handleProductClick}>
 				<p>{product.name}</p>
 				<p>R${product.price}</p>
 			</ProductInfo>

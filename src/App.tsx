@@ -10,6 +10,7 @@ import { auth, db } from "./config/firebase.config";
 import AuthenticationGuard from "./guards/authentication.guard";
 import { useAppSelector } from "./hooks/redux.hooks";
 import CategoryDetailsPage from "./pages/category-details/category-detail.page";
+import ProductDetailsPage from "./pages/product-details/product-detail.page";
 import CheckoutPage from "./pages/checkout/checkout.page";
 import ExplorePage from "./pages/explore/explore.page";
 // Pages
@@ -63,6 +64,10 @@ const App: FunctionComponent = () => {
 				<Route path="/" element={<HomePage />} />
 				<Route path="/explore" element={<ExplorePage />} />
 				<Route path="/category/:id" element={<CategoryDetailsPage />} />
+				<Route
+					path="/category/:id/product/:productId"
+					element={<ProductDetailsPage />}
+				/>
 				<Route path="/login" element={<LoginPage />} />
 				<Route path="/sign-up" element={<SignUpPage />} />
 				<Route

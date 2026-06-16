@@ -24,7 +24,11 @@ const CategoryOverview: FunctionComponent<CategoryOverviewProps> = ({
 
 			<ProductsContainer>
 				{category.products.slice(0, 4).map((product) => (
-					<ProductItem key={product.id} product={product} />
+					<ProductItem
+						key={product.id}
+						product={product}
+						categoryId={category.id}
+					/>
 				))}
 			</ProductsContainer>
 		</CategoryContainer>

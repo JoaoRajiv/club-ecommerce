@@ -73,7 +73,11 @@ const CategoryDetails: FunctionComponent<CategoryDetailsProps> = ({
 
 			<ProductsContainer>
 				{category?.products.map((product) => (
-					<ProductItem key={product.id} product={product} />
+					<ProductItem
+						key={product.id}
+						product={product}
+						categoryId={categoryId}
+					/>
 				))}
 			</ProductsContainer>
 		</Container>
