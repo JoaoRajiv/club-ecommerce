@@ -2,10 +2,10 @@ const Colors = {
   primary: '#212529',
   text: {
     white: '#F8F9FA',
-    dark: '#343A40'
+    dark: '#181818'
   },
   background: {
-    dark: '#212529',
+    dark: '#040404',
     white: '#F8F9FA'
   },
   input: {

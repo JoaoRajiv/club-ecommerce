@@ -47,7 +47,7 @@ const Header = () => {
 
   return (
     <HeaderContainer>
-      <HeaderTitle onClick={handleHomeClick}>CLUB CLOTHING</HeaderTitle>
+      <HeaderTitle onClick={handleHomeClick}>CLUB <span style={{ color: '#ffb813' }}>.</span></HeaderTitle>
       <HeaderItems>
         {isAuthenticated && (
           <HeaderItem>Olá, {currentUser.firstName}</HeaderItem>
@@ -61,11 +61,12 @@ const Header = () => {
         ) : (
           <HeaderItem onClick={handleSignOutClick}>Sair</HeaderItem>
         )}
-        <HeaderItem onClick={handleCartClick}>
-          <BsCartIcon size={25} />
-          <p style={{ marginLeft: 5 }}>{productsCount}</p>
-        </HeaderItem>
+        
       </HeaderItems>
+      <HeaderItem onClick={handleCartClick}>
+          <BsCartIcon size={18} />
+          <p style={{ marginLeft: 5, color: '#ffb813', fontWeight: 'bold' }}>{productsCount}</p>
+        </HeaderItem>
     </HeaderContainer>
   )
 }
