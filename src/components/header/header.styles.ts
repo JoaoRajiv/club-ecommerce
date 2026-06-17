@@ -19,9 +19,12 @@ export const HeaderContainer = styled.header`
 export const HeaderTitle = styled.h2`
   font-weight: bold;
   font-size: 1.5rem;
+  color: ${Colors.text.white};
+  transition: color 0.2s ease;
 
   &:hover {
     cursor: pointer;
+    color: #ffb813;
   }
 
   @media (max-width: 768px) {
@@ -45,6 +48,8 @@ export const HeaderItem = styled.div`
   font-size: 1rem;
   display: flex;
   align-items: center;
+  color: ${Colors.text.white};
+  transition: color 0.2s ease;
 
     @media (max-width: 768px) {
       margin-right: 0;
@@ -52,5 +57,6 @@ export const HeaderItem = styled.div`
 
   &:hover {
     cursor: pointer;
+    color: #ffb813;
   }
 `;
