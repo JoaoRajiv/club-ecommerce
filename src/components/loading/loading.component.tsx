@@ -11,7 +11,7 @@ const Loading: FunctionComponent<LoadingProps> = ({ message }) => {
 	return (
 		<LoadingContainer>
 			{message && <p>{message}</p>}
-			<SyncLoader size={30} />
+			<SyncLoader size={20} />
 		</LoadingContainer>
 	);
 };
