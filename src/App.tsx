@@ -10,13 +10,13 @@ import { auth, db } from "./config/firebase.config";
 import AuthenticationGuard from "./guards/authentication.guard";
 import { useAppSelector } from "./hooks/redux.hooks";
 import CategoryDetailsPage from "./pages/category-details/category-detail.page";
-import ProductDetailsPage from "./pages/product-details/product-detail.page";
 import CheckoutPage from "./pages/checkout/checkout.page";
 import ExplorePage from "./pages/explore/explore.page";
 // Pages
 import HomePage from "./pages/home/home.page";
 import LoginPage from "./pages/login/login.page";
 import PaymentConfirmationPage from "./pages/payment-confirmation/payment-confimation.page";
+import ProductDetailsPage from "./pages/product-details/product-detail.page";
 import SignUpPage from "./pages/sign-up/sign-up.page";
 import { loginUser, logoutUser } from "./store/toolkit/user/user.slice";
 import type User from "./types/user.types";
