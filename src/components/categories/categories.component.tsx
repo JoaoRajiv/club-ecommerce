@@ -1,6 +1,5 @@
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { useAppSelector } from "../../hooks/redux.hooks";
+import { useAppDispatch, useAppSelector } from "../../hooks/redux.hooks";
 import { fetchCategories } from "../../store/toolkit/category/category.slice";
 import type Category from "../../types/category.types";
 import CategoryItem from "../category-item/category-item.component";
@@ -14,24 +13,22 @@ const Categories = () => {
 		(state) => state.categoryReducer,
 	);
 
-	const dispatch = useDispatch();
+	const dispatch = useAppDispatch();
 
 	useEffect(() => {
-		dispatch(fetchCategories() as any);
+		dispatch(fetchCategories());
 	}, [dispatch]);
 	return (
-		<>
-			<CategoriesContainer>
-				{isLoading && <Loading />}
-				<CategoriesContent>
-					{categories.map((category: Category) => (
-						<div key={category.id} className="category-item">
-							<CategoryItem category={category} />
-						</div>
-					))}
-				</CategoriesContent>
-			</CategoriesContainer>
-		</>
+		<CategoriesContainer>
+			{isLoading && <Loading />}
+			<CategoriesContent>
+				{categories.map((category: Category) => (
+					<div key={category.id} className="category-item">
+						<CategoryItem category={category} />
+					</div>
+				))}
+			</CategoriesContent>
+		</CategoriesContainer>
 	);
 };
 

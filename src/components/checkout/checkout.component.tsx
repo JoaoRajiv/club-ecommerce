@@ -15,7 +15,9 @@ import {
 } from "./checkout.styles";
 
 const Checkout: FunctionComponent = () => {
-	const BsBagCheckIcon = BsBagCheck as unknown as ComponentType<{}>;
+	const BsBagCheckIcon = BsBagCheck as unknown as ComponentType<{
+		size?: number;
+	}>;
 	const { products } = useAppSelector((state) => state.cartReducer);
 	const productsTotalPrice = useAppSelector(selectProductsTotalPrice);
 
@@ -25,7 +27,7 @@ const Checkout: FunctionComponent = () => {
 		try {
 			setIsLoading(true);
 			const { data } = await axios.post(
-				`${process.env.REACT_APP_API_URL!}/create-checkout-session`,
+				`${process.env.REACT_APP_API_URL ?? ""}/create-checkout-session`,
 				{
 					products,
 				},

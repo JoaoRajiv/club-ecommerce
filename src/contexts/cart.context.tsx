@@ -41,10 +41,10 @@ const CartContextProvider: FunctionComponent = ({ children }) => {
 
 	useEffect(() => {
 		const productsFromLocalStorage = JSON.parse(
-			localStorage.getItem("cartProducts")!,
+			localStorage.getItem("cartProducts") ?? "[]",
 		);
 
-		setProducts(productsFromLocalStorage);
+		setProducts(productsFromLocalStorage as CartProduct[]);
 	}, []);
 
 	useEffect(() => {

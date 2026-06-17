@@ -1,8 +1,8 @@
 import type { FunctionComponent } from "react";
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { useAppSelector } from "../../hooks/redux.hooks";
+import { useAppDispatch, useAppSelector } from "../../hooks/redux.hooks";
 import { fetchCategories } from "../../store/toolkit/category/category.slice";
+import type Category from "../../types/category.types";
 import CategoryOverview from "../category-overview/category-overview.component";
 // Components
 import Loading from "../loading/loading.component";
@@ -14,7 +14,7 @@ const CategoriesOverview: FunctionComponent = () => {
 		(state) => state.categoryReducer,
 	);
 
-	const dispatch = useDispatch();
+	const dispatch = useAppDispatch();
 
 	useEffect(() => {
 		if (!categories?.length) {
@@ -26,7 +26,7 @@ const CategoriesOverview: FunctionComponent = () => {
 
 	return (
 		<Container>
-			{categories.map((category) => (
+			{categories.map((category: Category) => (
 				<CategoryOverview key={category.id} category={category} />
 			))}
 		</Container>

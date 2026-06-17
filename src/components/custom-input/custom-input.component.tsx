@@ -1,4 +1,3 @@
-import type { FunctionComponent } from "react";
 import React from "react";
 import { CustomInputContainer } from "./custom-input.styles";
 
@@ -6,9 +5,9 @@ interface CustomInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
 	hasError?: boolean;
 }
 
-const CustomInput: FunctionComponent<CustomInputProps> = React.forwardRef(
+const CustomInput = React.forwardRef<HTMLInputElement, CustomInputProps>(
 	(props, ref) => {
-		return <CustomInputContainer {...props} ref={ref as any} />;
+		return <CustomInputContainer {...props} ref={ref} />;
 	},
 );
 

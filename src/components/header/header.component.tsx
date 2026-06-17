@@ -1,7 +1,7 @@
 import { signOut } from "firebase/auth";
 import type { ComponentType } from "react";
 import { BsCart } from "react-icons/bs";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../../config/firebase.config";
 import { useAppSelector } from "../../hooks/redux.hooks";
@@ -17,8 +17,8 @@ import {
 
 const Header = () => {
 	const BsCartIcon = BsCart as unknown as ComponentType<{ size?: number }>;
-	const { isAuthenticated, currentUser } = useSelector(
-		(rootReducer: any) => rootReducer.userReducer,
+	const { isAuthenticated, currentUser } = useAppSelector(
+		(state) => state.userReducer,
 	);
 	const dispatch = useDispatch();
 	const productsCount = useAppSelector(selectProductsCount);
@@ -51,7 +51,7 @@ const Header = () => {
 			</HeaderTitle>
 			<HeaderItems>
 				{isAuthenticated && (
-					<HeaderItem>Olá, {currentUser.firstName}</HeaderItem>
+					<HeaderItem>Olá, {currentUser?.firstName}</HeaderItem>
 				)}
 				<HeaderItem onClick={handleExploreClick}>Explorar</HeaderItem>
 				{!isAuthenticated ? (
